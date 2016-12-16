@@ -1,0 +1,90 @@
+{
+  "name": "roots/bedrock",
+  "type": "project",
+  "license": "MIT",
+  "description": "A modern WordPress stack",
+  "homepage": "https://roots.io/bedrock/",
+  "authors": [
+    {
+      "name": "Scott Walkinshaw",
+      "email": "scott.walkinshaw@gmail.com",
+      "homepage": "https://github.com/swalkinshaw"
+    },
+    {
+      "name": "Ben Word",
+      "email": "ben@benword.com",
+      "homepage": "https://github.com/retlehs"
+    }
+  ],
+  "keywords": [
+    "bedrock", "roots", "wordpress", "stack", "composer", "vagrant", "wp"
+  ],
+  "support": {
+    "issues": "https://github.com/roots/bedrock/issues",
+    "forum": "https://discourse.roots.io/category/bedrock"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+   	{
+         "type": "composer",
+         "url": "https://wp-languages.github.io"
+      }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "composer/installers": "~1.0.12",
+    "vlucas/phpdotenv": "^2.0.1",
+    "johnpbloch/wordpress": "4.7.0",
+    "oscarotero/env": "^1.0",
+    "roots/wp-password-bcrypt": "1.0.0",
+	"wpackagist-plugin/akismet" : "*",
+	"wpackagist-plugin/disqus-comment-system" : "*",
+	"wpackagist-plugin/duplicate-post" : "*",
+	"wpackagist-plugin/google-sitemap-generator" : "*",
+	"wpackagist-plugin/gtmetrix-for-wordpress" : "*",
+	"wpackagist-plugin/obfuscate-email" : "*",
+	"wpackagist-plugin/stop-spam-comments" : "*",
+	"wpackagist-plugin/woosidebars" : "*",
+	"wpackagist-plugin/wp-smushit" : "*",
+	"wpackagist-plugin/wordpress-seo" : "3.9",
+	"wpackagist-plugin/cms-tree-page-view" : "*",
+	"wpackagist-plugin/advanced-custom-fields": "*",
+	"wpackagist-plugin/contact-form-7" : "*",
+	"wpackagist-plugin/bootstrap-for-contact-form-7" : "*",
+	"wpackagist-plugin/gzip-ninja-speed-compression" : "*",
+	"wpackagist-plugin/w3-total-cache" : "*",
+	"wpackagist-plugin/google-no-captcha-recaptcha" : "*",
+	"wpackagist-plugin/wp-retina-2x" : "4.7.4",
+	"wpackagist-plugin/wp-optimize" : "*",
+	"wpackagist-plugin/wordpress-importer" : "*",
+	"koodimonni-language/fr_FR": "*"
+	
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.5.1"
+  },
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+	"dropin-paths": {
+	        "htdocs/wp-content/languages/": ["vendor:koodimonni-language"],
+	        "htdocs/wp-content/languages/plugins/": ["vendor:koodimonni-plugin-language"],
+	        "htdocs/wp-content/languages/themes/": ["vendor:koodimonni-theme-language"]
+	 },
+    "wordpress-install-dir": "web/wp"
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpcs --ignore=web/wp/,vendor/ -n -s ."
+    ]
+  }
+}

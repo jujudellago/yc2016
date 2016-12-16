@@ -1,0 +1,57 @@
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+!web/app/plugins/revslider
+!web/app/plugins/js_composer
+!web/app/plugins/LayerSlider 
+!web/app/plugins/envato-wordpress-toolkit-master 
+!web/app/plugins/ez-form-calculator-premium 
+!web/app/plugins/gravityforms 
+!web/app/plugins/popup-press 
+!web/app/plugins/wpmudev-google-analytics.php
+!web/robots.txt
+web/app/mu-plugins/*/
+web/app/upgrade
+
+htdocs
+
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+
+
+config/secrets.yml
+
+
+*.sql
+
+.DS_Store
+*/*.DS_Store
+
+# WordPress
+web/wp
+web/.htaccess
+
+# WP-CLI
+db-sync
+sql-dump-*.sql
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+.ftppass.json
+
+# Vendor (e.g. Composer)
+vendor/*
+!vendor/.gitkeep
+
+# Node Package Manager
+node_modules
+
+# Vagrant
+bin
+.vagrant
+
+log/*
+config/backups

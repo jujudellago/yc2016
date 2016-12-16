@@ -1,0 +1,1334 @@
+# Loco Gettext template
+msgid ""
+msgstr ""
+"Project-Id-Version: ez Form Calculator Premium\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-27 17:46+0200\n"
+"POT-Revision-Date: Sat Jun 27 2015 16:31:07 GMT+0200 (Mitteleuropäische "
+"Sommerzeit)\n"
+"PO-Revision-Date: 2015-06-27 17:53+0200\n"
+"Last-Translator: Michael Schuppenies <pansensalat@gmail.com>\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Poedit 1.8.2\n"
+"Language: fr_FR\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: /ajax-admin.php:116
+#, fuzzy
+msgid "Empty form data or invalid file format"
+msgstr "Vider les données du formulaire ou le format de fichier non valide"
+
+#: /ajax-admin.php:128
+#, fuzzy
+msgid "Unable to import elements."
+msgstr "Impossible d'importer des éléments."
+
+#: /ajax-fileupload.php:44
+#, fuzzy
+msgid "Filetype not allowed."
+msgstr "Type de fichier non autorisé."
+
+#: /ajax.php:75
+#, fuzzy
+msgid "Recaptcha failed, please try again."
+msgstr "Recaptcha échoué, s'il vous plaît essayer à nouveau."
+
+#: /class.ezfc_backend.php:53
+#, fuzzy
+msgid "New form"
+msgstr "Nouveau formulaire"
+
+#: /class.ezfc_backend.php:56 /class.ezfc_backend.php:1074
+#, fuzzy
+msgid "Corrupt form data."
+msgstr "Corrupt données de formulaire."
+
+#: /class.ezfc_backend.php:91
+#, fuzzy
+msgid "Could not insert element data from template."
+msgstr "Impossible d'insérer des données d'éléments de modèle."
+
+#: /class.ezfc_backend.php:219
+#, fuzzy
+msgid "Unable to add post"
+msgstr "Impossible d'ajouter après"
+
+#: /class.ezfc_backend.php:234
+#, fuzzy
+msgid "Form cleared."
+msgstr "Formulaire effacé."
+
+#: /class.ezfc_backend.php:264
+#, fuzzy
+msgid "Form deleted."
+msgstr "Formulaire supprimé"
+
+#: /class.ezfc_backend.php:293
+#, fuzzy
+msgid "Could not delete file from server."
+msgstr "Impossible de supprimer le fichier du serveur."
+
+#: /class.ezfc_backend.php:303
+#, fuzzy
+msgid "File deleted."
+msgstr "Fichier supprimé"
+
+#: /class.ezfc_backend.php:313 /class.ezfc_backend.php:324
+#: /class.ezfc_backend. php:359 /class.ezfc_backend.php:370
+#: /class.ezfc_backend.php:382 /class. ezfc_backend.php:393
+#: /class.ezfc_frontend.php:53
+#, fuzzy
+msgid "No ID"
+msgstr "No ID"
+
+#: /class.ezfc_backend.php:420
+#, fuzzy
+msgid "Submission deleted."
+msgstr "Soumission supprimé."
+
+#: /class.ezfc_backend.php:497
+#, fuzzy
+msgid "Could not insert template"
+msgstr "Impossible d'insérer modèle"
+
+#: /class.ezfc_backend.php:513
+#, fuzzy
+msgid "Template deleted."
+msgstr "Modèle supprimé."
+
+#: /class.ezfc_backend.php:531 /class.ezfc_backend.php:553
+#: /class.ezfc_backend. php:764
+#, fuzzy
+msgid "Settings updated"
+msgstr "Réglages mis à jour."
+
+#: /class.ezfc_backend.php:566 /class.ezfc_backend.php:670
+#: /class.ezfc_frontend. php:93 /class.ezfc_frontend.php:132
+#, fuzzy
+msgid "No ID."
+msgstr "No ID."
+
+#: /class.ezfc_backend.php:580 /class.ezfc_backend.php:593
+#: /class.ezfc_backend. php:711 /class.ezfc_frontend.php:107
+#: /class.ezfc_frontend.php:118
+#, fuzzy
+msgid "No ID given."
+msgstr "Aucun ID donnée."
+
+#: /class.ezfc_backend.php:640
+#, fuzzy
+msgid "Could not insert element to form"
+msgstr "Impossible d'insérer l'élément pour former"
+
+#: /class.ezfc_backend.php:654
+#, fuzzy
+msgid "Element deleted."
+msgstr "Élément supprimé."
+
+#: /class.ezfc_backend.php:662
+#, fuzzy
+msgid "Failed to duplicate element."
+msgstr "Échec de l'élément dupliquer."
+
+#: /class.ezfc_backend.php:694
+#, fuzzy
+msgid "Form elements update error:"
+msgstr "Formulaire erreur de mise à jour des éléments:"
+
+#: /class.ezfc_backend.php:1086
+#, fuzzy
+msgid "Data import complete."
+msgstr "Importation de données complète."
+
+#: /class.ezfc_backend.php:1093
+msgid "ez Form Calculator Test Email"
+msgstr "ez Form Calculator mail test"
+
+#: /class.ezfc_backend.php:1094
+#, fuzzy
+msgid "This is a test email sent by ez Form Calculator."
+msgstr "Ceci est un email de test envoyé par Calculatrice de formulaire ez."
+
+#: /class.ezfc_backend.php:1115 /class.ezfc_backend.php:1130
+#, fuzzy
+msgid "Mail successfully sent."
+msgstr "Mail envoyé avec succès."
+
+#: /class.ezfc_backend.php:1118
+#, fuzzy
+msgid "Unable to send mails:"
+msgstr "Impossible d'envoyer des mails:"
+
+#: /class.ezfc_backend.php:1130
+#, fuzzy
+msgid "Unable to send mails."
+msgstr "Impossible d'envoyer des mails."
+
+#: /class.ezfc_frontend.php:31
+#, fuzzy
+msgid "No id or name found."
+msgstr "Aucune ID ou le nom trouvé."
+
+#: /class.ezfc_frontend.php:47
+#, fuzzy
+msgid "No form found."
+msgstr "Aucun formulaire trouvé"
+
+#: /class.ezfc_frontend.php:68
+#, fuzzy
+msgid "No ref_id"
+msgstr "Aucune REF_ID"
+
+#: /class.ezfc_frontend.php:146 /class.ezfc_frontend.php:336
+#, fuzzy
+msgid "No ID or no data."
+msgstr "No ID ou pas de données."
+
+#: /class.ezfc_frontend.php:153
+#, fuzzy
+msgid "Submission not allowed."
+msgstr "Soumission pas autorisé."
+
+#: /class.ezfc_frontend.php:230
+#, fuzzy
+msgid "Please enter a valid date range."
+msgstr "Veuillez entrer une date valide."
+
+#: /class.ezfc_frontend.php:236
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "Veuillez saisir une adresse e-mail valide."
+
+#: /class.ezfc_frontend.php:245
+#, fuzzy
+msgid "Please check your email address."
+msgstr "Vérifiez votre adresse mail"
+
+#: /class.ezfc_frontend.php:258
+#, fuzzy
+msgid "No file was uploaded yet."
+msgstr "Aucun fichier n'a été téléchargé."
+
+#: /class.ezfc_frontend.php:264
+#, fuzzy
+msgid "Please enter a valid number."
+msgstr "Veuillez entrer un nombre correct."
+
+#: /class.ezfc_frontend.php:269
+#, fuzzy
+msgid "Minimum value:"
+msgstr "Valeur minimale :"
+
+#: /class.ezfc_frontend.php:272
+#, fuzzy
+msgid "Maximum value:"
+msgstr "Valeur maximale :"
+
+#: /class.ezfc_frontend.php:368
+#, fuzzy
+msgid "Element could not be found."
+msgstr "Element n'a pu être trouvée."
+
+#: /class.ezfc_frontend.php:440
+#, fuzzy
+msgid "Submission failed."
+msgstr "Attention"
+
+#: /class.ezfc_frontend.php:519
+#, fuzzy, php-format
+msgid "Unable to add product #%s to the cart."
+msgstr "Impossible d'ajouter le produit #%s au panier."
+
+#: /class.ezfc_frontend.php:600
+#, fuzzy
+msgid "Total"
+msgstr "Total"
+
+#: /class.ezfc_frontend.php:749 /class.ezfc_functions.php:217 /class.
+#: ezfc_functions.php:238 /class.ezfc_functions.php:395
+#: /class.ezfc_functions.php:415
+#, fuzzy
+msgid "From"
+msgstr "A partir de"
+
+#: /class.ezfc_frontend.php:750 /class.ezfc_functions.php:218 /class.
+#: ezfc_functions.php:239 /class.ezfc_functions.php:397
+#: /class.ezfc_functions.php:416
+#, fuzzy
+msgid "To"
+msgstr "À"
+
+#: /class.ezfc_frontend.php:870
+#, fuzzy
+msgid "day(s)"
+msgstr "jour(s)"
+
+#: /class.ezfc_frontend.php:895
+#, fuzzy
+msgid "No target found:"
+msgstr "Aucune cible trouvé:"
+
+#: /class.ezfc_frontend.php:939
+#, fuzzy
+msgid "Cannot divide by target factor 0"
+msgstr "Impossible de diviser par un facteur cible 0"
+
+#: /class.ezfc_frontend.php:999
+#, fuzzy
+msgid "Price override"
+msgstr "Prix ​​override"
+
+#: /class.ezfc_frontend.php:1021 /class.ezfc_frontend.php:1026 /class.
+#: ezfc_frontend.php:1031 /class.ezfc_frontend.php:1036
+#: /class.ezfc_frontend.php:1041
+#, fuzzy
+msgid "Discount:"
+msgstr "Remise :"
+
+#: /class.ezfc_frontend.php:1367
+#, fuzzy
+msgid ""
+"No id or name found. Correct syntax: [ezfc id='1' /] or [ezfc name='form-"
+"name' /]."
+msgstr ""
+"Aucune ID ou le nom trouvé. La syntaxe correcte: [ezfc id = '1' /] ou [ezfc "
+"name = \"nom-de-forme '/]."
+
+#: /class.ezfc_frontend.php:1464
+#, fuzzy
+msgid "Request price"
+msgstr "Demander des prix"
+
+#: /class.ezfc_frontend.php:1685
+#, fuzzy
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: /class.ezfc_frontend.php:1924
+msgid "Upload"
+msgstr ""
+
+#: /class.ezfc_frontend.php:2123
+#, fuzzy
+msgid "File entry failed."
+msgstr "entrée de fichier a échoué."
+
+#: /class.ezfc_frontend.php:2125
+#, fuzzy
+msgid "File entry saved."
+msgstr "l'entrée du fichier sauvegardé."
+
+#: /class.ezfc_frontend.php:2129
+#, fuzzy
+msgid "No token."
+msgstr "Aucun jeton."
+
+#: /class.ezfc_frontend.php:2137
+#, fuzzy
+msgid "Unable to find submission."
+msgstr "Impossible de trouver soumission."
+
+#: /class.ezfc_functions.php:209
+#, fuzzy
+msgid "Add closed days"
+msgstr "Ajouter jours fermés"
+
+#: /class.ezfc_functions.php:219 /class.ezfc_functions.php:240 /class.
+#: ezfc_functions.php:417
+#, fuzzy
+msgid "Remove item"
+msgstr "Supprimer"
+
+#: /class.ezfc_functions.php:278
+#, fuzzy
+msgid "Choose image"
+msgstr "Choisir une image"
+
+#: /class.ezfc_functions.php:306
+#, fuzzy
+msgid "No MailChimp lists found or wrong API key"
+msgstr "Aucune liste MailChimp trouvés ou clé API mauvais"
+
+#: /class.ezfc_functions.php:324
+#, fuzzy
+msgid "No Mailpoet lists found."
+msgstr "Pas de listes de Mailpoet trouvé."
+
+#: /class.ezfc_functions.php:387
+#, fuzzy
+msgid "Add business hours"
+msgstr "Périodes d'ouverture"
+
+#: /class.ezfc_functions.php:447
+#, fuzzy
+msgid "Monday"
+msgstr "Lun"
+
+#: /class.ezfc_functions.php:448
+#, fuzzy
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: /class.ezfc_functions.php:449
+#, fuzzy
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#: /class.ezfc_functions.php:450
+#, fuzzy
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: /class.ezfc_functions.php:451
+#, fuzzy
+msgid "Friday"
+msgstr "Ven"
+
+#: /class.ezfc_functions.php:452
+#, fuzzy
+msgid "Saturday"
+msgstr "Samedi"
+
+#: /class.ezfc_functions.php:453
+#, fuzzy
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: /class.ezfc_functions.php:476 /ezfc.php:256 /ezfc.php:568
+#, fuzzy
+msgid "No"
+msgstr "Non"
+
+#: /class.ezfc_functions.php:477 /ezfc.php:255 /ezfc.php:567
+#, fuzzy
+msgid "Yes"
+msgstr "Oui"
+
+#: /class.ezfc_functions.php:490
+#, fuzzy
+msgid "Overwrite"
+msgstr "Remplacer"
+
+#: /class.ezfc_functions.php:526
+#, fuzzy
+msgid "Unfortunately, 'unzip_file' is not installed on your webserver."
+msgstr "Malheureusement, 'unzip_file' est pas installé sur votre serveur web."
+
+#: /class.ezfc_functions.php:538
+#, fuzzy
+msgid "Update has failed: unable to unzip files."
+msgstr "Mise à jour a échoué: impossible de décompresser des fichiers."
+
+#: /class.ezfc_functions.php:543
+#, fuzzy
+msgid "Update has failed: update directory does not exist."
+msgstr "Mise à jour a échoué: répertoire ne existe pas de mise à jour."
+
+#: /class.ezfc_functions.php:551
+#, fuzzy
+msgid "Notice: unable to remove update directory.<br>"
+msgstr "Remarquez: impossible de supprimer le répertoire de mise à jour. <br>"
+
+#: /class.ezfc_functions.php:554
+#, fuzzy
+msgid "Update successful!"
+msgstr "Mise à jour réussie"
+
+#: /class.ezfc_functions.php:604
+#, fuzzy
+msgid "Function 'file_get_contents' does not exist."
+msgstr "Ne existe pas de fonction '' file_get_contents."
+
+#: /class.ezfc_functions.php:617
+#, fuzzy
+msgid "Library ZipArchive is not installed on your webserver."
+msgstr "Bibliothèque ZipArchive est pas installé sur votre serveur web."
+
+#: /class.ezfc_functions.php:632
+#, fuzzy
+msgid "Unable to create temporary file."
+msgstr "Impossible de créer le fichier temporaire."
+
+#: /class.ezfc_functions.php:661
+#, fuzzy
+msgid "Temporary files deleted."
+msgstr "Les fichiers temporaires supprimés."
+
+#: /class.ezfc_functions.php:762 /class.ezfc_functions.php:818
+#, fuzzy
+msgid "Service is unavailable."
+msgstr "Le service est indisponible."
+
+#: /class.ezfc_functions.php:768
+#, fuzzy
+msgid "Unable to install template: no template."
+msgstr "Impossible d'installer modèle: pas de modèle."
+
+#: /class.ezfc_functions.php:772
+#, fuzzy
+msgid "Unable to install template: no data."
+msgstr "Impossible d'installer modèle: pas de données."
+
+#: /class.ezfc_functions.php:800
+#, fuzzy
+msgid "Template not found."
+msgstr "Modèle introuvable."
+
+#: /ezfc-page-help.php:54
+#, fuzzy, php-format
+msgid "PayPal successfully verified your %s credentials."
+msgstr ""
+"PayPal vérifiée avec succès les informations d'identification de votre%."
+
+#: /ezfc-page-help.php:57
+#, fuzzy, php-format
+msgid "Error while validating %s credentials:"
+msgstr "Erreur lors de la validation%s pouvoirs:"
+
+#: /ezfc-page-help.php:59
+#, fuzzy, php-format
+msgid ""
+"Please note that Sandbox API credentials are different! See %s to read how "
+"to get your API credentials."
+msgstr ""
+"S'il vous plaît noter que les informations d'identification de l'API Sandbox "
+"sont différents! Voir%s pour lire comment obtenir vos informations "
+"d'identification de l'API."
+
+#: /ezfc-page-help.php:77 /ezfc.php:128
+#, fuzzy
+msgid "Help / debug"
+msgstr "Aide / debug"
+
+#: /ezfc-page-help.php:134
+#, fuzzy
+msgid "Send test mail"
+msgstr "Envoyez un mail de test"
+
+#: /ezfc-page-help.php:149
+#, fuzzy
+msgid "Test PayPal credentials"
+msgstr "Testez pouvoirs PayPal"
+
+#: /ezfc-page-importexport.php:14
+#, fuzzy
+msgid "Data imported."
+msgstr "Les données ont été importées."
+
+#: /ezfc-page-importexport.php:23
+#, fuzzy
+msgid "Unable to import form data from file."
+msgstr "Impossible d'importer les données de formulaire à partir du fichier."
+
+#: /ezfc-page-importexport.php:44
+#, fuzzy
+msgid "Unable to download export data."
+msgstr "Impossible de télécharger les données d'exportation."
+
+#: /ezfc-page-importexport.php:70
+#, fuzzy
+msgid "Import / Export data"
+msgstr "Import/Export"
+
+#: /ezfc-page-importexport.php:82 /ezfc-page-main.php:309
+#, fuzzy
+msgid "Export data"
+msgstr "Export des données"
+
+#: /ezfc-page-importexport.php:87
+#, fuzzy
+msgid "Download export data"
+msgstr "Télécharger les données d'exportation"
+
+#: /ezfc-page-importexport.php:88
+#, fuzzy
+msgid "Clear temporary export files"
+msgstr "Fichiers d'exportation temporaire claires"
+
+#: /ezfc-page-importexport.php:94 /ezfc-page-importexport.php:99
+#, fuzzy
+msgid "Import text data"
+msgstr "données de texte d'importation"
+
+#: /ezfc-page-importexport.php:97
+#, fuzzy
+msgid "Paste form data here:"
+msgstr "données de formulaire Coller ici:"
+
+#: /ezfc-page-importexport.php:104 /ezfc-page-main.php:290
+#, fuzzy
+msgid "Import file"
+msgstr "Importer le ficher"
+
+#: /ezfc-page-importexport.php:107
+#, fuzzy
+msgid "Import exported file here:"
+msgstr "Importer le fichier exporté ici:"
+
+#: /ezfc-page-importexport.php:110
+#, fuzzy
+msgid "Upload and import file"
+msgstr "Uploader et importer un fichier CSV"
+
+#: /ezfc-page-licensing.php:27 /ezfc-page-licensing.php:50
+#: /ezfc-page-update.php:27
+#, fuzzy
+msgid "Unknown error."
+msgstr "Erreur inconnue."
+
+#: /ezfc-page-licensing.php:56
+#, fuzzy
+msgid "License registered."
+msgstr "Licence enregistré."
+
+#: /ezfc-page-licensing.php:56
+#, fuzzy
+msgid "License not registered."
+msgstr "Licence pas enregistré."
+
+#: /ezfc-page-licensing.php:70 /ezfc.php:129
+#, fuzzy
+msgid "Licensing"
+msgstr "Licence"
+
+#: /ezfc-page-licensing.php:71
+#, fuzzy
+msgid ""
+"In order to receive automatic updates, please register your purchase code "
+"here."
+msgstr ""
+"Afin de recevoir les mises à jour automatiques, s'il vous plaît enregistrer "
+"votre code d'achat ici."
+
+#: /ezfc-page-licensing.php:72
+#, fuzzy
+msgid ""
+"Only one license per site is allowed. If you uninstall the plugin from a "
+"site, the license will be automatically removed from the site so you can "
+"register it somewhere else."
+msgstr ""
+"Une seule licence par site est autorisé. Si vous désinstallez le plugin à "
+"partir d'un site, la licence sera automatiquement retiré du site de sorte "
+"que vous pouvez vous inscrire à un autre endroit."
+
+#: /ezfc-page-licensing.php:73
+#, fuzzy, php-format
+msgid "Please report any licensing problems to %s."
+msgstr "S'il vous plaît signaler tout problème de licence à%s."
+
+#: /ezfc-page-licensing.php:85
+#, fuzzy
+msgid "Current licensing status:"
+msgstr "L'état actuel d'octroi de licences:"
+
+#: /ezfc-page-licensing.php:88
+#, fuzzy
+msgid "The plugin will be licensed for:"
+msgstr "Le plugin sera autorisé pour:"
+
+#: /ezfc-page-licensing.php:92
+#, fuzzy
+msgid "Purchase code"
+msgstr "Code d’achat :"
+
+#: /ezfc-page-licensing.php:97 /ezfc.php:137
+#, fuzzy
+msgid "Register license"
+msgstr "Enregistrer la licence"
+
+#: /ezfc-page-licensing.php:99
+#, fuzzy
+msgid "Thank your for activating your copy of ez Form Calculator! :)"
+msgstr ""
+"Merci de votre pour activer votre copie de ez Calculatrice formulaire! :)"
+
+#: /ezfc-page-licensing.php:100
+#, fuzzy
+msgid "Licensed for:"
+msgstr "Licence pour:"
+
+#: /ezfc-page-licensing.php:103
+#, fuzzy
+msgid "Revoke license"
+msgstr "Révoquer la licence"
+
+#: /ezfc-page-licensing.php:105
+#, fuzzy
+msgid "The plugin cannot be licensed on a local machine."
+msgstr "Le plugin ne peut pas être autorisé sur une machine locale."
+
+#: /ezfc-page-main.php:89
+#, fuzzy
+msgid ""
+"It seems that you have manually updated the plugin. Please perform the "
+"following update:"
+msgstr ""
+"Il semble que vous avez mis à jour manuellement le plugin. S'il vous plaît "
+"effectuer la mise à jour suivante:"
+
+#: /ezfc-page-main.php:91
+#, fuzzy
+msgid "Manual update"
+msgstr "Mise à jour manuelle"
+
+#: /ezfc-page-main.php:103
+#, fuzzy
+msgid "Overview"
+msgstr "Aperçu"
+
+#: /ezfc-page-main.php:112 /ezfc-page-main.php:129
+#, fuzzy
+msgid "Add form"
+msgstr "Ajouter un formulaire"
+
+#: /ezfc-page-main.php:118
+#, fuzzy
+msgid "Blank"
+msgstr "Nouvelle page"
+
+#: /ezfc-page-main.php:130
+#, fuzzy
+msgid "Delete template"
+msgstr "Supprimer le modèle"
+
+#: /ezfc-page-main.php:131 /ezfc-page-main.php:285
+#, fuzzy
+msgid "Import form"
+msgstr "Importer le formulaire"
+
+#: /ezfc-page-main.php:136
+#, fuzzy
+msgid "Actions"
+msgstr "Actions"
+
+#: /ezfc-page-main.php:139
+#, fuzzy
+msgid "Update form"
+msgstr "Mettre à jour"
+
+#: /ezfc-page-main.php:140
+#, fuzzy
+msgid "Save / update form to post"
+msgstr "Enregistrer / formulaire de mise à jour pour poster"
+
+#: /ezfc-page-main.php:141
+#, fuzzy
+msgid "Options"
+msgstr "Options"
+
+#: /ezfc-page-main.php:145
+#, fuzzy
+msgid "Show form"
+msgstr "Montrer forme"
+
+#: /ezfc-page-main.php:146
+#, fuzzy
+msgid "Show submissions"
+msgstr "Voir les présentations"
+
+#: /ezfc-page-main.php:150
+#, fuzzy
+msgid "Duplicate form"
+msgstr "Dupliquer le formulaire"
+
+#: /ezfc-page-main.php:151
+#, fuzzy
+msgid "Save current form as template"
+msgstr "Enregistrer forme actuelle en tant que modèle"
+
+#: /ezfc-page-main.php:155
+#, fuzzy
+msgid "Show form export data"
+msgstr "Afficher les données sous forme d'exportation"
+
+#: /ezfc-page-main.php:156
+#, fuzzy
+msgid "Download form"
+msgstr "Télécharger le formulaire"
+
+#: /ezfc-page-main.php:160
+#, fuzzy
+msgid "Clear form (delete all elements)"
+msgstr "Effacer le formulaire (supprimer tous les éléments)"
+
+#: /ezfc-page-main.php:161
+#, fuzzy
+msgid "Delete form"
+msgstr "Supprimer le formulaire"
+
+#: /ezfc-page-main.php:166
+#, fuzzy
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: /ezfc-page-main.php:174
+#, fuzzy
+msgid "Forms"
+msgstr "Formulaires"
+
+#: /ezfc-page-main.php:193
+#, fuzzy
+msgid "Form elements"
+msgstr "Éléments de formulaire"
+
+#: /ezfc-page-main.php:203
+#, fuzzy
+msgid "Name"
+msgstr "Nom"
+
+#: /ezfc-page-main.php:207
+#, fuzzy
+msgid "Add elements"
+msgstr "Ajouter des éléments"
+
+#: /ezfc-page-main.php:209
+#, fuzzy
+msgid "Basic"
+msgstr "Basique"
+
+#: /ezfc-page-main.php:214
+#, fuzzy
+msgid "Calculation"
+msgstr "Calcul"
+
+#: /ezfc-page-main.php:219
+#, fuzzy
+msgid "Other"
+msgstr "Autre"
+
+#: /ezfc-page-main.php:224
+#, fuzzy
+msgid "Steps"
+msgstr "Etapes"
+
+#: /ezfc-page-main.php:239 /ezfc-page-templates.php:80
+#, fuzzy
+msgid "Preview"
+msgstr "Aperçu"
+
+#: /ezfc-page-main.php:280
+#, fuzzy
+msgid "Update options"
+msgstr "Options de mise à jour"
+
+#: /ezfc-page-main.php:287
+#, fuzzy
+msgid "Import data"
+msgstr "Importer les données..."
+
+#: /ezfc-page-main.php:291
+#, fuzzy
+msgid "Filetype allowed: .zip"
+msgstr "Type de fichier acceptés: .zip"
+
+#: /ezfc-page-main.php:308
+#, fuzzy
+msgid "Export form"
+msgstr "Exporter le formulaire"
+
+#: /ezfc-page-main.php:314
+#, fuzzy
+msgid "Icons"
+msgstr "Icones"
+
+#: /ezfc-page-main.php:330
+#, fuzzy
+msgid "Please rate!"
+msgstr "Veuillez noter s'il vous plaît!"
+
+#: /ezfc-page-settings-form.php:45 /ezfc.php:125
+#, fuzzy
+msgid "Form settings"
+msgstr "Options du formulaire"
+
+#: /ezfc-page-settings-form.php:52 /ezfc-page-settings.php:129
+#, fuzzy
+msgid "Settings saved."
+msgstr "Paramètres enregistrés."
+
+#: /ezfc-page-settings-form.php:105 /ezfc-page-settings.php:192
+#, fuzzy
+msgid "Save"
+msgstr "Enregistrer"
+
+#: /ezfc-page-settings.php:123 /ezfc.php:126
+#, fuzzy
+msgid "Global settings"
+msgstr "Paramètres globaux"
+
+#: /ezfc-page-settings.php:197
+#, fuzzy
+msgid "Price preview (currency does not apply here)"
+msgstr "Prix ​​aperçu (monnaie ne concerne pas ici)"
+
+#: /ezfc-page-templates.php:25
+#, fuzzy
+msgid "Browse templates"
+msgstr "Parcourir les modèles"
+
+#: /ezfc-page-templates.php:26 /ezfc-page-templates.php:143
+#, fuzzy
+msgid "Submit template"
+msgstr "Proposez modèle"
+
+#: /ezfc-page-templates.php:35
+#, fuzzy
+msgid "Template Browser"
+msgstr "Explorateur de modèles"
+
+#: /ezfc-page-templates.php:76
+#, fuzzy
+msgid "Downloads"
+msgstr "Téléchargements"
+
+#: /ezfc-page-templates.php:84
+#, fuzzy
+msgid "Install"
+msgstr "﻿Installer les plugins"
+
+#: /ezfc-page-templates.php:86
+#, fuzzy, php-format
+msgid "Requires version %s"
+msgstr "Nécessite la version%s"
+
+#: /ezfc-page-templates.php:106
+#, fuzzy
+msgid ""
+"You can submit your own templates to share them with the community. We will "
+"review the template and if it fits for public purpose, we will add it to the "
+"list."
+msgstr ""
+"Vous pouvez soumettre vos propres modèles pour les partager avec la "
+"communauté. Nous allons revoir le modèle et si elle correspond à des fins "
+"publiques, nous l'ajouterons à la liste."
+
+#: /ezfc-page-templates.php:110
+#, fuzzy
+msgid "Please note that we will not expose any personal "
+msgstr "S'il vous plaît noter que nous ne serons pas exposer toute personnelle"
+
+#: /ezfc-page-templates.php:115
+#, fuzzy
+msgid "Which template do you want to submit?"
+msgstr "Quel modèle de ne voulez-vous présenter?"
+
+#: /ezfc-page-templates.php:128
+#, fuzzy
+msgid "Your name or website"
+msgstr "Votre nom ou site web"
+
+#: /ezfc-page-templates.php:133
+#, fuzzy
+msgid "Your email address"
+msgstr "Votre adresse email"
+
+#: /ezfc-page-templates.php:138
+#, fuzzy
+msgid "What is the form about?"
+msgstr "Qu'est-ce à propos de la forme?"
+
+#: /ezfc-page-update.php:36 /ezfc.php:131
+#, fuzzy
+msgid "Update"
+msgstr "Mise à jour"
+
+#: /ezfc-page-update.php:38
+#, fuzzy
+msgid "You can manually update plugin here."
+msgstr "Vous pouvez mettre à jour manuellement plugin ici."
+
+#: /ezfc-page-update.php:52
+#, fuzzy
+msgid "Choose the update file"
+msgstr "Choisissez le fichier de mise à jour"
+
+#: /ezfc-page-update.php:54
+#, fuzzy
+msgid ""
+"Please backup your data before updating! You can export all data on the "
+"'Import / Export' page."
+msgstr ""
+"Veuillez sauvegarder vos données avant la mise à jour! Vous pouvez exporter "
+"toutes les données sur la page \"Import / Export\"."
+
+#: /ezfc-page-update.php:56
+#, fuzzy
+msgid ""
+"The update file should be named 'codecanyon-7595334-ez-form-calculator-"
+"wordpress-plugin.zip'."
+msgstr ""
+"Le fichier de mise à jour devrait être nommé 'codecanyon-7595334-ez-form-"
+"calculator-wordpress-plugin.zip'."
+
+#: /ezfc-page-update.php:62
+#, fuzzy
+msgid "Upload and update"
+msgstr "Photos et mise à jour"
+
+#: /ezfc.php:124
+msgid "ez Form Calculator"
+msgstr "ez Form Calculator"
+
+#: /ezfc.php:127
+#, fuzzy
+msgid "Import / export"
+msgstr "Importation / Exportation"
+
+#: /ezfc.php:127
+#, fuzzy
+msgid "Import / Export"
+msgstr "Import/Export"
+
+#: /ezfc.php:130
+#, fuzzy
+msgid "Templates"
+msgstr "Modèles"
+
+#: /ezfc.php:137
+#, fuzzy
+msgid ""
+"Hello! Please register your license to receive automatic updates for "
+"<strong>ez Form Calculator Premium</strong>."
+msgstr ""
+"Bonjour! S'il vous plaît enregistrer votre licence pour recevoir des mises à "
+"jour automatiques pour <strong>ez formulaire Calculatrice premium.</strong>"
+
+#: /ezfc.php:177
+#, fuzzy
+msgid "Global Settings"
+msgstr "Paramètres globaux"
+
+#: /ezfc.php:180
+#, fuzzy
+msgid "Form Settings"
+msgstr "Options du formulaire"
+
+#: /ezfc.php:250
+#, fuzzy
+msgid "Delete"
+msgstr "Supprimer"
+
+#: /ezfc.php:251
+#, fuzzy
+msgid "Really delete the selected form?"
+msgstr "Vraiment supprimer le formulaire sélectionné?"
+
+#: /ezfc.php:252
+#, fuzzy
+msgid "Really delete the selected element?"
+msgstr "Vraiment supprimer l'élément sélectionné?"
+
+#: /ezfc.php:253
+#, fuzzy
+msgid ""
+"You have changed the form without having saved. Really leave the current "
+"form unsaved?"
+msgstr ""
+"Vous avez changé la forme sans avoir sauvé. Vraiment laisser la forme "
+"actuelle non enregistré?"
+
+#: /ezfc.php:259
+#, fuzzy
+msgid "Add a line above step buttons."
+msgstr "Ajouter une ligne au-dessus des boutons d'étape."
+
+#: /ezfc.php:260
+#, fuzzy
+msgid ""
+"Choose the operator and target element to calculate with. <br><br>Example: "
+"[ * ] [ field_1 ]<br>Result = current_value + field_1 * this_field."
+msgstr ""
+"Choisissez l'élément de l'opérateur et la cible pour calculer avec. <br><br> "
+"Exemple: [*] [champ_1] <br> Résultat = valeur_actuelle   champ_1 * "
+"this_field."
+
+#: /ezfc.php:261
+#, fuzzy
+msgid "When checked, this field will be taken into calculations."
+msgstr "Quand elle est cochée, ce champ sera prise dans les calculs."
+
+#: /ezfc.php:262
+#, fuzzy
+msgid ""
+"When checked, this field will be calculated first. <br><br><strong>Checked</"
+"strong>: this_field / target_calculation_field. <br><br><strong>Unchecked</"
+"strong>: target_calculation_field / this_field."
+msgstr ""
+"Quand elle est cochée, ce champ sera calculée en premier. <br><br> "
+"<strong>Vérifié:</strong> this_field / target_calculation_field. <br><br> "
+"<strong>Désactivé:</strong> target_calculation_field / this_field."
+
+#: /ezfc.php:263
+#, fuzzy
+msgid ""
+"Whether to take this element into calculations when it is hidden or not."
+msgstr ""
+"Que ce soit pour prendre cet élément dans les calculs quand il est caché ou "
+"non."
+
+#: /ezfc.php:264
+#, fuzzy
+msgid "Additional CSS class for this element."
+msgstr "Classe CSS supplémentaires pour cet élément."
+
+#: /ezfc.php:265
+#, fuzzy
+msgid ""
+"Conditional fields can show or hide elements. Check out the conditional "
+"example from the templates or visit the documentation site for more "
+"information."
+msgstr ""
+"Champs conditionnels peuvent afficher ou masquer des éléments. Consultez "
+"l'exemple conditionnelle à partir des modèles ou visitez le site de la "
+"documentation pour plus d'informations."
+
+#: /ezfc.php:266
+#, fuzzy
+msgid "Custom regular expression. Only numbers allowed example: /[0-9]/i"
+msgstr ""
+"Expression personnalisée régulière. Seuls les numéros autorisés exemple: / "
+"[0-9] / i"
+
+#: /ezfc.php:267
+#, fuzzy
+msgid ""
+"Error message when element value does not validate regular expression from "
+"custom_regex"
+msgstr ""
+"Message d'erreur lorsque la valeur de l'élément ne valide pas l'expression "
+"régulière de custom_regex"
+
+#: /ezfc.php:268
+#, fuzzy
+msgid "Users will see the description in a tooltip."
+msgstr "Les utilisateurs verront la description dans une infobulle."
+
+#: /ezfc.php:269
+#, fuzzy
+msgid "Discount values"
+msgstr "valeurs de rabais"
+
+#: /ezfc.php:270
+#, fuzzy
+msgid "Double check email-address"
+msgstr "Double chèque adresse e-mail"
+
+#: /ezfc.php:271
+#, fuzzy
+msgid ""
+"The value will be automatically multiplied by this factor. Default factor: 1"
+msgstr ""
+"La valeur sera multiplié automatiquement par ce facteur. facteur de défaut: 1"
+
+#: /ezfc.php:272
+#, fuzzy
+msgid ""
+"This field will be filled from a GET-parameter. Example: "
+"<br><br><strong>URL</strong>: http://www.test.com/?test_value=1 "
+"<br><strong>GET</strong>: test_value <br><strong>Field value</strong>: 1."
+msgstr ""
+"Ce champ sera rempli d'un EEG-paramètre. Exemple: <br><br> <strong>URL:</"
+"strong> http://www.test.com/?test_value=1 <br> <strong>GET:</strong> "
+"valeur_test <br> <strong>La valeur du champ:</strong> 1."
+
+#: /ezfc.php:273
+#, fuzzy
+msgid ""
+"Hidden field. If this field is taken into conditional calculations, you need "
+"to set this option to Conditional hidden."
+msgstr ""
+"Champ caché. Si ce champ est pris en calculs conditionnels, vous devez "
+"définir cette option à condition cachée."
+
+#: /ezfc.php:274
+#, fuzzy
+msgid "Format this field as currency value in submissions."
+msgstr "Formater ce domaine comme valeur de la monnaie dans les présentations."
+
+#: /ezfc.php:275
+#, fuzzy
+msgid "This text will be displayed in the frontend."
+msgstr "Ce texte sera affiché dans l'interface."
+
+#: /ezfc.php:276
+#, fuzzy
+msgid "Maximum value"
+msgstr "Valeur max."
+
+#: /ezfc.php:277
+#, fuzzy
+msgid "The opposite of minDate."
+msgstr "Le contraire de minDate."
+
+#: /ezfc.php:278
+#, fuzzy
+msgid "Minimum value"
+msgstr "Valeur minimale"
+
+#: /ezfc.php:279
+#, fuzzy
+msgid ""
+"Minimum date of both dates. Example: +1d;;+2d - the first datepicker (from) "
+"will only have selectable dates 1 day in the future, the second datepicker "
+"(to) will only have selectable dates 2 days in the future"
+msgstr ""
+"Date minimale des deux dates. Exemple:   1d   2d ;; - la première datepicker "
+"(de) aura seulement dates sélectionnables un jour à l'avenir, la deuxième "
+"datepicker (à) aura seulement dates sélectionnables deux jours dans le futur"
+
+#: /ezfc.php:280
+#, fuzzy
+msgid "The amount of minimum days to select."
+msgstr "La quantité de jours minimum pour sélectionner."
+
+#: /ezfc.php:281
+#, fuzzy
+msgid "When checked, multiple files can be uploaded."
+msgstr "Quand elle est cochée, plusieurs fichiers peuvent être téléchargés."
+
+#: /ezfc.php:282
+#, fuzzy
+msgid "Internal name. This value is displayed in submissions/emails only."
+msgstr ""
+"Nom interne. Cette valeur est affichée dans les présentations / seulement "
+"les courriels."
+
+#: /ezfc.php:283
+#, fuzzy
+msgid ""
+"When checked, this field will override the calculations above. Useful with "
+"division operator. <br><br><strong>Checked</strong>: result = "
+"target_calculation_field / this_field. <br><br><strong>Unchecked</strong>: "
+"result = current_value + target_calculation_field / this_field."
+msgstr ""
+"Quand elle est cochée, ce champ sera corriger les calculs ci-dessus. Utile "
+"avec opérateur de division. <br><br> <strong>Vérifié:</strong> résultat = "
+"target_calculation_field / this_field. <br><br> <strong>Désactivé:</strong> "
+"résultat = valeur_actuelle   target_calculation_field / this_field."
+
+#: /ezfc.php:284
+#, fuzzy
+msgid "Placeholder only (slight background text when no value is present)."
+msgstr ""
+"Espace réservé uniquement (légère texte de fond en l'absence valeur est "
+"présente)."
+
+#: /ezfc.php:285
+#, fuzzy
+msgid "Enter the ID of the post you want to show."
+msgstr "Entrez l'ID du poste que vous voulez montrer."
+
+#: /ezfc.php:286
+#, fuzzy
+msgid "Custom price format (see numeraljs.com for syntax). Default: 0,0[.]00"
+msgstr ""
+"format de prix personnalisée (voir numeraljs.com pour la syntaxe). Par "
+"défaut: 0,0 00 [.]"
+
+#: /ezfc.php:287
+#, fuzzy
+msgid "Whether this is a required field or not."
+msgstr "Que ce soit un champ obligatoire ou non."
+
+#: /ezfc.php:288
+#, fuzzy
+msgid "Show this element in emails"
+msgstr "Voir cet élément dans les courriels"
+
+#: /ezfc.php:289
+#, fuzzy
+msgid ""
+"Display a slider instead of a textfield. Needs minimum and maximum fields "
+"defined."
+msgstr ""
+"Afficher un curseur à la place d'un champ de texte. Besoins champs maximales "
+"définies et minimum."
+
+#: /ezfc.php:290
+#, fuzzy
+msgid "Slider step value"
+msgstr "la valeur de l'étape Slider"
+
+#: /ezfc.php:291
+#, fuzzy
+msgid "Display a spinner instead of a textfield."
+msgstr "Afficher une fileuse à la place d'un champ de texte."
+
+#: /ezfc.php:292 /ezfc.php:293
+#, fuzzy
+msgid "Incremental steps"
+msgstr "Des mesures progressives"
+
+#: /ezfc.php:294
+#, fuzzy
+msgid ""
+"CSS inline style, example (without quotes): \"color: #f00; margin-top: 1em;\""
+msgstr ""
+"CSS style en ligne, par exemple (sans les guillemets): \"color: # f00; "
+"margin-top: 1EM;\""
+
+#: /ezfc.php:295
+#, fuzzy
+msgid "Text after price"
+msgstr "Texte après prix"
+
+#: /ezfc.php:296
+#, fuzzy
+msgid "Text before price"
+msgstr "Texte avant prix"
+
+#: /ezfc.php:297
+#, fuzzy
+msgid "Emails will be sent to this address."
+msgstr "E-mails seront envoyés à cette adresse."
+
+#: /ezfc.php:298
+#, fuzzy
+msgid "Display text only instead of an input field"
+msgstr "Afficher tout le texte au lieu d'un champ de saisie"
+
+#: /ezfc.php:299
+#, fuzzy
+msgid "Predefined value."
+msgstr "Valeur prédéfinie."
+
+#: /ezfc.php:300
+#, fuzzy
+msgid "DOM-selector to get the value from (e.g. #myinputfield)."
+msgstr "DOM-sélecteur pour obtenir la valeur de (par exemple #myinputfield)."
+
+#: /ezfc.php:447
+#, fuzzy
+msgid "No PayerID."
+msgstr "Aucune PayerID."
+
+#: /ezfc.php:455
+#, fuzzy
+msgid "Payment could not be verified. :("
+msgstr "Le paiement ne peut être vérifiée. :("
+
+#: /ezfc.php:559
+#, fuzzy
+msgid "No form with the requested ID found."
+msgstr "Aucune forme avec l'ID demandé trouvé."
+
+#: /ezfc.php:564
+#, fuzzy
+msgid "Uploading..."
+msgstr "Téléchargement ..."
+
+#: /ezfc.php:565
+#, fuzzy
+msgid "File upload successful."
+msgstr "Changement réussi"
