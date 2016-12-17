@@ -1,0 +1,9 @@
+#masthead.navbar-scrolled  .navbar-brand img {
+    left: 0;
+    max-height: 60%!important;
+    vertical-align: middle;
+
+}
+#masthead.navbar-scrolled  .navbar-brand img {
+	opacity:0.8;
+}

@@ -52,7 +52,7 @@
 	"wpackagist-plugin/stop-spam-comments" : "*",
 	"wpackagist-plugin/woosidebars" : "*",
 	"wpackagist-plugin/wp-smushit" : "*",
-	"wpackagist-plugin/wordpress-seo" : "3.9",
+	"wpackagist-plugin/wordpress-seo" : "4.0",
 	"wpackagist-plugin/cms-tree-page-view" : "*",
 	"wpackagist-plugin/advanced-custom-fields": "*",
 	"wpackagist-plugin/contact-form-7" : "*",
@@ -60,7 +60,7 @@
 	"wpackagist-plugin/gzip-ninja-speed-compression" : "*",
 	"wpackagist-plugin/w3-total-cache" : "*",
 	"wpackagist-plugin/google-no-captcha-recaptcha" : "*",
-	"wpackagist-plugin/wp-retina-2x" : "4.7.4",
+	"wpackagist-plugin/wp-retina-2x" : "4.7.5",
 	"wpackagist-plugin/wp-optimize" : "*",
 	"wpackagist-plugin/wordpress-importer" : "*",
 	"koodimonni-language/fr_FR": "*"

@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/*
+Theme Name:     Omega Child Theme
+Description:    Child theme for the Omega WP Theme
+Author:         Oxygenna
+Author URI:     http://themeforest.net/user/oxygenna
+Template:       omega
+Version:        1.0
+*/
+@import url("../omega/style.css");
+
+
+
+@import url("./assets/css/swatch-black.css");
+@import url("./assets/css/swatch-white.css");
+@import url("./assets/css/swatch-white-black.css");
+@import url("./assets/css/swatch-yabo.css");
+
+
+#masthead.navbar.navbar-scrolled .navbar-brand img{
+	max-height:40px;
+	
+}
+ul#contacts{
+	margin-left:1px;
+	padding-left:1px;
+}
+ul#contacts li{
+	margin-left:0px;
+	padding-left:0px;
+}
+
+ul#contacts,
+ul.nobullets li{
+		list-style-type:none;
+}
+a, a:focus, a:hover{
+	color:#9c1317;
+}
+.panel-body iframe{
+	width:100%!important;
+}
+
+.sidenav li.widget_nav_menu {
+	margin-top:60px;
+	list-style-type:none;
+}
+
+.sidenav li.widget_nav_menu li{
+	text-align:left;
+	background:#51b1db;
+	line-height:2.5em;
+	margin-bottom: 1px;
+}
+.sidenav li.widget_nav_menu li:hover{
+	background:#3589ae;
+}
+
+.sidenav li.widget_nav_menu li a{
+	padding:17px 10px;
+	color:#fff;
+}
+.sidenav li.widget_nav_menu li:hover a{
+	color:#fdf1f1;
+}
+
+.center{
+	text-align:center;
+}
+.center-button{
+	display:block;
+	overflow:hidden;
+
+}
+.center-button .btn{
+	margin:0 auto;
+	display:block;
+	width:235px;
+}
+
+
+
+@import url("./assets/css/custom.css");

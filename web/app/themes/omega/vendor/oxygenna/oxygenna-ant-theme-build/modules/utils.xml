@@ -1,0 +1,100 @@
+<project>
+    <scriptdef language="javascript" name="lower">
+        <attribute name="string" />
+        <attribute name="to" />
+        project.setProperty( attributes.get( "to" ), attributes.get( "string" ).toLowerCase() );
+    </scriptdef>
+
+    <target name="check-build-system">
+        <available file="html/Gruntfile.js" property="html.node.build.system" value="grunt"/>
+        <available file="html/gulpfile.js" property="html.node.build.system" value="gulp"/>
+    </target>
+
+    <macrodef name="node-build">
+        <attribute name="dir" default="html"/>
+        <attribute name="system" default="grunt"/>
+        <attribute name="command" default="build"/>
+        <attribute name="env" default=""/>
+        <sequential>
+            <!-- install npm -->
+            <echo message="npm install" />
+            <exec executable="bash" dir="@{dir}">
+                <arg value="-c"/>
+                <arg value="npm install"/>
+            </exec>
+
+            <!-- install bower -->
+            <echo message="bower install" />
+            <exec executable="bash" dir="@{dir}">
+                <arg value="-c"/>
+                <arg value="bower install"/>
+            </exec>
+
+            <echo message="@{system} build" />
+            <if>
+                <!-- is this a gulp build -->
+                <equals arg1="@{system}" arg2="gulp" />
+                <then>
+                    <!-- send env arg to gulp build -->
+                    <echo message="Running gulp build" />
+                    <exec executable="bash" dir="@{dir}">
+                        <arg value="-c"/>
+                        <arg value="@{system} @{command} --env @{env}"/>
+                    </exec>
+                </then>
+                <elseif>
+                    <!-- is this a gulp build -->
+                    <equals arg1="@{system}" arg2="grunt" />
+                    <then>
+                        <echo message="Running grunt build" />
+                        <!-- check if we have an env variable (like wordrpess) -->
+                        <if>
+                            <equals arg1="@{env}" arg2="" />
+                            <then>
+                                <!-- no env so just run command  -->
+                                <exec executable="bash" dir="@{dir}">
+                                    <arg value="-c"/>
+                                    <arg value="@{system} @{command}"/>
+                                </exec>
+                            </then>
+                            <else>
+                                <!-- we have an env variable so use this as command (e.g. grunt wordpress) -->
+                                <exec executable="bash" dir="@{dir}">
+                                    <arg value="-c"/>
+                                    <arg value="@{system} @{env}"/>
+                                </exec>
+                            </else>
+                        </if>
+                    </then>
+                </elseif>
+            </if>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="upload-to-tf">
+        <attribute name="dir" default="html"/>
+        <sequential>
+            <ftp action="del" server="ftp.marketplace.envato.com" userid="oxygenna" password="ataj9qx9s5895lxw31pxfria748567us">
+                <fileset>
+                    <include name="*"/>
+                </fileset>
+            </ftp>
+            <ftp server="ftp.marketplace.envato.com" userid="oxygenna" password="ataj9qx9s5895lxw31pxfria748567us">
+                <fileset dir="@{dir}/themeforest" />
+            </ftp>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="watermark-folder">
+        <attribute name="dir" default="import"/>
+        <attribute name="filter" default="**/images/*-notinclude*"/>
+        <sequential>
+            <apply executable="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/inc/watermark.sh">
+                <fileset dir="@{dir}">
+                    <include name="@{filter}"/>
+                </fileset>
+            </apply>
+        </sequential>
+    </macrodef>
+</project>

@@ -1,0 +1,45 @@
+.plugin-installer-table .wp-list-table .column-plugin {
+    width: 20%;
+}
+.plugin-installer-table .tablenav {
+    display: none;
+}
+
+.plugin-installer-table .wp-list-table .column-desc {
+    width: 40%;
+}
+
+.plugin-installer-table .wp-list-table .column-type {
+    text-transform: capitalize;
+}
+
+.plugin-installer-table .wp-list-table .column-status span {
+    padding: 4px;
+    color: white;
+}
+
+.plugin-installer-table .wp-list-table .column-status {
+    width: 10%;
+    text-align: center;
+}
+
+.plugin-installer-table .wp-list-table .column-status span {
+    font-size: 28px;
+}
+
+.plugin-installer-table .wp-list-table .column-info {
+    width: 20%;
+    text-align: right;
+}
+
+.plugin-installer-table .wp-list-table .column-status .status-active {
+    color: green;
+}
+
+.plugin-installer-table .wp-list-table .column-status .status-not-installed {
+    color: gray;
+}
+
+.plugin-installer-table .wp-list-table .column-status .status-not-active {
+    color: orange;
+}

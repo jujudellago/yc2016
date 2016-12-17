@@ -1,0 +1,16 @@
+<project>
+    <target name="update-design" depends="check-build-system">
+        <echo message="Compiling with ${html.node.build.system}..." />
+        <node-build system="${html.node.build.system}" dir="html" command="build" env="wordpress"></node-build>
+
+        <echo message="Delete Assets folder..." />
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="assets" />
+        </delete>
+
+        <echo message="Copying Assets folder..." />
+        <copy todir="assets">
+            <fileset dir="html/dist/assets" excludes="${wordpress.design.exclude}"></fileset>
+        </copy>
+    </target>
+</project>

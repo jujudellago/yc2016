@@ -18,7 +18,7 @@ set :deploy_to, -> { "/home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/bedrock" }
 
 SSHKit.config.command_map[:composer] = "php-5.6 /home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/bin/composer/composer.phar"
 
-
+SSHKit.config.command_map[:wp] ="~/bin/wp.sh"
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
@@ -30,12 +30,12 @@ SSHKit.config.command_map[:composer] = "php-5.6 /home/clients/d9e7a0ab00bb20eac1
 #    auth_methods: %w(password)
 #  }
 
-fetch(:default_env).merge!(wp_env: :staging)
+fetch(:default_env).merge!(wp_env: :production)
 
-set :wpcli_remote_url, @secrets_yml['yabo_url']
-set :wpcli_local_url, @secrets_yml['production_url']
+set :wpcli_remote_url, @secrets_yml['production_url']
+set :wpcli_local_url, @secrets_yml['dev_url']
 
-set :local_tmp_dir, '/tmp'
+set :local_tmp_dir, '/Users/juju/tmp'
 set :wpcli_backup_db, true
 set :wpcli_local_db_backup_dir, 'config/backups'
 set :wpcli_local_uploads_dir, 'web/app/uploads/'

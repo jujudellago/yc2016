@@ -1,0 +1,227 @@
+<project>
+    <target name="wordpress">
+        <antcall target="update-design"></antcall>
+        <antcall target="wordpress-build"></antcall>
+        <antcall target="wordpress-build-docs"></antcall>
+        <antcall target="wordpress-build-release"></antcall>
+        <antcall target="wordpress-build-themeforest"></antcall>
+    </target>
+
+    <target name="wordpress-build">
+        <lower string="${project.name}" to="project.namelower" />
+
+        <echo message="Removing Old Wordpress..." />
+        <!-- remove old artifacts -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/wordpress" />
+        </delete>
+
+        <!-- create artifiacts folder -->
+        <mkdir dir="artifacts/wordpress/build" />
+
+        <echo message="Copying Theme files..." />
+        <copy todir="artifacts/wordpress/build">
+            <fileset dir="." excludes="${wordpress.build.exclude}"></fileset>
+        </copy>
+
+        <echo message="Creating ${theme} headers..." />
+        <replace dir="artifacts/wordpress/build">
+            <replacefilter token="Omega" value="${project.name}" />
+            <replacefilter token="Omega Theme" value="${project.description}" />
+            <replacefilter token="Omega" value="${project.name}" />
+            <replacefilter token="http://demo.oxygenna.com/omega" value="${wordpress.url}" />
+            <replacefilter token="envato marketplace licence" value="${wordpress.licence.name}" />
+            <replacefilter token="http://wiki.envato.com/support/legal-terms/licensing-terms/" value="${wordpress.licence.url}" />
+            <replacefilter token="Oxygenna.com" value="${wordpress.author}" />
+            <replacefilter token="http://www.oxygenna.com" value="${wordpress.author.url}" />
+            <replacefilter token="esponsive-layout, blue, brown, red, custom-background, custom-colors, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready" value="${wordpress.tags}" />
+            <replacefilter token="(c) 2014 Oxygenna.com" value="${wordpress.copyright}" />
+            <replacefilter token="1.14.0" value="${wordpress.version}" />
+            <replacefilter token="omega-td" value="${project.namelower}-td" />
+            <replacefilter token="omega-admin-td" value="${project.namelower}-admin-td" />
+
+        </replace>
+
+        <echo message="Creating Frontend Language File..." />
+        <mkdir dir="artifacts/wordpress/build/languages" />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=_x --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/languages/${project.namelower}_front.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
+        </exec>
+
+        <echo message="Creating Admin Language File..." />
+        <mkdir dir="artifacts/wordpress/build/inc/languages" />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-admin-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=_x --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/inc/languages/${project.namelower}_admin.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
+        </exec>
+
+        <echo message="Copying other translations..." />
+        <copy todir="artifacts/wordpress/build/languages">
+            <fileset dir="languages">
+            </fileset>
+        </copy>
+        <copy todir="artifacts/wordpress/build/inc/languages">
+            <fileset dir="inc/languages">
+            </fileset>
+        </copy>
+
+        <echo message="Creating US English example files..." />
+        <copy file="artifacts/wordpress/build/languages/${project.namelower}_front.pot" tofile="artifacts/wordpress/build/languages/en_US.po"/>
+        <copy file="artifacts/wordpress/build/inc/languages/${project.namelower}_admin.pot" tofile="artifacts/wordpress/build/inc/languages/en_US.po"/>
+
+        <!-- zip up the theme build -->
+        <zip basedir="artifacts/wordpress/build" destfile="artifacts/wordpress/build.zip" />
+    </target>
+
+    <target name="wordpress-build-docs">
+        <echo message="Copying changelog..." />
+        <copy file="changelog.md" tofile="docs/wordpress/src/templates/pages/changelog.md" overwrite="true"></copy>
+
+        <!-- copy version number -->
+        <echo message="number: ${wordpress.version}" file="docs/wordpress/src/data/version.yml"></echo>
+
+        <antcall target="wordpress-build-shortcode-docs"></antcall>
+        <antcall target="wordpress-build-theme-options-docs"></antcall>
+        <antcall target="wordpress-build-stack-docs"></antcall>
+        <antcall target="wordpress-build-customizer-docs"></antcall>
+
+        <echo message="Building Docs..." />
+        <node-build system="grunt" dir="docs/wordpress"></node-build>
+        <copy todir="artifacts/wordpress/docs">
+            <fileset dir="docs/wordpress/dist" />
+        </copy>
+
+        <!-- zip up the theme docs -->
+        <zip basedir="artifacts/wordpress/docs" destfile="artifacts/wordpress/docs.zip" />
+    </target>
+
+    <target name="wordpress-build-shortcode-docs" if="wordpress.shortcodeDocs.php">
+        <echo message="Generating Shortcode Docs..." />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="php vendor/oxygenna/oxygenna-ant-theme-build/inc/doc-shortcodes.php ${basedir} ${wordpress.shortcodeDocs.php} ${wordpress.shortcodeDocs.md}"/>
+        </exec>
+    </target>
+
+    <target name="wordpress-build-theme-options-docs" if="wordpress.themeOptionsDocs.php">
+        <echo message="Generating Theme Options Docs..." />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="php vendor/oxygenna/oxygenna-ant-theme-build/inc/doc-theme-options.php ${basedir} ${wordpress.themeOptionsDocs.php} ${wordpress.themeOptionsDocs.md}"/>
+        </exec>
+    </target>
+
+    <target name="wordpress-build-stack-docs" if="wordpress.stackOptionsDocs.php">
+        <echo message="Generating Stack Options Docs..." />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="php vendor/oxygenna/oxygenna-ant-theme-build/inc/doc-stack-options.php ${basedir} ${wordpress.stackOptionsDocs.php} ${wordpress.stackOptionsDocs.md}"/>
+        </exec>
+    </target>
+
+    <target name="wordpress-build-customizer-docs" if="wordpress.customizerOptionsDocs.php">
+        <echo message="Generating Customizer Options Docs..." />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="php vendor/oxygenna/oxygenna-ant-theme-build/inc/doc-customizer-options.php ${basedir} ${wordpress.customizerOptionsDocs.php} ${wordpress.customizerOptionsDocs.md}"/>
+        </exec>
+    </target>
+
+    <target name="wordpress-build-release">
+        <lower string="${project.name}" to="project.namelower" />
+
+        <echo message="Building Release..." />
+        <!-- remove old release folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/wordpress/release" />
+        </delete>
+
+        <antcall target="wordpress-build-child"></antcall>
+
+        <!-- copy docs -->
+        <copy todir="artifacts/wordpress/release/docs">
+            <fileset dir="artifacts/wordpress/docs" />
+        </copy>
+
+        <!-- copy bundles -->
+        <copy todir="artifacts/wordpress/release">
+            <fileset dir="themeforest/wordpress" includes="${wordpress.bundles.wordpress}" />
+            <fileset dir="themeforest/shared" includes="${wordpress.bundles.shared}" />
+        </copy>
+
+        <!-- create wordpress theme zip -->
+        <mkdir dir="artifacts/wordpress/wordpress-theme/${project.namelower}" />
+        <copy todir="artifacts/wordpress/wordpress-theme/${project.namelower}">
+            <fileset dir="artifacts/wordpress/build"/>
+        </copy>
+        <zip basedir="artifacts/wordpress/wordpress-theme" destfile="artifacts/wordpress/release/${project.namelower}.zip" />
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/wordpress/wordpress-theme" />
+        </delete>
+    </target>
+
+    <target name="wordpress-build-child" if="wordpress.childURL">
+        <lower string="${project.name}" to="project.namelower" />
+        <!-- create child theme -->
+        <echo message="Creating child theme" />
+        <!-- make temp directory -->
+        <mkdir dir="artifacts/wordpress/release/childtemp" />
+
+        <echo message="Downloading ${wordpress.childURL}" />
+        <exec executable="bash" dir="artifacts/wordpress/release/childtemp">
+            <arg value="-c"/>
+            <arg value="git clone --depth=1 ${wordpress.childURL} ."/>
+        </exec>
+
+        <!-- copy languages -->
+        <copy todir="artifacts/wordpress/release/childtemp/languages">
+            <fileset dir="artifacts/wordpress/build/languages" />
+        </copy>
+
+        <!-- copy admin languages -->
+        <copy todir="artifacts/wordpress/release/childtemp/inc/languages">
+            <fileset dir="artifacts/wordpress/build/inc/languages" />
+        </copy>
+
+        <!-- zip up the theme build -->
+        <echo message="Zipping up child theme" />
+        <zip basedir="artifacts/wordpress/release/childtemp" destfile="artifacts/wordpress/release/${project.namelower}-child-theme.zip" />
+
+        <echo message="Cleanup..." />
+        <exec executable="bash" dir=".">
+            <arg value="-c"/>
+            <arg value="rm -rf artifacts/wordpress/release/childtemp"/>
+        </exec>
+    </target>
+
+    <target name="wordpress-build-themeforest">
+        <lower string="${project.name}" to="project.namelower" />
+        <mkdir dir="artifacts/wordpress/themeforest" />
+        <!-- remove old themeforest folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/wordpress/themeforest" />
+        </delete>
+
+        <mkdir dir="artifacts/wordpress/themeforest" />
+
+        <echo message="Creating Theme Preview..." />
+        <zip basedir="themeforest/wordpress/submit/preview" destfile="artifacts/wordpress/themeforest/theme-preview.zip" />
+
+        <echo message="Creating Thumbnail..." />
+        <copy file="themeforest/wordpress/submit/thumbnail.png" tofile="artifacts/wordpress/themeforest/thumbnail.png" />
+
+        <!-- zip up the main file -->
+        <echo message="Zipping up main file" />
+        <zip basedir="artifacts/wordpress/release" destfile="artifacts/wordpress/themeforest/${project.namelower}-${wordpress.version}.zip" />
+
+        <!-- copy the theme -->
+        <copy tofile="artifacts/wordpress/themeforest/${project.namelower}.zip">
+            <fileset file="artifacts/wordpress/release/${project.namelower}.zip" />
+        </copy>
+    </target>
+
+    <target name="wordpress-upload-themeforest">
+        <upload-to-tf dir="wordpress"></upload-to-tf>
+    </target>
+</project>

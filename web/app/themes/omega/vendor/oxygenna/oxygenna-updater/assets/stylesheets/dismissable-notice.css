@@ -1,0 +1,36 @@
+#ajax-update-notice.updated {
+	position: relative;
+}
+
+#ajax-update-notice.updated span {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	padding: 10px 15px 0 3px;
+	font-size: 13px;
+	text-decoration: none;
+	line-height: 1;
+	cursor: pointer;
+}
+
+#ajax-update-notice.updated span a.notice-close:before {
+	position: absolute;
+	left: -18px;
+	margin-top: -2px;
+	-webkit-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+	background: 0 0;
+	color: #bbb;
+	content: '\f153';
+	display: block!important;
+	font: 400 16px/1 dashicons;
+	speak: none;
+	height: 20px;
+	text-align: center;
+	width: 20px;
+	-webkit-font-smoothing: antialiased!important;
+}
+
+#ajax-update-notice.updated span a.notice-close:hover:before {
+	color: #c00;
+}

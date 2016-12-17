@@ -1,0 +1,184 @@
+<project>
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <fileset dir="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/ant-contrib"/>
+        </classpath>
+    </taskdef>
+
+    <target name="angularjs">
+        <antcall target="angularjs-build"></antcall>
+        <antcall target="angularjs-build-docs"></antcall>
+        <antcall target="angularjs-build-demo"></antcall>
+        <antcall target="angularjs-build-release"></antcall>
+        <antcall target="download-extras"></antcall>
+        <antcall target="angularjs-build-themeforest"></antcall>
+    </target>
+
+    <target name="angularjs-dev">
+        <antcall target="angularjs-build"></antcall>
+        <antcall target="angularjs-build-demo"></antcall>
+    </target>
+
+    <target name="angularjs-build">
+        <echo message="composer install" />
+        <exec executable="bash" dir=".">
+            <arg value="-c"/>
+            <arg value="composer install"/>
+        </exec>
+
+        <echo message="Removing Old Artifacts..." />
+        <!-- remove old artifacts -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts" />
+        </delete>
+
+        <!-- create artifiacts folder -->
+        <mkdir dir="artifacts" />
+
+        <echo message="Copy app source..." />
+        <copy todir="artifacts/build">
+            <fileset dir="app" excludes="${angular.src.exclude}"></fileset>
+        </copy>
+    </target>
+
+    <target name="angularjs-build-demo">
+        <echo message="Building Demo..." />
+
+        <echo message="npm install" />
+        <exec executable="bash" dir="app">
+            <arg value="-c"/>
+            <arg value="npm install"/>
+        </exec>
+
+        <echo message="bower install" />
+        <exec executable="bash" dir="app">
+            <arg value="-c"/>
+            <arg value="bower install"/>
+        </exec>
+
+        <echo message="grunt build" />
+        <exec executable="bash" dir="app">
+            <arg value="-c"/>
+            <arg value="gulp build"/>
+        </exec>
+
+        <echo message="Copy demo source..." />
+        <copy todir="artifacts/demo">
+            <fileset dir="app/dist"></fileset>
+        </copy>
+
+        <!-- zip up the demo html build -->
+        <zip basedir="app/dist" destfile="artifacts/demo.zip" />
+    </target>
+
+    <target name="angularjs-build-docs">
+        <echo message="Copying changelog..." />
+        <copy todir="docs/src/templates/pages" overwrite="true">
+            <fileset file="app/changelog.md" />
+        </copy>
+
+        <echo message="number: ${project.version}" file="docs/src/data/version.yml"></echo>
+
+        <echo message="Building Docs..." />
+        <node-build system="grunt" dir="docs"></node-build>
+        <copy todir="artifacts/docs">
+            <fileset dir="docs/dist" />
+        </copy>
+
+        <!-- zip up the theme docs -->
+        <zip basedir="artifacts/docs" destfile="artifacts/docs.zip" />
+    </target>
+
+    <target name="angularjs-build-release">
+        <echo message="Building Release..." />
+        <!-- remove old release folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/release" />
+        </delete>
+
+        <mkdir dir="artifacts/release" />
+
+        <!-- copy the app -->
+        <copy todir="artifacts/release/source">
+            <fileset dir="artifacts/build" />
+        </copy>
+
+        <!-- copy the built demo -->
+        <copy todir="artifacts/release/demo" overwrite="true">
+            <fileset dir="artifacts/demo" />
+        </copy>
+
+        <!-- copy docs -->
+        <copy todir="artifacts/release/docs">
+            <fileset dir="docs/dist" />
+        </copy>
+
+        <!-- copy bundles -->
+        <copy todir="artifacts/release/extras">
+            <fileset dir="themeforest/bundles" includes="${angular.bundles}" />
+        </copy>
+
+        <!-- copy changelog -->
+        <echo message="Copying changelog..." />
+        <copy todir="artifacts/release" overwrite="true">
+            <fileset file="app/changelog.md" />
+        </copy>
+    </target>
+
+    <target name="download-extras">
+        <!-- remove old artifacts -->
+        <exec executable="bash" dir=".">
+            <arg value="-c"/>
+            <arg value="rm -rf artifacts/download-extras"/>
+        </exec>
+
+        <!-- create artifiacts folder -->
+        <mkdir dir="artifacts/download-extras" />
+
+        <for list="${angular.bundle-repos}" param="repo">
+            <sequential>
+                <property name="@{repo}" value="true"/>
+            </sequential>
+        </for>
+        <for list="${angular.bundle-repos}" param="repo">
+            <sequential>
+                <echo message="Cloning @{repo}"/>
+                <exec executable="bash" dir="artifacts/download-extras">
+                    <arg value="-c"/>
+                    <arg value="git clone --depth=1 git@bitbucket.org:oxygenna/@{repo}.git"/>
+                </exec>
+
+                <exec executable="bash" dir="artifacts/download-extras/@{repo}">
+                    <arg value="-c"/>
+                    <arg value="ant build"/>
+                </exec>
+
+                <copy todir="artifacts/release/extras/@{repo}">
+                    <fileset dir="artifacts/download-extras/@{repo}/artifacts/build" />
+                </copy>
+            </sequential>
+        </for>
+    </target>
+
+
+    <target name="angularjs-build-themeforest">
+        <lower string="${project.name}" to="project.namelower" />
+
+        <echo message="Building Themeforest..." />
+        <!-- remove old themeforest folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/themeforest" />
+        </delete>
+
+        <mkdir dir="artifacts/themeforest" />
+
+        <echo message="Creating Theme Preview..." />
+        <zip basedir="themeforest/preview/app/images/preview" destfile="artifacts/themeforest/theme-preview.zip" />
+
+        <echo message="Creating Thumbnail..." />
+        <copy file="themeforest/preview/app/images/thumbnail.png" tofile="artifacts/themeforest/thumbnail.png" />
+
+        <!-- zip main release up -->
+        <zip basedir="artifacts/release" destfile="artifacts/themeforest/${project.namelower}-${project.version}.zip" />
+    </target>
+</project>

@@ -1,0 +1,14 @@
+.oxy-checkbox-list {
+  padding: 10px 0px;
+}
+.oxy-checkbox-list strong {
+  display: block;
+  clear: both;
+}
+.oxy-checkbox-list label {
+  padding: 2px;
+  margin-right: 10px;
+  line-height: 30px;
+  display: block;
+  float: left;
+}

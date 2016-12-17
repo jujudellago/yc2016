@@ -1,0 +1,248 @@
+.oxygenna-options-page h2:first-of-type {
+  margin-top: 10px;
+}
+
+.oxygenna-options-page form h2 {
+  margin-bottom: 0px;
+  margin-top: 40px;
+  padding-bottom: 6px;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 20px;
+  border-top: 1px solid #e5e5e5;
+  border-left: 3px solid #85C8EB;
+  border-right: 1px solid #e5e5e5;
+  background: #fff;
+}
+.section-description {
+  font-size: 15px;
+  padding: 10px 20px 20px;
+  font-weight: 200;
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-top: 1px solid #e5e5e5;
+  border-left: 3px solid #85C8EB;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 0;
+}
+
+.form-table {
+  margin-top: 0;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
+  border-left: 3px solid #85C8EB;
+}
+
+.form-table tr > td {
+  padding-bottom: 24px;
+}
+
+.form-table th {
+  padding-left: 24px;
+}
+
+select {
+  max-width: 300px;
+}
+
+.ui-slider {
+  max-width: 600px;
+}
+
+.ui-slider {
+  margin: 4px 0;
+}
+
+.submit-footer {
+  margin-top: 40px;
+}
+
+.submit-footer .submit {
+  display: inline-block;
+  margin-right: 100px;
+  vertical-align: top;
+}
+
+.iris-picker .iris-slider-offset {
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  top: -4px !important;
+  width: 98% !important;
+  height: 99% !important;
+  background: transparent !important;
+}
+
+.one-click {
+  width: 260px;
+  height: 60px;
+  background: url(../../images/oneclick.png) no-repeat top left;
+  border: 0;
+  box-shadow: none;
+  text-indent: -9000px;
+  cursor: pointer;
+  position: relative;
+  top: -5px;
+}
+
+.one-click focus {
+  outline: none;
+}
+
+.one-click:hover {
+  background-position: bottom left;
+}
+
+/* imgradio field style */
+div.ui-imgradio div.imgradio-col {
+  float: left;
+}
+
+div.imgradio-col.col2 {
+  margin: 0 5% 5% 0;
+  width: 45%;
+}
+
+div.imgradio-col.col3 {
+  margin: 0 3% 3% 0;
+  width: 30%;
+}
+
+div.imgradio-col.col4 {
+  margin: 0 2% 2% 0;
+  width: 23%;
+}
+
+div.imgradio-col.col5 {
+  margin: 0 2% 2% 0;
+  width: 18%;
+}
+
+div.imgradio-col label, div.imgradio-col label:hover {
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+div.imgradio-col label span, div.imgradio-col label:hover span {
+  padding: 67% 0 0 0 !important;
+  box-sizing: border-box;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* White Boxes*/
+.white-box {
+    margin-bottom: 0px;
+    padding-bottom: 6px;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 20px;
+    border-top: 1px solid #e5e5e5;
+    border-left: 3px solid #85C8EB;
+    border-right: 1px solid #e5e5e5;
+    background: #fff;
+    margin-bottom: 60px;
+}
+.white-box:before,
+.white-box:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.white-box:after {
+    clear: both;
+}
+
+/* Big Form */
+.big-form {
+    margin: 24px 0;
+}
+.big-form label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+.big-form input {
+    border: 1px solid #dfdfdf;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    margin-bottom: 24px;
+    max-width: 600px;
+    font-size: 24px;
+    transition: all .2s;
+}
+.big-form input:focus {
+    box-shadow: 3px 0px 0px #85C8EB inset;
+    outline: none;
+    border-color: #85C8EB
+}
+
+.big-form .button {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    max-width: 600px;
+}
+
+.video-image {
+    width: 200px;
+    height: 150px;
+    display: block;
+    background: url(../../images/play.png) no-repeat center;
+    margin: 24px auto;
+}
+.youtube {
+    text-decoration: none;
+    display: block;
+
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 0 auto;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* Text alignment Classes */
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+/* Small Grid Framework */
+.half,
+.big,
+.small {
+    box-sizing: border-box;
+}
+.half {
+    width: 50%;
+}
+.big {
+    width: 75%;
+}
+.small {
+    width: 25%;
+}
+.half:first-child, .small:first-child, .big:first-child {
+    padding-right: 20px;
+}
+.left-part {
+    float: left;
+}
+.right-part {
+    float: right;
+}

@@ -1,0 +1,173 @@
+<project>
+    <target name="html">
+        <antcall target="html-build"></antcall>
+        <antcall target="html-build-docs"></antcall>
+        <antcall target="html-build-release"></antcall>
+        <antcall target="html-build-themeforest"></antcall>
+        <antcall target="html-build-demo"></antcall>
+    </target>
+
+    <target name="html-build">
+        <echo message="Removing Old HTML..." />
+        <!-- remove old artifacts -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/html" />
+        </delete>
+
+        <!-- create artifiacts folder -->
+        <mkdir dir="artifacts/html" />
+
+        <echo message="composer install" />
+        <exec executable="bash" dir="html">
+            <arg value="-c"/>
+            <arg value="composer install"/>
+        </exec>
+
+        <echo message="Building HTML..." />
+        <antcall target="html-compile"></antcall>
+
+        <!-- watermark images if needed -->
+        <antcall target="watermark-dist-images"></antcall>
+
+        <!-- copy compiled html to build folder -->
+        <copy todir="artifacts/html/build">
+            <fileset dir="html/dist" />
+        </copy>
+
+        <!-- zip up the html build -->
+        <zip basedir="html/dist" destfile="artifacts/html/build.zip" />
+
+        <!-- add the source if html.includesrc == true in build.properties -->
+        <antcall target="html-include-src"></antcall>
+    </target>
+
+    <target name="watermark-dist-images" if="html.watermark.dist.on">
+        <echo message="Watermarking images in ${html.watermark.dist.folder}..." />
+        <!-- watermark images before zipped -->
+        <watermark-folder dir="${html.watermark.dist.folder}" filter="${html.watermark.dist.filter}"></watermark-folder>
+    </target>
+
+    <target name="watermark-source-images" if="html.watermark.source.on">
+        <echo message="Watermarking images in ${html.watermark.source.folder}..." />
+        <!-- watermark images before zipped -->
+        <watermark-folder dir="${html.watermark.source.folder}" filter="${html.watermark.source.filter}"></watermark-folder>
+    </target>
+
+    <target name="html-compile" depends="check-build-system">
+        <echo message="Compiling with ${html.node.build.system}..." />
+        <node-build system="${html.node.build.system}" dir="html" command="build"></node-build>
+    </target>
+
+    <target name="html-include-src" if="${html.includesrc}" depends="check-build-system">
+        <!-- remove old artifacts -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/html/source" />
+        </delete>
+
+        <!-- create artifiacts folder -->
+        <mkdir dir="artifacts/html/source" />
+
+
+        <echo message="Building Source..." />
+
+        <echo message="Copying Source files..." />
+        <copy todir="artifacts/html/source">
+            <fileset dir="html" excludes="${html.source.exclude}"></fileset>
+        </copy>
+
+        <!-- watermark images if needed -->
+        <antcall target="watermark-source-images"></antcall>
+
+        <!-- zip up the source -->
+        <zip basedir="artifacts/html/source" destfile="artifacts/html/source.zip" />
+    </target>
+
+    <target name="html-build-demo" if="${html.hasdemo}" depends="check-build-system">
+
+        <echo message="Building Demo with ${html.node.build.system}..." />
+        <node-build system="${html.node.build.system}" dir="html" command="demo"></node-build>
+
+        <!-- zip up the demo html build -->
+        <zip basedir="html/dist" destfile="artifacts/html/demo.zip" />
+    </target>
+
+    <target name="html-build-docs">
+        <echo message="Copying changelog..." />
+        <copy todir="docs/html/src/templates/pages" overwrite="true">
+            <fileset file="html/changelog.md" />
+        </copy>
+
+        <echo message="number: ${html.version}" file="docs/html/src/data/version.yml"></echo>
+
+        <echo message="Building Docs..." />
+        <node-build system="grunt" dir="docs/html" command="build"></node-build>
+        <copy todir="artifacts/html/docs">
+            <fileset dir="docs/html/dist" />
+        </copy>
+
+        <!-- zip up the theme docs -->
+        <zip basedir="artifacts/html/docs" destfile="artifacts/html/docs.zip" />
+    </target>
+
+    <target name="html-build-release">
+        <echo message="Building Release..." />
+        <!-- remove old release folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/html/release" />
+        </delete>
+
+        <mkdir dir="artifacts/html/release" />
+
+        <!-- zip up the html build -->
+        <lower string="${project.name}" to="project.namelower" />
+        <zip basedir="html/dist" destfile="artifacts/html/release/${project.namelower}.zip" />
+
+        <!-- copy docs -->
+        <copy todir="artifacts/html/release/docs">
+            <fileset dir="docs/html/dist" />
+        </copy>
+
+        <!-- copy bundles -->
+        <copy todir="artifacts/html/release">
+            <fileset dir="themeforest/html" includes="${html.bundles.html}" />
+            <fileset dir="themeforest/shared" includes="${html.bundles.shared}" />
+        </copy>
+
+        <!-- copy source zip if it exists -->
+        <antcall target="html-build-release-source"></antcall>
+    </target>
+
+    <target name="check-source-file-zip-exists">
+        <available file="artifacts/html/source.zip" property="source.present"/>
+    </target>
+
+    <target name="html-build-release-source" depends="check-source-file-zip-exists" if="source.present">
+        <!-- copy source -->
+        <copy file="artifacts/html/source.zip" tofile="artifacts/html/release/source.zip" />
+    </target>
+
+    <target name="html-build-themeforest">
+        <lower string="${project.name}" to="project.namelower" />
+
+        <echo message="Building Themeforest..." />
+        <!-- remove old themeforest folder -->
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="artifacts/html/themeforest" />
+        </delete>
+
+        <mkdir dir="artifacts/html/themeforest" />
+
+        <echo message="Creating Theme Preview..." />
+        <zip basedir="themeforest/html/submit/preview" destfile="artifacts/html/themeforest/theme-preview.zip" />
+
+        <echo message="Creating Thumbnail..." />
+        <copy file="themeforest/html/submit/thumbnail.png" tofile="artifacts/html/themeforest/thumbnail.png" />
+
+        <!-- zip main release up -->
+        <zip basedir="artifacts/html/release" destfile="artifacts/html/themeforest/${project.namelower}-${html.version}.zip" />
+    </target>
+
+    <target name="html-upload-themeforest">
+        <upload-to-tf dir="html"></upload-to-tf>
+    </target>
+</project>

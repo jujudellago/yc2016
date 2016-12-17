@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<wpml-config>
+    <admin-texts>
+        <key name="omega-options">
+            <key name="logo_text"/>
+            <key name="blog_header_content"/>
+            <key name="blog_header_sub_header"/>
+            <key name="blog_readmore"/>
+            <key name="portfolio_button_text_zoom"/>
+            <key name="portfolio_button_text_details"/>
+            <key name="related_portfolio_text"/>
+            <key name="404_page"/>
+        </key>
+    </admin-texts>
+</wpml-config>

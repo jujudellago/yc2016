@@ -1,0 +1,88 @@
+<project>
+    <target name="sniff">
+        <exec executable="phpcs">
+            <arg value="--standard=${basedir}/vendor/oxygenna/oxygenna-php-standards"></arg>
+            <arg value="--extensions=php"></arg>
+            <arg value="--report=summary"/>
+            <arg value="--ignore=${report.codesniffer.exclude}"></arg>
+            <arg path="${report.buildpath}" />
+        </exec>
+    </target>
+
+    <target name="report">
+        <delete includeEmptyDirs="true" failonerror="false">
+            <fileset dir="reports" />
+        </delete>
+
+        <mkdir dir="reports"/>
+        <mkdir dir="reports/pdepend"/>
+
+        <parallel threadCount="2">
+            <sequential>
+                <antcall target="pdepend"/>
+                <antcall target="phpcpd"/>
+                <antcall target="phpmd"/>
+                <antcall target="phpcpd"/>
+                <antcall target="codesniffer"/>
+                <antcall target="phploc"/>
+            </sequential>
+        </parallel>
+    </target>
+
+    <target name="codesniffer">
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--standard=${basedir}/vendor/oxygenna/oxygenna-php-standards"></arg>
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=${basedir}/reports/codesniffer.xml"/>
+            <arg value="--extensions=php"></arg>
+            <arg value="--ignore=${report.codesniffer.exclude}"></arg>
+            <arg path="${report.buildpath}" />
+        </exec>
+    </target>
+
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd">
+            <arg value="--log-pmd" />
+            <arg value="${basedir}/reports/pmd-cpd.xml" />
+            <arg path="${report.buildpath}" />
+            <arg value="${report.phpcpd.exclude}" />
+        </exec>
+    </target>
+
+    <target name="phploc" description="Measure project size using PHPLOC">
+        <exec executable="phploc">
+            <arg value="--log-csv" />
+            <arg value="${basedir}/reports/phploc.csv" />
+            <arg path="${report.buildpath}" />
+            <arg value="${report.phploc.exclude}" />
+        </exec>
+    </target>
+
+    <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+        <exec executable="pdepend">
+            <arg value="--jdepend-xml=${basedir}/reports/jdepend.xml" />
+            <arg value="--jdepend-chart=${basedir}/reports/pdepend/dependencies.svg" />
+            <arg value="--overview-pyramid=${basedir}/reports/pdepend/overview-pyramid.svg" />
+            <arg value="--ignore=${report.pdepend.exclude}" />
+            <arg path="${report.buildpath}" />
+        </exec>
+    </target>
+
+    <target name="phpmd" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+        <exec executable="phpmd">
+            <arg path="${report.buildpath}" />
+            <arg value="xml" />
+            <arg value="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/metricsconf/phpmd.xml" />
+            <arg value="--reportfile" />
+            <arg value="${basedir}/reports/pmd.xml" />
+            <arg value="--exclude ${report.phpmd.exclude}" />
+        </exec>
+    </target>
+
+    <target name="phpdoc">
+        <exec executable="phpdoc">
+            <arg line="--template=responsive-twig"/>
+            <arg line="-d inc"/>
+        </exec>
+    </target>
+</project>

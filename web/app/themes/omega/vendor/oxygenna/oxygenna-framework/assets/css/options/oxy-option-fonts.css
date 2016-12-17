@@ -1,0 +1,11 @@
+#headings_font_options label, #body_font_options label {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 100px;
+}
+
+.description {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

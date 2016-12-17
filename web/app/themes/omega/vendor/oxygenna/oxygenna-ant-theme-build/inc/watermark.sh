@@ -1,0 +1,1 @@
+convert -size 140x80 xc:none -font vendor/oxygenna/oxygenna-ant-theme-build/assets/fonts/OpenSans-Bold.ttf -pointsize 20 -fill "#80808080" -gravity NorthWest -draw "text 10,10 'Copyright'" miff:- | composite -tile - $1 $1

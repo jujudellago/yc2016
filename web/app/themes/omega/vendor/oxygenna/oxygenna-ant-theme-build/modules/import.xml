@@ -1,0 +1,46 @@
+<project>
+    <target name="create-snapshot">
+        <!-- remove old images folders from all demo packages-->
+        <apply executable="rm">
+            <arg value="-rf"/>
+            <arg value="*"/>
+            <dirset dir="import" includes="**/images"/>
+        </apply>
+
+        <!-- create new image folders in all demo packages -->
+        <apply executable="mkdir">
+            <arg value="-p"/>
+            <srcfile suffix="/images" />
+            <dirset dir="import" includes="*"/>
+        </apply>
+
+        <!-- download images for all demo packages -->
+        <apply executable="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/inc/create-snapshot.sh">
+            <dirset dir="import" includes="*"/>
+        </apply>
+
+        <watermark-folder dir="import" filter="**/images/*-notinclude*"></watermark-folder>
+        <watermark-folder dir="import" filter="**/images/*_notinclude*"></watermark-folder>
+    </target>
+
+    <target name="create-snapshot-nowatermark">
+        <!-- remove old images folders from all demo packages-->
+        <apply executable="rm">
+            <arg value="-rf"/>
+            <arg value="*"/>
+            <dirset dir="import" includes="**/images"/>
+        </apply>
+
+        <!-- create new image folders in all demo packages -->
+        <apply executable="mkdir">
+            <arg value="-p"/>
+            <srcfile suffix="/images" />
+            <dirset dir="import" includes="*"/>
+        </apply>
+
+        <!-- download images for all demo packages -->
+        <apply executable="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/inc/create-snapshot.sh">
+            <dirset dir="import" includes="*"/>
+        </apply>
+    </target>
+</project>

@@ -1,0 +1,26 @@
+#list-installer header {
+  color: black;
+  text-align: center;
+  font-weight: 300;
+}
+#list-installer .install-checklist .list-error .dashicons-before {
+  color: #e14d43;
+}
+#list-installer .install-checklist .list-ok .dashicons-before {
+  color: #a3b745;
+}
+#list-installer .install-checklist tbody th, #list-installer .install-checklist tbody td {
+  padding: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+#list-installer .install-checklist tbody tr:first-child th, #list-installer .install-checklist tbody tr:first-child td {
+  border-top: 0px;
+}
+
+#choice-page h1 {
+  font-weight: 300;
+}
+#choice-page h3 {
+  border: none;
+  background: none;
+}

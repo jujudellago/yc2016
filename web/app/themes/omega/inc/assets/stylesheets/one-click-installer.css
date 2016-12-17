@@ -1,0 +1,15 @@
+.status-error {
+  color: red;
+}
+
+.status-ok {
+  color: green;
+}
+
+.row-error td {
+  color: red;
+}
+
+.row-ok td {
+  color: green;
+}

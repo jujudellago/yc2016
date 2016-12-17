@@ -1,0 +1,1213 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015 ${copyright}
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <carlosescura@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ${theme} Frontend Translation File 1.9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-29 03:22-0400\n"
+"PO-Revision-Date: 2015-06-27 12:46+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Carlos Escura Forcada <carlosescura@gmail.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: artifacts/wordpress/build/tag.php:16
+msgid "All posts tagged"
+msgstr "Todas las entradas etiquetadas:"
+
+#: artifacts/wordpress/build/bbpress/user-favorites.php:16
+msgid "Favorite Forum Topics"
+msgstr "Temas favoritos"
+
+#: artifacts/wordpress/build/bbpress/user-favorites.php:27
+msgid "You currently have no favorite topics."
+msgstr "Actualmente tienes hay temas favoritos."
+
+#: artifacts/wordpress/build/bbpress/user-favorites.php:27
+msgid "This user has no favorite topics."
+msgstr "El usuario no tiene temas favoritos"
+
+#: artifacts/wordpress/build/bbpress/loop-single-topic.php:65
+#, php-format
+msgid "Started by: %1$s"
+msgstr "Iniciado por: %1$s"
+
+#: artifacts/wordpress/build/bbpress/loop-single-topic.php:73
+#, php-format
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr "en: <a href=\"%1$s\">%2$s</a>"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:25
+#, php-format
+msgid "Merge topic \"%s\""
+msgstr "Mezclar tema “%s”"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:34
+msgid ""
+"Select the topic to merge this one into. The destination topic will remain "
+"the lead topic, and this one will change into a reply."
+msgstr ""
+"Seleccione el tema con el que mezclar este. El tema de destinación "
+"permanecerá como tema principal."
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:35
+msgid ""
+"To keep this topic as the lead, go to the other topic and use the merge tool "
+"from there instead."
+msgstr ""
+"Para mantener este tema como principal, vaya al otro tema y use la "
+"herramienta de fusión desde allí."
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:40
+msgid ""
+"All replies within both topics will be merged chronologically. The order of "
+"the merged replies is based on the time and date they were posted. If the "
+"destination topic was created after this one, it's post date will be updated "
+"to second earlier than this one."
+msgstr ""
+"Todas las respuestas encontradas en ambos temas serán mezcladas y ordenadas "
+"cronológicamente. El orden de las respuestas mezcladas está basado en la "
+"hora y el día en que fueron publicadas. Si el tema de destino fue creado "
+"después de este, es posible que se actualice este también."
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:44
+msgid "Destination"
+msgstr "Destino"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:48
+msgid "Merge with this topic:"
+msgstr "Fusionar con este tema:"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:62
+msgid "There are no other topics in this forum to merge with."
+msgstr "No hay otros temas en este foro con los que fusionarlo."
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:70
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:83
+msgid "Topic Extras"
+msgstr "Temas extras"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:76
+msgid "Merge topic subscribers"
+msgstr "Mezclar los temas de suscriptores"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:83
+msgid "Merge topic favoriters"
+msgstr "Mezclar temas favoritos"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:90
+msgid "Merge topic tags"
+msgstr "Mezclar tags de los temas"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:99
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:83
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:116
+msgid "<strong>WARNING:</strong> This process cannot be undone."
+msgstr "<strong>ATENCIÓN:</strong> Este proceso no puede ser deshecho."
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:106
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:92
+#: artifacts/wordpress/build/bbpress/form-reply.php:151
+#: artifacts/wordpress/build/bbpress/form-forum.php:140
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:123
+#: artifacts/wordpress/build/bbpress/form-topic.php:212
+msgid "Submit"
+msgstr "Enviar"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:119
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:136
+msgid "You do not have the permissions to edit this topic!"
+msgstr "No tienes permisos para editar este tema"
+
+#: artifacts/wordpress/build/bbpress/form-topic-merge.php:119
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:136
+msgid "You cannot edit this topic."
+msgstr "No puede editar este tema"
+
+#: artifacts/wordpress/build/bbpress/content-single-topic-lead.php:18
+#: artifacts/wordpress/build/bbpress/content-single-topic-lead.php:90
+msgid "Creator"
+msgstr "Creador"
+
+#: artifacts/wordpress/build/bbpress/content-single-topic-lead.php:22
+#: artifacts/wordpress/build/bbpress/content-single-topic-lead.php:94
+#: artifacts/wordpress/build/bbpress/loop-topics.php:19
+msgid "Topic"
+msgstr "Tema"
+
+#: artifacts/wordpress/build/bbpress/loop-single-reply.php:65
+msgid "in reply to: "
+msgstr "en respuesta a:"
+
+#: artifacts/wordpress/build/bbpress/feedback-no-access.php:13
+msgid "Private"
+msgstr "Privado"
+
+#: artifacts/wordpress/build/bbpress/feedback-no-access.php:17
+msgid "You do not have permission to view this forum."
+msgstr "No tiene permisos para ver este foro."
+
+#: artifacts/wordpress/build/bbpress/user-details.php:34
+#: artifacts/wordpress/build/bbpress/user-profile.php:17
+msgid "Profile"
+msgstr "Perfil"
+
+#: artifacts/wordpress/build/bbpress/user-details.php:38
+#: artifacts/wordpress/build/bbpress/user-profile.php:31
+msgid "Topics Started"
+msgstr "Temas empezados"
+
+#: artifacts/wordpress/build/bbpress/user-details.php:42
+#: artifacts/wordpress/build/bbpress/user-profile.php:33
+msgid "Replies Created"
+msgstr "Respuestas generadas"
+
+#: artifacts/wordpress/build/bbpress/user-details.php:47
+msgid "Favorites"
+msgstr "Favoritos"
+
+#: artifacts/wordpress/build/bbpress/user-details.php:55
+msgid "Subscriptions"
+msgstr "Suscriptores"
+
+#: artifacts/wordpress/build/bbpress/user-details.php:60
+#: artifacts/wordpress/build/bbpress/oxygenna/OxygennaBBPress.php:206
+msgid "Edit"
+msgstr "Editar"
+
+#: artifacts/wordpress/build/bbpress/feedback-no-forums.php:14
+msgid "Oh bother! No forums were found here!"
+msgstr "Lo sentimos, no se encontraron temas aquí…"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:25
+#, php-format
+msgid "Move reply \"%s\""
+msgstr "Mover respuesta “%s”"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:34
+msgid ""
+"You can either make this reply a new topic with a new title, or merge it "
+"into an existing topic."
+msgstr ""
+"Puede o hacer de esta respuesta un nuevo tema con un título o fusionarla en "
+"un tema ya existente."
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:39
+msgid ""
+"If you choose an existing topic, replies will be ordered by the time and "
+"date they were created."
+msgstr ""
+"Si elige un tema existente, las respuestas serán ordenadas por hora y fecha "
+"en que fueron creadas."
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:43
+msgid "Move Method"
+msgstr "Método para mover"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:48
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:48
+#, php-format
+msgid "New topic in <strong>%s</strong> titled:"
+msgstr "Nuevo tema en <strong>%s</strong> titulado:"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:52
+#, php-format
+msgid "Moved: %s"
+msgstr "Movido: %s"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:60
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:60
+msgid "Use an existing topic in this forum:"
+msgstr "Usar un tema existente en este foro:"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:103
+msgid "You do not have the permissions to edit this reply!"
+msgstr "No tiene permisos suficientes para publicar una respuesta"
+
+#: artifacts/wordpress/build/bbpress/form-reply-move.php:103
+msgid "You cannot edit this reply."
+msgstr "No puede modificar esta respuesta."
+
+#: artifacts/wordpress/build/bbpress/form-search.php:14
+msgid "Search for:"
+msgstr "Buscar:"
+
+#: artifacts/wordpress/build/bbpress/feedback-no-replies.php:14
+msgid "Oh bother! No replies were found here!"
+msgstr "¡Lo sentimos! No se encontraron respuestas aquí."
+
+#: artifacts/wordpress/build/bbpress/oxygenna/OxygennaBBPress.php:202
+msgid "Tag: "
+msgstr "Tag:"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:25
+#, php-format
+msgid "Reply To: %s"
+msgstr "Responder a: %s"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:39
+msgid ""
+"This topic is marked as closed to new replies, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+"Este tema ha sido marcado como cerrado a nuevas respuestas, sin embargo tus "
+"permisos te posibilitan seguir haciéndolo."
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:47
+#: artifacts/wordpress/build/bbpress/form-forum.php:57
+#: artifacts/wordpress/build/bbpress/form-topic.php:58
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr "Tu cuenta te permite introducir código HTML sin restricciones."
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:67
+#: artifacts/wordpress/build/bbpress/form-forum.php:84
+#: artifacts/wordpress/build/bbpress/form-topic.php:87
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes:"
+msgstr ""
+"Quizá quiera usar estos códigos <abbr title=\"HyperText Markup Language"
+"\">HTML</abbr> y atributos:"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:78
+msgid "Tags:"
+msgstr "Tags:"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:97
+#: artifacts/wordpress/build/bbpress/form-topic.php:160
+msgid "Notify the author of follow-up replies via email"
+msgstr "Notificar al autor vía email sobre respuestas a este tema"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:101
+#: artifacts/wordpress/build/bbpress/form-topic.php:164
+msgid "Notify me of follow-up replies via email"
+msgstr "Notificarme por email cuando reciba respuestas este tema"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:120
+#: artifacts/wordpress/build/bbpress/form-topic.php:183
+msgid "Keep a log of this edit:"
+msgstr "Mantener un log de esta edición:"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:125
+#: artifacts/wordpress/build/bbpress/form-topic.php:187
+msgid "Optional reason for editing:"
+msgstr "Razón opcional para la edición:"
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:167
+#, php-format
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr "El tema &#8216;%s&#8217; está cerrado a nuevas respuestas."
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:176
+#: artifacts/wordpress/build/bbpress/form-topic.php:230
+#, php-format
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr "El foro &#8216;%s&#8217; está cerrado a nuevos temas y respuestas."
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:185
+msgid "You cannot reply to this topic."
+msgstr "No puede responder este tema."
+
+#: artifacts/wordpress/build/bbpress/form-reply.php:185
+msgid "You must be logged in to reply to this topic."
+msgstr "Necesita estar registrado para publicar una respuesta."
+
+#: artifacts/wordpress/build/bbpress/feedback-no-topics.php:14
+msgid "Oh bother! No topics were found here!"
+msgstr "¡Lo sentimos! No se encontraron temas aquí."
+
+#: artifacts/wordpress/build/bbpress/loop-topics.php:20
+msgid "Voices"
+msgstr "Voces"
+
+#: artifacts/wordpress/build/bbpress/loop-topics.php:21
+#: artifacts/wordpress/build/bbpress/content-statistics.php:32
+msgid "Replies"
+msgstr "Respuestas"
+
+#: artifacts/wordpress/build/bbpress/loop-topics.php:21
+#: artifacts/wordpress/build/bbpress/loop-forums.php:21
+msgid "Posts"
+msgstr "Posts"
+
+#: artifacts/wordpress/build/bbpress/loop-topics.php:22
+#: artifacts/wordpress/build/bbpress/loop-forums.php:22
+msgid "Freshness"
+msgstr "Reciente"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:18
+#, php-format
+msgid "Manage Tag: \"%s\""
+msgstr "Gestionar Tag: “%s”"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:22
+msgid "Rename"
+msgstr "Renombrar"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:26
+msgid "Leave the slug empty to have one automatically generated."
+msgstr "Dejar el slug vacío para generar uno automáticamente."
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:31
+msgid ""
+"Changing the slug affects its permalink. Any links to the old slug will stop "
+"working."
+msgstr ""
+"Cambiar el slug afecta a su permalink. Cualquier link al antiguo slug dejará "
+"de funcionar."
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:37
+msgid "Name:"
+msgstr "Nombre:"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:42
+msgid "Slug:"
+msgstr "Slug:"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:61
+msgid "Merge"
+msgstr "Fusionar"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:65
+msgid "Merging tags together cannot be undone."
+msgstr "Fusionar las etiquetas no se puede deshacer."
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:71
+msgid "Existing tag:"
+msgstr "Etiqueta existente:"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:76
+#, php-format
+msgid ""
+"Are you sure you want to merge the \"%s\" tag into the tag you specified?"
+msgstr ""
+"¿Está seguro que desea fusionar la etiqueta “%s” con la otra seleccionada?"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:91
+msgid "Delete"
+msgstr "Borrar"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:95
+msgid "This does not delete your topics. Only the tag itself is deleted."
+msgstr "Esto no borra sus temas. Sólo se borra la etiqueta."
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:99
+msgid "Deleting a tag cannot be undone."
+msgstr "El borrado no puede deshacerse"
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:100
+msgid "Any links to this tag will no longer function."
+msgstr "Cualquier otro enlace a esta etiqueta ya no funcionará."
+
+#: artifacts/wordpress/build/bbpress/form-topic-tag.php:106
+#, php-format
+msgid ""
+"Are you sure you want to delete the \"%s\" tag? This is permanent and cannot "
+"be undone."
+msgstr ""
+"¿Está seguro de querer borrar la etiqueta “%s”? Este es un cambio permanente "
+"y no puede ser deshecho."
+
+#: artifacts/wordpress/build/bbpress/feedback-no-search.php:14
+msgid "Oh bother! No search results were found here!"
+msgstr "¡Lo sentimos! No se encontraron resultados."
+
+#: artifacts/wordpress/build/bbpress/form-user-lost-pass.php:14
+msgid "Lost Password"
+msgstr "He perdido mi contraseña"
+
+#: artifacts/wordpress/build/bbpress/form-user-lost-pass.php:18
+msgid "Username or Email"
+msgstr "Nombre de usuario y Email"
+
+#: artifacts/wordpress/build/bbpress/form-user-lost-pass.php:27
+msgid "Reset My Password"
+msgstr "Reiniciar mi contraseña"
+
+#: artifacts/wordpress/build/bbpress/user-topics-created.php:17
+msgid "Forum Topics Started"
+msgstr "Temas de foros empezados"
+
+#: artifacts/wordpress/build/bbpress/user-topics-created.php:28
+msgid "You have not created any topics."
+msgstr "No has iniciado ningún tema."
+
+#: artifacts/wordpress/build/bbpress/user-topics-created.php:28
+msgid "This user has not created any topics."
+msgstr "El usuario no ha creado ningún tema."
+
+#: artifacts/wordpress/build/bbpress/user-profile.php:29
+#: artifacts/wordpress/build/bbpress/form-user-roles.php:20
+msgid "Forum Role"
+msgstr "Rol en el foro"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:35
+#: artifacts/wordpress/build/bbpress/form-topic.php:33
+#, php-format
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr "Ahora editando &ldquo;%s&rdquo;"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:37
+#, php-format
+msgid "Create New Forum in &ldquo;%s&rdquo;"
+msgstr "Crear un nuevo foro en &ldquo;%s&rdquo;"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:37
+msgid "Create New Forum"
+msgstr "Crear un foro nuevo"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:48
+msgid ""
+"This forum is closed to new content, however your account still allows you "
+"to do so."
+msgstr ""
+"Este foro se ha marcado como cerrado para nuevos temas, pero sus permisos de "
+"publicación todavía le permiten hacerlo."
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:69
+#, php-format
+msgid "Forum Name (Maximum Length: %d):"
+msgstr "Nombre del foro (Longitud máxima: %d):"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:93
+msgid "Forum Type:"
+msgstr "Tipo de foro:"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:102
+msgid "Status:"
+msgstr "Estado"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:111
+msgid "Visibility:"
+msgstr "Visibilidad:"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:120
+msgid "Parent Forum:"
+msgstr "Foro superior:"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:125
+msgid "(No Parent)"
+msgstr "(Sin superior)"
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:164
+#, php-format
+msgid "The forum &#8216;%s&#8217; is closed to new content."
+msgstr "El foro &#8216;%s&#8217; no permite nuevo contenido."
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:173
+msgid "You cannot create new forums."
+msgstr "No puedes crear nuevos foros."
+
+#: artifacts/wordpress/build/bbpress/form-forum.php:173
+msgid "You must be logged in to create new forums."
+msgstr "Necesita estar registrado para crear un nuevo foro."
+
+#: artifacts/wordpress/build/bbpress/form-protected.php:14
+msgid "Protected"
+msgstr "Protegido."
+
+#: artifacts/wordpress/build/bbpress/form-user-login.php:14
+#: artifacts/wordpress/build/bbpress/form-user-login.php:35
+msgid "Log In"
+msgstr "Iniciar sesión."
+
+#: artifacts/wordpress/build/bbpress/form-user-login.php:17
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:103
+#: artifacts/wordpress/build/bbpress/form-user-register.php:24
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: artifacts/wordpress/build/bbpress/form-user-login.php:22
+msgid "Password"
+msgstr "Contraseña"
+
+#: artifacts/wordpress/build/bbpress/form-user-login.php:28
+msgid "Keep me signed in"
+msgstr "Mantenme conectado"
+
+#: artifacts/wordpress/build/bbpress/user-replies-created.php:16
+msgid "Forum Replies Created"
+msgstr "Respuestas al foro creadas"
+
+#: artifacts/wordpress/build/bbpress/user-replies-created.php:27
+msgid "You have not replied to any topics."
+msgstr "No ha contestado a ningún tema."
+
+#: artifacts/wordpress/build/bbpress/user-replies-created.php:27
+msgid "This user has not replied to any topics."
+msgstr "Este usuario no ha contestado ningún tema."
+
+#: artifacts/wordpress/build/bbpress/loop-forums.php:19
+msgid "Forum"
+msgstr "Foro"
+
+#: artifacts/wordpress/build/bbpress/loop-forums.php:20
+#: artifacts/wordpress/build/bbpress/content-statistics.php:27
+msgid "Topics"
+msgstr "Temas"
+
+#: artifacts/wordpress/build/bbpress/loop-forums.php:21
+msgid "Repthes"
+msgstr "Repthes"
+
+#: artifacts/wordpress/build/bbpress/feedback-logged-in.php:14
+msgid "You are already logged in."
+msgstr "Ya estás registrado."
+
+#: artifacts/wordpress/build/bbpress/form-user-roles.php:13
+msgid "Blog Role"
+msgstr "Rol en el blog"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:27
+#, php-format
+msgid "Split topic \"%s\""
+msgstr "Dividir tema “%s”"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:34
+msgid ""
+"When you split a topic, you are slicing it in half starting with the reply "
+"you just selected. Choose to use that reply as a new topic with a new title, "
+"or merge those replies into an existing topic."
+msgstr ""
+"Cuando se divide un tema, usted está cortando por la mitad a partir de la "
+"respuesta que acaba de seleccionar. Elija utilizar esa respuesta como un "
+"nuevo tema con un nuevo título, o fusionar esas respuestas en un tema "
+"existente."
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:39
+msgid ""
+"If you use the existing topic option, replies within both topics will be "
+"merged chronologically. The order of the merged replies is based on the time "
+"and date they were posted."
+msgstr ""
+"Si utiliza la opción del tema existente, las respuestas dentro de los dos "
+"temas se fusionarán cronológicamente. El orden de las respuestas combinadas "
+"se basa en la hora y fecha en la que fueron publicadas."
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:43
+msgid "Split Method"
+msgstr "Método de división"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:52
+#, php-format
+msgid "Split: %s"
+msgstr "Dividir: %s"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:89
+msgid "Copy subscribers to the new topic"
+msgstr "Copiar suscriptores al nuevo tema"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:97
+msgid "Copy favoriters to the new topic"
+msgstr "Copiar favoritos al nuevo tema"
+
+#: artifacts/wordpress/build/bbpress/form-topic-split.php:106
+msgid "Copy topic tags to the new topic"
+msgstr "Copiar las etiquetas al nuevo tema"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:16
+msgid "Edit User"
+msgstr "Editar usuario"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:23
+msgid "User Info"
+msgstr "Información de usuario"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:28
+msgid "First Name"
+msgstr "Nombre"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:33
+msgid "Last Name"
+msgstr "Apellido"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:38
+msgid "Nickname"
+msgstr "Nickname"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:43
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:61
+msgid "Contact Info"
+msgstr "Información de contacto"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:66
+msgid "Website"
+msgstr "Página web"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:84
+msgid "About Yourself"
+msgstr "Sobre tí"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:84
+msgid "About the user"
+msgstr "Sobre el usuario"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:89
+msgid "Biographical Info"
+msgstr "Información biográfica"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:98
+msgid "Account"
+msgstr "Cuenta"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:108
+#: artifacts/wordpress/build/bbpress/form-user-register.php:29
+msgid "Email"
+msgstr "Email"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:120
+#, php-format
+msgid ""
+"There is a pending email address change to <code>%1$s</code>. <a href=\"%2$s"
+"\">Cancel</a>"
+msgstr ""
+"Está pendiente un cambio de dirección de correo electrónico a  <code>%1$s</"
+"code>. <a href=\"%2$s\">Cancela</a>"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:129
+msgid "New Password"
+msgstr "Nueva contraseña"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:133
+msgid ""
+"If you would like to change the password type a new one. Otherwise leave "
+"this blank."
+msgstr ""
+"Si desea cambiar la contraseña, introduzca una nueva, de lo contrario, "
+"déjela en blanco."
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:138
+msgid "Type your new password again."
+msgstr "Vuelva a introducir la contraseña."
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:142
+msgid ""
+"Your password should be at least ten characters long. Use upper and lower "
+"case letters, numbers, and symbols to make it even stronger."
+msgstr ""
+"Su contraseña debería tener como mínimo diez caracteres. Use mayúsculas, "
+"minúsculas, números y símbolos para hacerla más segura."
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:153
+msgid "User Role"
+msgstr "Rol del usuario"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:160
+msgid "Network Role"
+msgstr "Rol en la red"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:163
+msgid "Grant this user super admin privileges for the Network."
+msgstr "Otorgar a este usuario permisos de “Super Admin” para la red."
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:183
+msgid "Update Profile"
+msgstr "Actualizar el perfíl"
+
+#: artifacts/wordpress/build/bbpress/form-user-edit.php:183
+msgid "Update User"
+msgstr "Actualizar el usuario"
+
+#: artifacts/wordpress/build/bbpress/form-anonymous.php:17
+msgid "Author Information"
+msgstr "Información del autor"
+
+#: artifacts/wordpress/build/bbpress/form-anonymous.php:17
+msgid "Your information:"
+msgstr "Su información:"
+
+#: artifacts/wordpress/build/bbpress/form-anonymous.php:22
+msgid "Name (required):"
+msgstr "Nombre (necesario):"
+
+#: artifacts/wordpress/build/bbpress/form-anonymous.php:27
+msgid "Mail (will not be published) (required):"
+msgstr "Email (no será publicado) (necesario):"
+
+#: artifacts/wordpress/build/bbpress/form-anonymous.php:32
+msgid "Website:"
+msgstr "Website:"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:17
+msgid "Registered Users"
+msgstr "Usuarios registrados"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:22
+msgid "Forums"
+msgstr "Foros"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:37
+msgid "Topic Tags"
+msgstr "Tags de temas"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:44
+msgid "Empty Topic Tags"
+msgstr "Tags de temas vacíos"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:53
+msgid "Hidden Topics"
+msgstr "Temas ocultos"
+
+#: artifacts/wordpress/build/bbpress/content-statistics.php:64
+msgid "Hidden Replies"
+msgstr "Respuestas ocultas"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:35
+#, php-format
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr "Crear un nuevo tema en &ldquo;%s&rdquo;"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:35
+msgid "Create New Topic"
+msgstr "Crear un nuevo tema"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:50
+msgid ""
+"This forum is marked as closed to new topics, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+"Este foro está marcado como cerrado, pero tus permisos te permiten seguir "
+"publicando si lo deseas."
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:72
+#, php-format
+msgid "Topic Title (Maximum Length: %d):"
+msgstr "Título del tema (Longitud máxima: %d):"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:98
+msgid "Topic Tags:"
+msgstr "Etiquetas del tema:"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:111
+msgid "Forum:"
+msgstr "Foro:"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:114
+msgid "(No Forum)"
+msgstr "(Sin foro)"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:130
+msgid "Topic Type:"
+msgstr "Tipo de tema:"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:142
+msgid "Topic Status:"
+msgstr "Estado del tema:"
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:239
+msgid "You cannot create new topics."
+msgstr "No puede crear nuevos temas."
+
+#: artifacts/wordpress/build/bbpress/form-topic.php:239
+msgid "You must be logged in to create new topics."
+msgstr "Necesita estar registrado para crear nuevos temas."
+
+#: artifacts/wordpress/build/bbpress/form-user-register.php:14
+msgid "Create an Account"
+msgstr "Crear una cuenta"
+
+#: artifacts/wordpress/build/bbpress/form-user-register.php:18
+msgid "Your username must be unique, and cannot be changed later."
+msgstr ""
+"Su nombre de usuario debe ser único y no podrá ser cambiado posteriormente."
+
+#: artifacts/wordpress/build/bbpress/form-user-register.php:19
+msgid ""
+"We use your email address to email you a secure password and verify your "
+"account."
+msgstr "Usaremos su dirección de correo electrónico para verificar su cuenta."
+
+#: artifacts/wordpress/build/bbpress/form-user-register.php:37
+msgid "Register"
+msgstr "Registrarse"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:20
+msgid "Subscribed Forums"
+msgstr "Foros suscritos"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:31
+msgid "You are not currently subscribed to any forums."
+msgstr "No se encuentra registrado a ningún foro actualmente"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:31
+msgid "This user is not currently subscribed to any forums."
+msgstr "El usuario no se encuentra suscrito a ningún foro actualmente"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:41
+msgid "Subscribed Topics"
+msgstr "Temas suscritos"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:52
+msgid "You are not currently subscribed to any topics."
+msgstr "Usted no se encuentra suscrito a ningún tema actualmente"
+
+#: artifacts/wordpress/build/bbpress/user-subscriptions.php:52
+msgid "This user is not currently subscribed to any topics."
+msgstr "El usuario no se encuentra suscrito a ningún tema."
+
+#: artifacts/wordpress/build/archive.php:20
+#: artifacts/wordpress/build/archive.php:24
+#: artifacts/wordpress/build/archive.php:28
+msgid "All posts from"
+msgstr "Todas las entradas de"
+
+#: artifacts/wordpress/build/inc/frontend.php:72
+msgid "Square Image"
+msgstr "Imagen cuadrada"
+
+#: artifacts/wordpress/build/inc/frontend.php:73
+msgid "Hexagon Image"
+msgstr "Imagen hexagonal"
+
+#: artifacts/wordpress/build/inc/frontend.php:74
+msgid "Rectangle Image"
+msgstr "Imagen rectangular"
+
+#: artifacts/wordpress/build/inc/frontend.php:76
+msgid "Square Small Image"
+msgstr "Imagen cuadrada pequeña"
+
+#: artifacts/wordpress/build/inc/frontend.php:77
+msgid "Hexagon Small Image"
+msgstr "Imagen hexagonal pequeña"
+
+#: artifacts/wordpress/build/inc/frontend.php:78
+msgid "Rectangle Small Image"
+msgstr "Imagen rectangular pequeña"
+
+#: artifacts/wordpress/build/inc/frontend.php:140
+msgid "Primary Navigation"
+msgstr "Navegación principal"
+
+#: artifacts/wordpress/build/inc/frontend.php:141
+msgid "Account Navigation"
+msgstr "Navegación por la cuenta"
+
+#: artifacts/wordpress/build/inc/frontend.php:212
+msgid "No more items to load."
+msgstr "No hay más productos que mostrar."
+
+#: artifacts/wordpress/build/inc/frontend.php:257
+msgid "reply"
+msgstr "responder"
+
+#: artifacts/wordpress/build/inc/frontend.php:293
+msgid "Your name *"
+msgstr "Su nombre*"
+
+#: artifacts/wordpress/build/inc/frontend.php:294
+msgid "Your email *"
+msgstr "Su email*"
+
+#: artifacts/wordpress/build/inc/frontend.php:298
+#, php-format
+msgid "Required fields are marked %s"
+msgstr "Los campos obligatorios están marcados %s"
+
+#: artifacts/wordpress/build/inc/frontend.php:301
+msgid "Your message"
+msgstr "Su mensaje"
+
+#: artifacts/wordpress/build/inc/frontend.php:302
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+"Usted necesita estar <a href=\"%s\">registrado</a> para publicar un "
+"comentario."
+
+#: artifacts/wordpress/build/inc/frontend.php:303
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Registrado como <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=“Salir de "
+"esta cuenta”>¿Salir?</a>"
+
+#: artifacts/wordpress/build/inc/frontend.php:309
+#: artifacts/wordpress/build/comments.php:37
+msgid "Join the conversation"
+msgstr "Unirse a la conversación"
+
+#: artifacts/wordpress/build/inc/frontend.php:310
+msgid "Leave a Reply"
+msgstr "Dejar una respuesta"
+
+#: artifacts/wordpress/build/inc/frontend.php:311
+msgid "Cancel reply"
+msgstr "Cancelar la respuesta"
+
+#: artifacts/wordpress/build/inc/frontend.php:312
+msgid "Add comment"
+msgstr "Añadir comentario"
+
+#: artifacts/wordpress/build/inc/frontend.php:878
+msgid "Search"
+msgstr "Buscar"
+
+#: artifacts/wordpress/build/inc/frontend.php:905
+#: artifacts/wordpress/build/inc/frontend.php:978
+msgid "<i class=\"fa fa-angle-left\"></i>Previous"
+msgstr "<i class=\"fa fa-angle-left\"></i>Anterior"
+
+#: artifacts/wordpress/build/inc/frontend.php:908
+#: artifacts/wordpress/build/inc/frontend.php:979
+msgid "Next<i class=\"fa fa-angle-right\"></i>"
+msgstr "Siguiente<i class=\"fa fa-angle-right\"></i>"
+
+#: artifacts/wordpress/build/inc/frontend.php:1055
+msgid "Next page"
+msgstr "Siguiente página"
+
+#: artifacts/wordpress/build/inc/frontend.php:1056
+msgid "Previous page"
+msgstr "Página anterior"
+
+#: artifacts/wordpress/build/inc/frontend.php:1204
+#, php-format
+msgid "Search Results: &ldquo;%s&rdquo;"
+msgstr "Resultados de la búsqueda: &ldquo;%s&rdquo;"
+
+#: artifacts/wordpress/build/inc/frontend.php:1206
+#, php-format
+msgid "&nbsp;&ndash; Page %s"
+msgstr "&nbsp;&ndash; Página %s"
+
+#: artifacts/wordpress/build/inc/frontend.php:1849
+#, php-format
+msgid "Page %s"
+msgstr "Página %s"
+
+#: artifacts/wordpress/build/inc/options/widgets/swatch_twitter.php:20
+msgid "Displays you latest tweets"
+msgstr "Mostrar los últimos tweets"
+
+#: artifacts/wordpress/build/inc/options/widgets/swatch_twitter.php:21
+msgid "Twitter Feed"
+msgstr "Twitter feed"
+
+#: artifacts/wordpress/build/inc/options/widgets/swatch_twitter.php:32
+#, php-format
+msgid ""
+"Please configure your Twitter username for the <a href=\"%s\">Twitter "
+"Widget</a>."
+msgstr ""
+"Por favor, configure su cuenta de Twitter para el <a href=\"%s\">Twitter "
+"Widget</a>."
+
+#: artifacts/wordpress/build/inc/options/widgets/default_overrides.php:27
+msgid "Recent Posts"
+msgstr "Posts recientes"
+
+#: artifacts/wordpress/build/inc/options/widgets/default_overrides.php:87
+msgid "Archives"
+msgstr "Archivo"
+
+#: artifacts/wordpress/build/inc/options/widgets/default_overrides.php:95
+msgid "Select Month"
+msgstr "Selecciona el mes"
+
+#: artifacts/wordpress/build/comments.php:25
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-link.php:51
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:44
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-footer.php:34
+msgid "No comments"
+msgstr "Sin comentarios"
+
+#: artifacts/wordpress/build/comments.php:28
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-link.php:51
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:44
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-footer.php:34
+msgid "1 comment"
+msgstr "1 comentario"
+
+#: artifacts/wordpress/build/comments.php:31
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-link.php:51
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:44
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-footer.php:34
+#, php-format
+msgid "% comments"
+msgstr "% comentarios"
+
+#: artifacts/wordpress/build/comments.php:56
+msgid "&larr; Older"
+msgstr "&larr; Más antiguo"
+
+#: artifacts/wordpress/build/comments.php:57
+msgid "Newer &rarr;"
+msgstr "Más nuevo &rarr;"
+
+#: artifacts/wordpress/build/comments.php:68
+msgid "Comments are closed."
+msgstr "No se permiten comentarios."
+
+#: artifacts/wordpress/build/search.php:15
+msgid "Results for"
+msgstr "Resultados para"
+
+#: artifacts/wordpress/build/partials/password-form.php:17
+msgid "To view this protected post, enter the password below:"
+msgstr "Para ver este post protegido, introduzca la contraseña:"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-related.php:40
+msgid "Related Posts"
+msgstr "Entradas relacionadas"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-related.php:41
+msgid "Take a look at these posts"
+msgstr "Echa un vistazo a estos posts"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-link.php:43
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:34
+#: artifacts/wordpress/build/partials/blog/posts/masonry/post-link.php:31
+#: artifacts/wordpress/build/partials/blog/posts/masonry/post.php:33
+#: artifacts/wordpress/build/partials/blog/posts/related/post-link.php:27
+#: artifacts/wordpress/build/partials/blog/posts/related/post.php:29
+msgid "by"
+msgstr "por"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-link.php:47
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:40
+msgid "on"
+msgstr "en"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-header.php:22
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-search.php:18
+#, php-format
+msgid "Permalink to %s"
+msgstr "Enlace permanente a %s"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/nav-single.php:21
+msgid "Previous"
+msgstr "Anterior"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/nav-single.php:28
+msgid "Next"
+msgstr "Siguiente"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-footer.php:45
+msgid "Share this post: "
+msgstr "Compartir este post:"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:3
+msgid "Nothing Found"
+msgstr "No se encontró nada"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:9
+msgid "Sorry, no posts were found for this category."
+msgstr "Lo sentimos, no se encontraron posts en esta categoría."
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:12
+msgid "Sorry, no posts found in that timeframe"
+msgstr "Lo sentimos, no se encontraron posts en este periodo de tiempo."
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:15
+msgid "Sorry, no posts from that author were found"
+msgstr "Lo sentimos, no se encontraron posts de este autor"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:18
+#, php-format
+msgid "Sorry, no posts were tagged with  \"%1$s\""
+msgstr "Lo sentimos, no se encontraron posts etiquetados con ”%1$s\""
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:21
+#, php-format
+msgid "Sorry, no search results were found for  \"%1$s\""
+msgstr "Lo sentimos, pero no se encontraron resultados para “%1$s”"
+
+#: artifacts/wordpress/build/partials/blog/posts/normal/post-no-posts.php:24
+msgid "Sorry, nothing found"
+msgstr "Lo sentimos, no se encontraron resultados"
+
+#: artifacts/wordpress/build/partials/content-account.php:26
+msgid "create an account menu in the admin options"
+msgstr "crear un menú de cuentas en el panel de opciones de adminsitrador"
+
+#: artifacts/wordpress/build/partials/shortcodes/countdown/countdown.php:7
+msgid "days"
+msgstr "dias"
+
+#: artifacts/wordpress/build/partials/shortcodes/countdown/countdown.php:15
+msgid "hours"
+msgstr "horas"
+
+#: artifacts/wordpress/build/partials/shortcodes/countdown/countdown.php:23
+msgid "minutes"
+msgstr "minutos"
+
+#: artifacts/wordpress/build/partials/shortcodes/countdown/countdown.php:31
+msgid "seconds"
+msgstr "segundos"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:22
+msgid "View /"
+msgstr "Ver /"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:25
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:73
+msgid "All"
+msgstr "Todo"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:34
+msgid "Sort"
+msgstr "Ordenar"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:40
+msgid "Default"
+msgstr "Por defecto"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:41
+msgid "Title"
+msgstr "Título"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:42
+msgid "Date"
+msgstr "Fecha"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:43
+msgid "Comments"
+msgstr "Comentarios"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:50
+msgid "Order"
+msgstr "Orden"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:59
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:60
+msgid "Descending"
+msgstr "Descendente"
+
+#: artifacts/wordpress/build/partials/shortcodes/portfolio/filters.php:67
+msgid "Category"
+msgstr "Categoría"
+
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-page.php:13
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-blog.php:13
+msgid "home"
+msgstr "Inicio"
+
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-page.php:33
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-blog.php:95
+msgid "Results for "
+msgstr "Resultados para"
+
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-blog.php:22
+msgid "blog"
+msgstr "blog"
+
+#: artifacts/wordpress/build/partials/shortcodes/headings/heading-portfolio.php:27
+msgid "Back to portfolio"
+msgstr "Volver al porfolio"
