@@ -14,6 +14,9 @@ jQuery.noConflict()(function($){
 			console.log("total value is "+$(".total_hidden").val());
 		});
 
+		$("a[rel='external'], a.external").each(function(){
+			this.target="_blank";
+	   	});
 		// 
 // $('.ezfc-element-price').each(function(e){
 	// 	var txt=$(this).html();

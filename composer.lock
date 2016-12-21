@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bf3cfe0ca98bb994719ea3a678839fa5",
+    "hash": "7539f83673870c6a403d09cabcf95e99",
     "content-hash": "25758b1b713c93db04742d649feed71b",
     "packages": [
         {
@@ -194,10 +194,10 @@
         },
         {
             "name": "koodimonni-language/fr_fr",
-            "version": "4.6.1",
+            "version": "4.7",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/core/4.6.1/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/core/4.7/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -248,10 +248,10 @@
         },
         {
             "name": "koodimonni-plugin-language/bbpress-fr_fr",
-            "version": "2.5.11",
+            "version": "2.5.12",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/bbpress/2.5.11/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/plugin/bbpress/2.5.12/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -269,10 +269,10 @@
         },
         {
             "name": "koodimonni-plugin-language/woocommerce-fr_fr",
-            "version": "2.6.8",
+            "version": "2.6.9",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/2.6.8/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/plugin/woocommerce/2.6.9/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -332,10 +332,10 @@
         },
         {
             "name": "koodimonni-theme-language/twentyfifteen-fr_fr",
-            "version": "1.6",
+            "version": "1.7",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyfifteen/1.6/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentyfifteen/1.7/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -353,10 +353,10 @@
         },
         {
             "name": "koodimonni-theme-language/twentyfourteen-fr_fr",
-            "version": "1.8",
+            "version": "1.9",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentyfourteen/1.8/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentyfourteen/1.9/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -416,10 +416,10 @@
         },
         {
             "name": "koodimonni-theme-language/twentythirteen-fr_fr",
-            "version": "2.0",
+            "version": "2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentythirteen/2.0/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentythirteen/2.1/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -437,10 +437,10 @@
         },
         {
             "name": "koodimonni-theme-language/twentytwelve-fr_fr",
-            "version": "2.1",
+            "version": "2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/translation/theme/twentytwelve/2.1/fr_FR.zip",
+                "url": "https://downloads.wordpress.org/translation/theme/twentytwelve/2.2/fr_FR.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -690,15 +690,15 @@
         },
         {
             "name": "wpackagist-plugin/bootstrap-for-contact-form-7",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/bootstrap-for-contact-form-7/",
-                "reference": "tags/1.4.1"
+                "reference": "tags/1.4.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/bootstrap-for-contact-form-7.1.4.1.zip",
+                "url": "https://downloads.wordpress.org/plugin/bootstrap-for-contact-form-7.1.4.2.zip",
                 "reference": null,
                 "shasum": null
             },
