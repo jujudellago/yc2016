@@ -62,6 +62,8 @@
 	"wpackagist-plugin/google-no-captcha-recaptcha" : "*",
 	"wpackagist-plugin/wp-retina-2x" : "4.7.5",
 	"wpackagist-plugin/wp-optimize" : "*",
+	"wpackagist-plugin/regenerate-thumbnails" : "*",	
+	"wpackagist-plugin/bm-custom-login": "2.1",	
 	"wpackagist-plugin/wordpress-importer" : "*",
 	"koodimonni-language/fr_FR": "*"
 	

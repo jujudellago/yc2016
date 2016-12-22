@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7539f83673870c6a403d09cabcf95e99",
-    "content-hash": "25758b1b713c93db04742d649feed71b",
+    "hash": "066794aa8153a3491e25e81ff97685cd",
+    "content-hash": "9310d8bace593a2bb2c71d62483a777f",
     "packages": [
         {
             "name": "composer/installers",
@@ -689,6 +689,26 @@
             "homepage": "https://wordpress.org/plugins/akismet/"
         },
         {
+            "name": "wpackagist-plugin/bm-custom-login",
+            "version": "2.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/bm-custom-login/",
+                "reference": "trunk"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/bm-custom-login.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/bm-custom-login/"
+        },
+        {
             "name": "wpackagist-plugin/bootstrap-for-contact-form-7",
             "version": "1.4.2",
             "source": {
@@ -887,6 +907,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/obfuscate-email/"
+        },
+        {
+            "name": "wpackagist-plugin/regenerate-thumbnails",
+            "version": "2.2.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "reference": "tags/2.2.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.2.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
         },
         {
             "name": "wpackagist-plugin/stop-spam-comments",

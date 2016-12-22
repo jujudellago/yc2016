@@ -27,3 +27,9 @@ Function add_custom_yabo_js() {
 }
 add_action( 'wp_enqueue_scripts', 'add_custom_yabo_js', 11);
 
+function yabo_create_image_sizes() {
+    if( function_exists( 'add_image_size' ) ) {
+        add_image_size( 'portfolio-yabo-thumb', 227, 170, true );
+    }
+}
+add_action( 'init', 'yabo_create_image_sizes');

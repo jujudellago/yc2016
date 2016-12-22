@@ -12,7 +12,7 @@ function wpmudev_google_analytics() { ?>
 	<script type="text/javascript">
 	//<![CDATA[
 	// Set to the same value as the web property used on the site
-	var gaProperty = 'UA-23412516-1';
+	var gaProperty = 'UA-6667101-3';
 
 	// Disable tracking if the opt-out cookie exists.
 	var disableStr = 'ga-disable-' + gaProperty;
@@ -30,8 +30,8 @@ function wpmudev_google_analytics() { ?>
 
 
 	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-23412516-1']);
-	  _gaq.push(['_setDomainName', 'terolabsurface.com']);
+	  _gaq.push(['_setAccount', 'UA-6667101-3']);
+	  _gaq.push(['_setDomainName', 'yabo-concept.ch']);
 	  _gaq.push(['_setAllowLinker', true]);
 	 _gaq.push ([ '_ gat._ anonymizeIp']);
 	  _gaq.push(['_trackPageview']);
@@ -56,7 +56,7 @@ function wpmudev_google_analytics() { ?>
 	?>
 	<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
 	<script type="text/javascript">
-	    window.cookieconsent_options = {"message":"<?php echo __('This website uses cookies to ensure you get the best experience on our website', 'sage')?>","dismiss":"<?php echo __('Got it', 'sage')?>","learnMore":"<?php echo __('More info', 'sage')?>","link":"<?php echo __('cookie link', 'sage')?>","theme":"dark-bottom"};
+	    window.cookieconsent_options = {"message":"<?php echo __('This website uses cookies to ensure you get the best experience on our website')?>","dismiss":"<?php echo __('Got it')?>","learnMore":"<?php echo __('More info')?>","link":"<?php echo __('cookie link')?>","theme":"dark-bottom"};
 	</script>
 
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.10/cookieconsent.min.js"></script>
