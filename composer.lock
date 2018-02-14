@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be52a3930ecff9019f4ccbe640c6c0ca",
-    "content-hash": "ed20273c2d89dbea7ac376c6b7cf5345",
+    "hash": "6769850cc35762f6f7c6379342bfa476",
+    "content-hash": "3981b6987bcc8bd19966253dd6198b4b",
     "packages": [
         {
             "name": "composer/installers",
@@ -950,6 +950,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/obfuscate-email/"
+        },
+        {
+            "name": "wpackagist-plugin/really-simple-ssl",
+            "version": "2.5.25",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/really-simple-ssl/",
+                "reference": "tags/2.5.25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/really-simple-ssl.2.5.25.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/really-simple-ssl/"
         },
         {
             "name": "wpackagist-plugin/regenerate-thumbnails",
