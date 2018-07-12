@@ -66,8 +66,7 @@
 	"wpackagist-plugin/wp-optimize" : "*",
 	"wpackagist-plugin/regenerate-thumbnails" : "*",	
 	"wpackagist-plugin/bm-custom-login": "2.1",	
-	"wpackagist-plugin/wordpress-importer" : "*",
-	"koodimonni-language/fr_FR": "*"
+	"wpackagist-plugin/wordpress-importer" : "*"
 	
   },
   "require-dev": {
