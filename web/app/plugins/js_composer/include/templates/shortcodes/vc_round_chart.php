@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode attributes
  * @var $title
  * @var $el_class
+ * @var $el_id
  * @var $type
  * @var $style
  * @var $legend
@@ -21,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode class
  * @var $this WPBakeryShortCode_Vc_Round_Chart
  */
-$el_class = $title = $type = $style = $legend = $animation = $tooltips = $stroke_color = $stroke_width = $values = $css = $css_animation = $custom_stroke_color = '';
+$el_class = $el_id = $title = $type = $style = $legend = $animation = $tooltips = $stroke_color = $stroke_width = $values = $css = $css_animation = $custom_stroke_color = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -109,7 +110,7 @@ if ( ! empty( $tooltips ) ) {
 }
 
 if ( ! empty( $animation ) ) {
-	$options[] = 'data-vc-animation="' . esc_attr( $animation ) . '"';
+	$options[] = 'data-vc-animation="' . esc_attr( str_replace( 'easein', 'easeIn', $animation ) ) . '"';
 }
 
 if ( ! empty( $stroke_color ) ) {
@@ -173,7 +174,9 @@ if ( $legend ) {
 	$legend_html = '<ul class="vc_chart-legend">' . $legend_html . '</ul>';
 	$canvas_html = '<div class="vc_chart-with-legend">' . $canvas_html . '</div>';
 }
-
+if ( ! empty( $el_id ) ) {
+	$options[] = 'id="' . esc_attr( $el_id ) . '"';
+}
 $output = '
 <div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $options ) . '>
 	' . $title . '

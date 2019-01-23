@@ -116,7 +116,7 @@ return array(
 			'heading' => __( 'Image style', 'js_composer' ),
 			'param_name' => 'style',
 			'value' => getVcShared( 'single image styles' ),
-			'description' => __( 'Select image display style.', 'js_comopser' ),
+			'description' => __( 'Select image display style.', 'js_composer' ),
 			'dependency' => array(
 				'element' => 'source',
 				'value' => array(
@@ -130,7 +130,7 @@ return array(
 			'heading' => __( 'Image style', 'js_composer' ),
 			'param_name' => 'external_style',
 			'value' => getVcShared( 'single image external styles' ),
-			'description' => __( 'Select image display style.', 'js_comopser' ),
+			'description' => __( 'Select image display style.', 'js_composer' ),
 			'dependency' => array(
 				'element' => 'source',
 				'value' => 'external_link',
@@ -212,6 +212,12 @@ return array(
 			),
 		),
 		vc_map_add_css_animation(),
+		array(
+			'type' => 'el_id',
+			'heading' => __( 'Element ID', 'js_composer' ),
+			'param_name' => 'el_id',
+			'description' => sprintf( __( 'Enter element ID (Note: make sure it is unique and valid according to <a href="%s" target="_blank">w3c specification</a>).', 'js_composer' ), 'http://www.w3schools.com/tags/att_global_id.asp' ),
+		),
 		array(
 			'type' => 'textfield',
 			'heading' => __( 'Extra class name', 'js_composer' ),

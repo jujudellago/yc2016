@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WPBakery Visual Composer section
+ * WPBakery WPBakery Page Builder section
  *
- * @package WPBakeryVisualComposer
+ * @package WPBakeryPageBuilder
  *
  */
 class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
@@ -24,7 +24,7 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 
 	protected function shortcodeScripts() {
 		wp_register_script( 'vc_jquery_skrollr_js', vc_asset_url( 'lib/bower/skrollr/dist/skrollr.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
-		wp_register_script( 'vc_youtube_iframe_api_js', '//www.youtube.com/iframe_api', array(), WPB_VC_VERSION, true );
+		wp_register_script( 'vc_youtube_iframe_api_js', 'https://www.youtube.com/iframe_api', array(), WPB_VC_VERSION, true );
 	}
 
 	public function cssAdminClass() {
@@ -40,6 +40,10 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 		$controls_end = '</div>';
 		//Create columns
 		$controls_move = ' <a class="vc_control column_move vc_column-move" href="#" title="' . __( 'Drag row to reorder', 'js_composer' ) . '" data-vc-control="move"><i class="vc-composer-icon vc-c-icon-dragndrop"></i></a>';
+		$moveAccess = vc_user_access()->part( 'dragndrop' )->checkStateAny( true, null )->get();
+		if ( ! $moveAccess ) {
+			$controls_move = '';
+		}
 		$controls_add = ' <a class="vc_control column_add vc_column-add" href="#" title="' . __( 'Add column', 'js_composer' ) . '" data-vc-control="add"><i class="vc-composer-icon vc-c-icon-add"></i></a>';
 		$controls_delete = '<a class="vc_control column_delete vc_column-delete" href="#" title="' . __( 'Delete this row', 'js_composer' ) . '" data-vc-control="delete"><i class="vc-composer-icon vc-c-icon-delete_empty"></i></a>';
 		$controls_edit = ' <a class="vc_control column_edit vc_column-edit" href="#" title="' . __( 'Edit this row', 'js_composer' ) . '" data-vc-control="edit"><i class="vc-composer-icon vc-c-icon-mode_edit"></i></a>';
@@ -70,50 +74,48 @@ class WPBakeryShortCode_VC_Section extends WPBakeryShortCodesContainer {
 	}
 
 	public function contentAdmin( $atts, $content = null ) {
-		$width = $el_class = '';
+		$width = '';
 		$atts = shortcode_atts( $this->predefined_atts, $atts );
 
 		$output = '';
 
 		$column_controls = $this->getColumnControls();
 
-		for ( $i = 0; $i < count( $width ); $i ++ ) {
-			$output .= '<div data-element_type="' . $this->settings['base'] . '" class="' . $this->cssAdminClass() . '">';
-			$output .= str_replace( '%column_size%', 1, $column_controls );
-			$output .= '<div class="wpb_element_wrapper">';
-			if ( isset( $this->settings['custom_markup'] ) && '' !== $this->settings['custom_markup'] ) {
-				$markup = $this->settings['custom_markup'];
-				$output .= $this->customMarkup( $markup );
-			} else {
-				// $output .= $this->outputTitle( $this->settings['name'] );
-				$output .= '<div ' . $this->containerHtmlBlockParams( $width, $i ) . '>';
-				$output .= do_shortcode( shortcode_unautop( $content ) );
-				$output .= '</div>';
-				// $output .= $this->paramsHtmlHolders( $atts );
-			}
-			if ( isset( $this->settings['params'] ) ) {
-				$inner = '';
-				foreach ( $this->settings['params'] as $param ) {
-					if ( ! isset( $param['param_name'] ) ) {
-						continue;
-					}
-					$param_value = isset( $atts[ $param['param_name'] ] ) ? $atts[ $param['param_name'] ] : '';
-					if ( is_array( $param_value ) ) {
-						// Get first element from the array
-						reset( $param_value );
-						$first_key = key( $param_value );
-						$param_value = $param_value[ $first_key ];
-					}
-					$inner .= $this->singleParamHtmlHolder( $param, $param_value );
-				}
-				$output .= $inner;
-			}
+		$output .= '<div data-element_type="' . $this->settings['base'] . '" class="' . $this->cssAdminClass() . '">';
+		$output .= str_replace( '%column_size%', 1, $column_controls );
+		$output .= '<div class="wpb_element_wrapper">';
+		if ( isset( $this->settings['custom_markup'] ) && '' !== $this->settings['custom_markup'] ) {
+			$markup = $this->settings['custom_markup'];
+			$output .= $this->customMarkup( $markup );
+		} else {
+			// $output .= $this->outputTitle( $this->settings['name'] );
+			$output .= '<div ' . $this->containerHtmlBlockParams( $width, 1 ) . '>';
+			$output .= do_shortcode( shortcode_unautop( $content ) );
 			$output .= '</div>';
-			if ( $this->backened_editor_prepend_controls ) {
-				$output .= $this->getColumnControls( 'add', 'vc_section-bottom-controls bottom-controls' );
-			}
-			$output .= '</div>';
+			// $output .= $this->paramsHtmlHolders( $atts );
 		}
+		if ( isset( $this->settings['params'] ) ) {
+			$inner = '';
+			foreach ( $this->settings['params'] as $param ) {
+				if ( ! isset( $param['param_name'] ) ) {
+					continue;
+				}
+				$param_value = isset( $atts[ $param['param_name'] ] ) ? $atts[ $param['param_name'] ] : '';
+				if ( is_array( $param_value ) ) {
+					// Get first element from the array
+					reset( $param_value );
+					$first_key = key( $param_value );
+					$param_value = $param_value[ $first_key ];
+				}
+				$inner .= $this->singleParamHtmlHolder( $param, $param_value );
+			}
+			$output .= $inner;
+		}
+		$output .= '</div>';
+		if ( $this->backened_editor_prepend_controls ) {
+			$output .= $this->getColumnControls( 'add', 'vc_section-bottom-controls bottom-controls' );
+		}
+		$output .= '</div>';
 
 		return $output;
 	}
