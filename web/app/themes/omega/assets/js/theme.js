@@ -1,6 +1,6 @@
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under the MIT license
  */
 
@@ -11,16 +11,16 @@ if (typeof jQuery === 'undefined') {
 +function ($) {
   'use strict';
   var version = $.fn.jquery.split(' ')[0].split('.')
-  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 2)) {
-    throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 3')
+  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {
+    throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4')
   }
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: transition.js v3.3.6
+ * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -77,10 +77,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: alert.js v3.3.6
+ * Bootstrap: alert.js v3.3.7
  * http://getbootstrap.com/javascript/#alerts
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -96,7 +96,7 @@ if (typeof jQuery === 'undefined') {
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.VERSION = '3.3.6'
+  Alert.VERSION = '3.3.7'
 
   Alert.TRANSITION_DURATION = 150
 
@@ -109,7 +109,7 @@ if (typeof jQuery === 'undefined') {
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    var $parent = $(selector)
+    var $parent = $(selector === '#' ? [] : selector)
 
     if (e) e.preventDefault()
 
@@ -172,10 +172,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: button.js v3.3.6
+ * Bootstrap: button.js v3.3.7
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -192,7 +192,7 @@ if (typeof jQuery === 'undefined') {
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.3.6'
+  Button.VERSION  = '3.3.7'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -214,10 +214,10 @@ if (typeof jQuery === 'undefined') {
 
       if (state == 'loadingText') {
         this.isLoading = true
-        $el.addClass(d).attr(d, d)
+        $el.addClass(d).attr(d, d).prop(d, true)
       } else if (this.isLoading) {
         this.isLoading = false
-        $el.removeClass(d).removeAttr(d)
+        $el.removeClass(d).removeAttr(d).prop(d, false)
       }
     }, this), 0)
   }
@@ -281,10 +281,15 @@ if (typeof jQuery === 'undefined') {
 
   $(document)
     .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-      var $btn = $(e.target)
-      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+      var $btn = $(e.target).closest('.btn')
       Plugin.call($btn, 'toggle')
-      if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]'))) e.preventDefault()
+      if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
+        // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
+        e.preventDefault()
+        // The target component still receive the focus
+        if ($btn.is('input,button')) $btn.trigger('focus')
+        else $btn.find('input:visible,button:visible').first().trigger('focus')
+      }
     })
     .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
@@ -293,10 +298,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: carousel.js v3.3.6
+ * Bootstrap: carousel.js v3.3.7
  * http://getbootstrap.com/javascript/#carousel
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -324,7 +329,7 @@ if (typeof jQuery === 'undefined') {
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.3.6'
+  Carousel.VERSION  = '3.3.7'
 
   Carousel.TRANSITION_DURATION = 600
 
@@ -531,13 +536,14 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.6
+ * Bootstrap: collapse.js v3.3.7
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
+/* jshint latedef: false */
 
 +function ($) {
   'use strict';
@@ -561,7 +567,7 @@ if (typeof jQuery === 'undefined') {
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.6'
+  Collapse.VERSION  = '3.3.7'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -743,10 +749,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: dropdown.js v3.3.6
+ * Bootstrap: dropdown.js v3.3.7
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -763,7 +769,7 @@ if (typeof jQuery === 'undefined') {
     $(element).on('click.bs.dropdown', this.toggle)
   }
 
-  Dropdown.VERSION = '3.3.6'
+  Dropdown.VERSION = '3.3.7'
 
   function getParent($this) {
     var selector = $this.attr('data-target')
@@ -909,10 +915,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: modal.js v3.3.6
+ * Bootstrap: modal.js v3.3.7
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -943,7 +949,7 @@ if (typeof jQuery === 'undefined') {
     }
   }
 
-  Modal.VERSION  = '3.3.6'
+  Modal.VERSION  = '3.3.7'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -1050,7 +1056,9 @@ if (typeof jQuery === 'undefined') {
     $(document)
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+        if (document !== e.target &&
+            this.$element[0] !== e.target &&
+            !this.$element.has(e.target).length) {
           this.$element.trigger('focus')
         }
       }, this))
@@ -1247,11 +1255,11 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tooltip.js v3.3.6
+ * Bootstrap: tooltip.js v3.3.7
  * http://getbootstrap.com/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1274,7 +1282,7 @@ if (typeof jQuery === 'undefined') {
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.3.6'
+  Tooltip.VERSION  = '3.3.7'
 
   Tooltip.TRANSITION_DURATION = 150
 
@@ -1565,9 +1573,11 @@ if (typeof jQuery === 'undefined') {
 
     function complete() {
       if (that.hoverState != 'in') $tip.detach()
-      that.$element
-        .removeAttr('aria-describedby')
-        .trigger('hidden.bs.' + that.type)
+      if (that.$element) { // TODO: Check whether guarding this code with this `if` is really necessary.
+        that.$element
+          .removeAttr('aria-describedby')
+          .trigger('hidden.bs.' + that.type)
+      }
       callback && callback()
     }
 
@@ -1610,7 +1620,10 @@ if (typeof jQuery === 'undefined') {
       // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
       elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
     }
-    var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
+    var isSvg = window.SVGElement && el instanceof window.SVGElement
+    // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.
+    // See https://github.com/twbs/bootstrap/issues/20280
+    var elOffset  = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset())
     var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
     var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
 
@@ -1726,6 +1739,7 @@ if (typeof jQuery === 'undefined') {
       that.$tip = null
       that.$arrow = null
       that.$viewport = null
+      that.$element = null
     })
   }
 
@@ -1762,10 +1776,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: popover.js v3.3.6
+ * Bootstrap: popover.js v3.3.7
  * http://getbootstrap.com/javascript/#popovers
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1782,7 +1796,7 @@ if (typeof jQuery === 'undefined') {
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.3.6'
+  Popover.VERSION  = '3.3.7'
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
@@ -1871,10 +1885,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: scrollspy.js v3.3.6
+ * Bootstrap: scrollspy.js v3.3.7
  * http://getbootstrap.com/javascript/#scrollspy
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -1900,7 +1914,7 @@ if (typeof jQuery === 'undefined') {
     this.process()
   }
 
-  ScrollSpy.VERSION  = '3.3.6'
+  ScrollSpy.VERSION  = '3.3.7'
 
   ScrollSpy.DEFAULTS = {
     offset: 10
@@ -2044,10 +2058,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: tab.js v3.3.6
+ * Bootstrap: tab.js v3.3.7
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -2064,7 +2078,7 @@ if (typeof jQuery === 'undefined') {
     // jscs:enable requireDollarBeforejQueryAssignment
   }
 
-  Tab.VERSION = '3.3.6'
+  Tab.VERSION = '3.3.7'
 
   Tab.TRANSITION_DURATION = 150
 
@@ -2200,10 +2214,10 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: affix.js v3.3.6
+ * Bootstrap: affix.js v3.3.7
  * http://getbootstrap.com/javascript/#affix
  * ========================================================================
- * Copyright 2011-2015 Twitter, Inc.
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
@@ -2229,7 +2243,7 @@ if (typeof jQuery === 'undefined') {
     this.checkPosition()
   }
 
-  Affix.VERSION  = '3.3.6'
+  Affix.VERSION  = '3.3.7'
 
   Affix.RESET    = 'affix affix-top affix-bottom'
 
@@ -6173,590 +6187,718 @@ $.fn.easyPieChart = function(options) {
 
 }));
 
-// Generated by CoffeeScript 1.6.2
 /*!
-jQuery Waypoints - v2.0.5
-Copyright (c) 2011-2014 Caleb Troughton
+Waypoints - 3.1.1
+Copyright © 2011-2015 Caleb Troughton
 Licensed under the MIT license.
-https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
+https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 */
-
-
 (function() {
-  var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
-    __slice = [].slice;
+  'use strict'
 
-  (function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-      return define('waypoints', ['jquery'], function($) {
-        return factory($, root);
-      });
-    } else {
-      return factory(root.jQuery, root);
+  var keyCounter = 0
+  var allWaypoints = {}
+
+  /* http://imakewebthings.com/waypoints/api/waypoint */
+  function Waypoint(options) {
+    if (!options) {
+      throw new Error('No options passed to Waypoint constructor')
     }
-  })(window, function($, window) {
-    var $w, Context, Waypoint, allWaypoints, contextCounter, contextKey, contexts, isTouch, jQMethods, methods, resizeEvent, scrollEvent, waypointCounter, waypointKey, wp, wps;
+    if (!options.element) {
+      throw new Error('No element option passed to Waypoint constructor')
+    }
+    if (!options.handler) {
+      throw new Error('No handler option passed to Waypoint constructor')
+    }
 
-    $w = $(window);
-    isTouch = __indexOf.call(window, 'ontouchstart') >= 0;
-    allWaypoints = {
-      horizontal: {},
-      vertical: {}
-    };
-    contextCounter = 1;
-    contexts = {};
-    contextKey = 'waypoints-context-id';
-    resizeEvent = 'resize.waypoints';
-    scrollEvent = 'scroll.waypoints';
-    waypointCounter = 1;
-    waypointKey = 'waypoints-waypoint-ids';
-    wp = 'waypoint';
-    wps = 'waypoints';
-    Context = (function() {
-      function Context($element) {
-        var _this = this;
+    this.key = 'waypoint-' + keyCounter
+    this.options = Waypoint.Adapter.extend({}, Waypoint.defaults, options)
+    this.element = this.options.element
+    this.adapter = new Waypoint.Adapter(this.element)
+    this.callback = options.handler
+    this.axis = this.options.horizontal ? 'horizontal' : 'vertical'
+    this.enabled = this.options.enabled
+    this.triggerPoint = null
+    this.group = Waypoint.Group.findOrCreate({
+      name: this.options.group,
+      axis: this.axis
+    })
+    this.context = Waypoint.Context.findOrCreateByElement(this.options.context)
 
-        this.$element = $element;
-        this.element = $element[0];
-        this.didResize = false;
-        this.didScroll = false;
-        this.id = 'context' + contextCounter++;
-        this.oldScroll = {
-          x: $element.scrollLeft(),
-          y: $element.scrollTop()
-        };
-        this.waypoints = {
-          horizontal: {},
-          vertical: {}
-        };
-        this.element[contextKey] = this.id;
-        contexts[this.id] = this;
-        $element.bind(scrollEvent, function() {
-          var scrollHandler;
+    if (Waypoint.offsetAliases[this.options.offset]) {
+      this.options.offset = Waypoint.offsetAliases[this.options.offset]
+    }
+    this.group.add(this)
+    this.context.add(this)
+    allWaypoints[this.key] = this
+    keyCounter += 1
+  }
 
-          if (!(_this.didScroll || isTouch)) {
-            _this.didScroll = true;
-            scrollHandler = function() {
-              _this.doScroll();
-              return _this.didScroll = false;
-            };
-            return window.setTimeout(scrollHandler, $[wps].settings.scrollThrottle);
+  /* Private */
+  Waypoint.prototype.queueTrigger = function(direction) {
+    this.group.queueTrigger(this, direction)
+  }
+
+  /* Private */
+  Waypoint.prototype.trigger = function(args) {
+    if (!this.enabled) {
+      return
+    }
+    if (this.callback) {
+      this.callback.apply(this, args)
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy */
+  Waypoint.prototype.destroy = function() {
+    this.context.remove(this)
+    this.group.remove(this)
+    delete allWaypoints[this.key]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable */
+  Waypoint.prototype.disable = function() {
+    this.enabled = false
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable */
+  Waypoint.prototype.enable = function() {
+    this.context.refresh()
+    this.enabled = true
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/next */
+  Waypoint.prototype.next = function() {
+    return this.group.next(this)
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/previous */
+  Waypoint.prototype.previous = function() {
+    return this.group.previous(this)
+  }
+
+  /* Private */
+  Waypoint.invokeAll = function(method) {
+    var allWaypointsArray = []
+    for (var waypointKey in allWaypoints) {
+      allWaypointsArray.push(allWaypoints[waypointKey])
+    }
+    for (var i = 0, end = allWaypointsArray.length; i < end; i++) {
+      allWaypointsArray[i][method]()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy-all */
+  Waypoint.destroyAll = function() {
+    Waypoint.invokeAll('destroy')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable-all */
+  Waypoint.disableAll = function() {
+    Waypoint.invokeAll('disable')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable-all */
+  Waypoint.enableAll = function() {
+    Waypoint.invokeAll('enable')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/refresh-all */
+  Waypoint.refreshAll = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-height */
+  Waypoint.viewportHeight = function() {
+    return window.innerHeight || document.documentElement.clientHeight
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-width */
+  Waypoint.viewportWidth = function() {
+    return document.documentElement.clientWidth
+  }
+
+  Waypoint.adapters = []
+
+  Waypoint.defaults = {
+    context: window,
+    continuous: true,
+    enabled: true,
+    group: 'default',
+    horizontal: false,
+    offset: 0
+  }
+
+  Waypoint.offsetAliases = {
+    'bottom-in-view': function() {
+      return this.context.innerHeight() - this.adapter.outerHeight()
+    },
+    'right-in-view': function() {
+      return this.context.innerWidth() - this.adapter.outerWidth()
+    }
+  }
+
+  window.Waypoint = Waypoint
+}())
+;(function() {
+  'use strict'
+
+  function requestAnimationFrameShim(callback) {
+    window.setTimeout(callback, 1000 / 60)
+  }
+
+  var keyCounter = 0
+  var contexts = {}
+  var Waypoint = window.Waypoint
+  var oldWindowLoad = window.onload
+
+  /* http://imakewebthings.com/waypoints/api/context */
+  function Context(element) {
+    this.element = element
+    this.Adapter = Waypoint.Adapter
+    this.adapter = new this.Adapter(element)
+    this.key = 'waypoint-context-' + keyCounter
+    this.didScroll = false
+    this.didResize = false
+    this.oldScroll = {
+      x: this.adapter.scrollLeft(),
+      y: this.adapter.scrollTop()
+    }
+    this.waypoints = {
+      vertical: {},
+      horizontal: {}
+    }
+
+    element.waypointContextKey = this.key
+    contexts[element.waypointContextKey] = this
+    keyCounter += 1
+
+    this.createThrottledScrollHandler()
+    this.createThrottledResizeHandler()
+  }
+
+  /* Private */
+  Context.prototype.add = function(waypoint) {
+    var axis = waypoint.options.horizontal ? 'horizontal' : 'vertical'
+    this.waypoints[axis][waypoint.key] = waypoint
+    this.refresh()
+  }
+
+  /* Private */
+  Context.prototype.checkEmpty = function() {
+    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
+    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
+    if (horizontalEmpty && verticalEmpty) {
+      this.adapter.off('.waypoints')
+      delete contexts[this.key]
+    }
+  }
+
+  /* Private */
+  Context.prototype.createThrottledResizeHandler = function() {
+    var self = this
+
+    function resizeHandler() {
+      self.handleResize()
+      self.didResize = false
+    }
+
+    this.adapter.on('resize.waypoints', function() {
+      if (!self.didResize) {
+        self.didResize = true
+        Waypoint.requestAnimationFrame(resizeHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.createThrottledScrollHandler = function() {
+    var self = this
+    function scrollHandler() {
+      self.handleScroll()
+      self.didScroll = false
+    }
+
+    this.adapter.on('scroll.waypoints', function() {
+      if (!self.didScroll || Waypoint.isTouch) {
+        self.didScroll = true
+        Waypoint.requestAnimationFrame(scrollHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.handleResize = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Private */
+  Context.prototype.handleScroll = function() {
+    var triggeredGroups = {}
+    var axes = {
+      horizontal: {
+        newScroll: this.adapter.scrollLeft(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left'
+      },
+      vertical: {
+        newScroll: this.adapter.scrollTop(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      var isForward = axis.newScroll > axis.oldScroll
+      var direction = isForward ? axis.forward : axis.backward
+
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
+        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
+        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
+        var crossedBackward = !wasBeforeTriggerPoint && !nowAfterTriggerPoint
+        if (crossedForward || crossedBackward) {
+          waypoint.queueTrigger(direction)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
+
+    for (var groupKey in triggeredGroups) {
+      triggeredGroups[groupKey].flushTriggers()
+    }
+
+    this.oldScroll = {
+      x: axes.horizontal.newScroll,
+      y: axes.vertical.newScroll
+    }
+  }
+
+  /* Private */
+  Context.prototype.innerHeight = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportHeight()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerHeight()
+  }
+
+  /* Private */
+  Context.prototype.remove = function(waypoint) {
+    delete this.waypoints[waypoint.axis][waypoint.key]
+    this.checkEmpty()
+  }
+
+  /* Private */
+  Context.prototype.innerWidth = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportWidth()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerWidth()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-destroy */
+  Context.prototype.destroy = function() {
+    var allWaypoints = []
+    for (var axis in this.waypoints) {
+      for (var waypointKey in this.waypoints[axis]) {
+        allWaypoints.push(this.waypoints[axis][waypointKey])
+      }
+    }
+    for (var i = 0, end = allWaypoints.length; i < end; i++) {
+      allWaypoints[i].destroy()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-refresh */
+  Context.prototype.refresh = function() {
+    /*eslint-disable eqeqeq */
+    var isWindow = this.element == this.element.window
+    /*eslint-enable eqeqeq */
+    var contextOffset = this.adapter.offset()
+    var triggeredGroups = {}
+    var axes
+
+    this.handleScroll()
+    axes = {
+      horizontal: {
+        contextOffset: isWindow ? 0 : contextOffset.left,
+        contextScroll: isWindow ? 0 : this.oldScroll.x,
+        contextDimension: this.innerWidth(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left',
+        offsetProp: 'left'
+      },
+      vertical: {
+        contextOffset: isWindow ? 0 : contextOffset.top,
+        contextScroll: isWindow ? 0 : this.oldScroll.y,
+        contextDimension: this.innerHeight(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up',
+        offsetProp: 'top'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        var adjustment = waypoint.options.offset
+        var oldTriggerPoint = waypoint.triggerPoint
+        var elementOffset = 0
+        var freshWaypoint = oldTriggerPoint == null
+        var contextModifier, wasBeforeScroll, nowAfterScroll
+        var triggeredBackward, triggeredForward
+
+        if (waypoint.element !== waypoint.element.window) {
+          elementOffset = waypoint.adapter.offset()[axis.offsetProp]
+        }
+
+        if (typeof adjustment === 'function') {
+          adjustment = adjustment.apply(waypoint)
+        }
+        else if (typeof adjustment === 'string') {
+          adjustment = parseFloat(adjustment)
+          if (waypoint.options.offset.indexOf('%') > - 1) {
+            adjustment = Math.ceil(axis.contextDimension * adjustment / 100)
           }
-        });
-        $element.bind(resizeEvent, function() {
-          var resizeHandler;
+        }
 
-          if (!_this.didResize) {
-            _this.didResize = true;
-            resizeHandler = function() {
-              $[wps]('refresh');
-              return _this.didResize = false;
-            };
-            return window.setTimeout(resizeHandler, $[wps].settings.resizeThrottle);
-          }
-        });
+        contextModifier = axis.contextScroll - axis.contextOffset
+        waypoint.triggerPoint = elementOffset + contextModifier - adjustment
+        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
+        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
+        triggeredBackward = wasBeforeScroll && nowAfterScroll
+        triggeredForward = !wasBeforeScroll && !nowAfterScroll
+
+        if (!freshWaypoint && triggeredBackward) {
+          waypoint.queueTrigger(axis.backward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+        else if (!freshWaypoint && triggeredForward) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+        else if (freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
+
+    for (var groupKey in triggeredGroups) {
+      triggeredGroups[groupKey].flushTriggers()
+    }
+
+    return this
+  }
+
+  /* Private */
+  Context.findOrCreateByElement = function(element) {
+    return Context.findByElement(element) || new Context(element)
+  }
+
+  /* Private */
+  Context.refreshAll = function() {
+    for (var contextId in contexts) {
+      contexts[contextId].refresh()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-find-by-element */
+  Context.findByElement = function(element) {
+    return contexts[element.waypointContextKey]
+  }
+
+  window.onload = function() {
+    if (oldWindowLoad) {
+      oldWindowLoad()
+    }
+    Context.refreshAll()
+  }
+
+  Waypoint.requestAnimationFrame = function(callback) {
+    var requestFn = window.requestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      requestAnimationFrameShim
+    requestFn.call(window, callback)
+  }
+  Waypoint.Context = Context
+}())
+;(function() {
+  'use strict'
+
+  function byTriggerPoint(a, b) {
+    return a.triggerPoint - b.triggerPoint
+  }
+
+  function byReverseTriggerPoint(a, b) {
+    return b.triggerPoint - a.triggerPoint
+  }
+
+  var groups = {
+    vertical: {},
+    horizontal: {}
+  }
+  var Waypoint = window.Waypoint
+
+  /* http://imakewebthings.com/waypoints/api/group */
+  function Group(options) {
+    this.name = options.name
+    this.axis = options.axis
+    this.id = this.name + '-' + this.axis
+    this.waypoints = []
+    this.clearTriggerQueues()
+    groups[this.axis][this.name] = this
+  }
+
+  /* Private */
+  Group.prototype.add = function(waypoint) {
+    this.waypoints.push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.clearTriggerQueues = function() {
+    this.triggerQueues = {
+      up: [],
+      down: [],
+      left: [],
+      right: []
+    }
+  }
+
+  /* Private */
+  Group.prototype.flushTriggers = function() {
+    for (var direction in this.triggerQueues) {
+      var waypoints = this.triggerQueues[direction]
+      var reverse = direction === 'up' || direction === 'left'
+      waypoints.sort(reverse ? byReverseTriggerPoint : byTriggerPoint)
+      for (var i = 0, end = waypoints.length; i < end; i += 1) {
+        var waypoint = waypoints[i]
+        if (waypoint.options.continuous || i === waypoints.length - 1) {
+          waypoint.trigger([direction])
+        }
+      }
+    }
+    this.clearTriggerQueues()
+  }
+
+  /* Private */
+  Group.prototype.next = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    var isLast = index === this.waypoints.length - 1
+    return isLast ? null : this.waypoints[index + 1]
+  }
+
+  /* Private */
+  Group.prototype.previous = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    return index ? this.waypoints[index - 1] : null
+  }
+
+  /* Private */
+  Group.prototype.queueTrigger = function(waypoint, direction) {
+    this.triggerQueues[direction].push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.remove = function(waypoint) {
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    if (index > -1) {
+      this.waypoints.splice(index, 1)
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/first */
+  Group.prototype.first = function() {
+    return this.waypoints[0]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/last */
+  Group.prototype.last = function() {
+    return this.waypoints[this.waypoints.length - 1]
+  }
+
+  /* Private */
+  Group.findOrCreate = function(options) {
+    return groups[options.axis][options.name] || new Group(options)
+  }
+
+  Waypoint.Group = Group
+}())
+;(function() {
+  'use strict'
+
+  var $ = window.jQuery
+  var Waypoint = window.Waypoint
+
+  function JQueryAdapter(element) {
+    this.$element = $(element)
+  }
+
+  $.each([
+    'innerHeight',
+    'innerWidth',
+    'off',
+    'offset',
+    'on',
+    'outerHeight',
+    'outerWidth',
+    'scrollLeft',
+    'scrollTop'
+  ], function(i, method) {
+    JQueryAdapter.prototype[method] = function() {
+      var args = Array.prototype.slice.call(arguments)
+      return this.$element[method].apply(this.$element, args)
+    }
+  })
+
+  $.each([
+    'extend',
+    'inArray',
+    'isEmptyObject'
+  ], function(i, method) {
+    JQueryAdapter[method] = $[method]
+  })
+
+  Waypoint.adapters.push({
+    name: 'jquery',
+    Adapter: JQueryAdapter
+  })
+  Waypoint.Adapter = JQueryAdapter
+}())
+;(function() {
+  'use strict'
+
+  var Waypoint = window.Waypoint
+
+  function createExtension(framework) {
+    return function() {
+      var waypoints = []
+      var overrides = arguments[0]
+
+      if (framework.isFunction(arguments[0])) {
+        overrides = framework.extend({}, arguments[1])
+        overrides.handler = arguments[0]
       }
 
-      Context.prototype.doScroll = function() {
-        var axes,
-          _this = this;
-
-        axes = {
-          horizontal: {
-            newScroll: this.$element.scrollLeft(),
-            oldScroll: this.oldScroll.x,
-            forward: 'right',
-            backward: 'left'
-          },
-          vertical: {
-            newScroll: this.$element.scrollTop(),
-            oldScroll: this.oldScroll.y,
-            forward: 'down',
-            backward: 'up'
-          }
-        };
-        if (isTouch && (!axes.vertical.oldScroll || !axes.vertical.newScroll)) {
-          $[wps]('refresh');
+      this.each(function() {
+        var options = framework.extend({}, overrides, {
+          element: this
+        })
+        if (typeof options.context === 'string') {
+          options.context = framework(this).closest(options.context)[0]
         }
-        $.each(axes, function(aKey, axis) {
-          var direction, isForward, triggered;
+        waypoints.push(new Waypoint(options))
+      })
 
-          triggered = [];
-          isForward = axis.newScroll > axis.oldScroll;
-          direction = isForward ? axis.forward : axis.backward;
-          $.each(_this.waypoints[aKey], function(wKey, waypoint) {
-            var _ref, _ref1;
+      return waypoints
+    }
+  }
 
-            if ((axis.oldScroll < (_ref = waypoint.offset) && _ref <= axis.newScroll)) {
-              return triggered.push(waypoint);
-            } else if ((axis.newScroll < (_ref1 = waypoint.offset) && _ref1 <= axis.oldScroll)) {
-              return triggered.push(waypoint);
-            }
-          });
-          triggered.sort(function(a, b) {
-            return a.offset - b.offset;
-          });
-          if (!isForward) {
-            triggered.reverse();
-          }
-          return $.each(triggered, function(i, waypoint) {
-            if (waypoint.options.continuous || i === triggered.length - 1) {
-              return waypoint.trigger([direction]);
-            }
-          });
-        });
-        return this.oldScroll = {
-          x: axes.horizontal.newScroll,
-          y: axes.vertical.newScroll
-        };
-      };
-
-      Context.prototype.refresh = function() {
-        var axes, cOffset, isWin,
-          _this = this;
-
-        isWin = $.isWindow(this.element);
-        cOffset = this.$element.offset();
-        this.doScroll();
-        axes = {
-          horizontal: {
-            contextOffset: isWin ? 0 : cOffset.left,
-            contextScroll: isWin ? 0 : this.oldScroll.x,
-            contextDimension: this.$element.width(),
-            oldScroll: this.oldScroll.x,
-            forward: 'right',
-            backward: 'left',
-            offsetProp: 'left'
-          },
-          vertical: {
-            contextOffset: isWin ? 0 : cOffset.top,
-            contextScroll: isWin ? 0 : this.oldScroll.y,
-            contextDimension: isWin ? $[wps]('viewportHeight') : this.$element.height(),
-            oldScroll: this.oldScroll.y,
-            forward: 'down',
-            backward: 'up',
-            offsetProp: 'top'
-          }
-        };
-        return $.each(axes, function(aKey, axis) {
-          return $.each(_this.waypoints[aKey], function(i, waypoint) {
-            var adjustment, elementOffset, oldOffset, _ref, _ref1;
-
-            adjustment = waypoint.options.offset;
-            oldOffset = waypoint.offset;
-            elementOffset = $.isWindow(waypoint.element) ? 0 : waypoint.$element.offset()[axis.offsetProp];
-            if ($.isFunction(adjustment)) {
-              adjustment = adjustment.apply(waypoint.element);
-            } else if (typeof adjustment === 'string') {
-              adjustment = parseFloat(adjustment);
-              if (waypoint.options.offset.indexOf('%') > -1) {
-                adjustment = Math.ceil(axis.contextDimension * adjustment / 100);
-              }
-            }
-            waypoint.offset = elementOffset - axis.contextOffset + axis.contextScroll - adjustment;
-            if ((waypoint.options.onlyOnScroll && (oldOffset != null)) || !waypoint.enabled) {
-              return;
-            }
-            if (oldOffset !== null && (oldOffset < (_ref = axis.oldScroll) && _ref <= waypoint.offset)) {
-              return waypoint.trigger([axis.backward]);
-            } else if (oldOffset !== null && (oldOffset > (_ref1 = axis.oldScroll) && _ref1 >= waypoint.offset)) {
-              return waypoint.trigger([axis.forward]);
-            } else if (oldOffset === null && axis.oldScroll >= waypoint.offset) {
-              return waypoint.trigger([axis.forward]);
-            }
-          });
-        });
-      };
-
-      Context.prototype.checkEmpty = function() {
-        if ($.isEmptyObject(this.waypoints.horizontal) && $.isEmptyObject(this.waypoints.vertical)) {
-          this.$element.unbind([resizeEvent, scrollEvent].join(' '));
-          return delete contexts[this.id];
-        }
-      };
-
-      return Context;
-
-    })();
-    Waypoint = (function() {
-      function Waypoint($element, context, options) {
-        var idList, _ref;
-
-        if (options.offset === 'bottom-in-view') {
-          options.offset = function() {
-            var contextHeight;
-
-            contextHeight = $[wps]('viewportHeight');
-            if (!$.isWindow(context.element)) {
-              contextHeight = context.$element.height();
-            }
-            return contextHeight - $(this).outerHeight();
-          };
-        }
-        this.$element = $element;
-        this.element = $element[0];
-        this.axis = options.horizontal ? 'horizontal' : 'vertical';
-        this.callback = options.handler;
-        this.context = context;
-        this.enabled = options.enabled;
-        this.id = 'waypoints' + waypointCounter++;
-        this.offset = null;
-        this.options = options;
-        context.waypoints[this.axis][this.id] = this;
-        allWaypoints[this.axis][this.id] = this;
-        idList = (_ref = this.element[waypointKey]) != null ? _ref : [];
-        idList.push(this.id);
-        this.element[waypointKey] = idList;
-      }
-
-      Waypoint.prototype.trigger = function(args) {
-        if (!this.enabled) {
-          return;
-        }
-        if (this.callback != null) {
-          this.callback.apply(this.element, args);
-        }
-        if (this.options.triggerOnce) {
-          return this.destroy();
-        }
-      };
-
-      Waypoint.prototype.disable = function() {
-        return this.enabled = false;
-      };
-
-      Waypoint.prototype.enable = function() {
-        this.context.refresh();
-        return this.enabled = true;
-      };
-
-      Waypoint.prototype.destroy = function() {
-        delete allWaypoints[this.axis][this.id];
-        delete this.context.waypoints[this.axis][this.id];
-        return this.context.checkEmpty();
-      };
-
-      Waypoint.getWaypointsByElement = function(element) {
-        var all, ids;
-
-        ids = element[waypointKey];
-        if (!ids) {
-          return [];
-        }
-        all = $.extend({}, allWaypoints.horizontal, allWaypoints.vertical);
-        return $.map(ids, function(id) {
-          return all[id];
-        });
-      };
-
-      return Waypoint;
-
-    })();
-    methods = {
-      init: function(f, options) {
-        var _ref;
-
-        options = $.extend({}, $.fn[wp].defaults, options);
-        if ((_ref = options.handler) == null) {
-          options.handler = f;
-        }
-        this.each(function() {
-          var $this, context, contextElement, _ref1;
-
-          $this = $(this);
-          contextElement = (_ref1 = options.context) != null ? _ref1 : $.fn[wp].defaults.context;
-          if (!$.isWindow(contextElement)) {
-            contextElement = $this.closest(contextElement);
-          }
-          contextElement = $(contextElement);
-          context = contexts[contextElement[0][contextKey]];
-          if (!context) {
-            context = new Context(contextElement);
-          }
-          return new Waypoint($this, context, options);
-        });
-        $[wps]('refresh');
-        return this;
-      },
-      disable: function() {
-        return methods._invoke.call(this, 'disable');
-      },
-      enable: function() {
-        return methods._invoke.call(this, 'enable');
-      },
-      destroy: function() {
-        return methods._invoke.call(this, 'destroy');
-      },
-      prev: function(axis, selector) {
-        return methods._traverse.call(this, axis, selector, function(stack, index, waypoints) {
-          if (index > 0) {
-            return stack.push(waypoints[index - 1]);
-          }
-        });
-      },
-      next: function(axis, selector) {
-        return methods._traverse.call(this, axis, selector, function(stack, index, waypoints) {
-          if (index < waypoints.length - 1) {
-            return stack.push(waypoints[index + 1]);
-          }
-        });
-      },
-      _traverse: function(axis, selector, push) {
-        var stack, waypoints;
-
-        if (axis == null) {
-          axis = 'vertical';
-        }
-        if (selector == null) {
-          selector = window;
-        }
-        waypoints = jQMethods.aggregate(selector);
-        stack = [];
-        this.each(function() {
-          var index;
-
-          index = $.inArray(this, waypoints[axis]);
-          return push(stack, index, waypoints[axis]);
-        });
-        return this.pushStack(stack);
-      },
-      _invoke: function(method) {
-        this.each(function() {
-          var waypoints;
-
-          waypoints = Waypoint.getWaypointsByElement(this);
-          return $.each(waypoints, function(i, waypoint) {
-            waypoint[method]();
-            return true;
-          });
-        });
-        return this;
-      }
-    };
-    $.fn[wp] = function() {
-      var args, method;
-
-      method = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      if (methods[method]) {
-        return methods[method].apply(this, args);
-      } else if ($.isFunction(method)) {
-        return methods.init.apply(this, arguments);
-      } else if ($.isPlainObject(method)) {
-        return methods.init.apply(this, [null, method]);
-      } else if (!method) {
-        return $.error("jQuery Waypoints needs a callback function or handler option.");
-      } else {
-        return $.error("The " + method + " method does not exist in jQuery Waypoints.");
-      }
-    };
-    $.fn[wp].defaults = {
-      context: window,
-      continuous: true,
-      enabled: true,
-      horizontal: false,
-      offset: 0,
-      triggerOnce: false
-    };
-    jQMethods = {
-      refresh: function() {
-        return $.each(contexts, function(i, context) {
-          return context.refresh();
-        });
-      },
-      viewportHeight: function() {
-        var _ref;
-
-        return (_ref = window.innerHeight) != null ? _ref : $w.height();
-      },
-      aggregate: function(contextSelector) {
-        var collection, waypoints, _ref;
-
-        collection = allWaypoints;
-        if (contextSelector) {
-          collection = (_ref = contexts[$(contextSelector)[0][contextKey]]) != null ? _ref.waypoints : void 0;
-        }
-        if (!collection) {
-          return [];
-        }
-        waypoints = {
-          horizontal: [],
-          vertical: []
-        };
-        $.each(waypoints, function(axis, arr) {
-          $.each(collection[axis], function(key, waypoint) {
-            return arr.push(waypoint);
-          });
-          arr.sort(function(a, b) {
-            return a.offset - b.offset;
-          });
-          waypoints[axis] = $.map(arr, function(waypoint) {
-            return waypoint.element;
-          });
-          return waypoints[axis] = $.unique(waypoints[axis]);
-        });
-        return waypoints;
-      },
-      above: function(contextSelector) {
-        if (contextSelector == null) {
-          contextSelector = window;
-        }
-        return jQMethods._filter(contextSelector, 'vertical', function(context, waypoint) {
-          return waypoint.offset <= context.oldScroll.y;
-        });
-      },
-      below: function(contextSelector) {
-        if (contextSelector == null) {
-          contextSelector = window;
-        }
-        return jQMethods._filter(contextSelector, 'vertical', function(context, waypoint) {
-          return waypoint.offset > context.oldScroll.y;
-        });
-      },
-      left: function(contextSelector) {
-        if (contextSelector == null) {
-          contextSelector = window;
-        }
-        return jQMethods._filter(contextSelector, 'horizontal', function(context, waypoint) {
-          return waypoint.offset <= context.oldScroll.x;
-        });
-      },
-      right: function(contextSelector) {
-        if (contextSelector == null) {
-          contextSelector = window;
-        }
-        return jQMethods._filter(contextSelector, 'horizontal', function(context, waypoint) {
-          return waypoint.offset > context.oldScroll.x;
-        });
-      },
-      enable: function() {
-        return jQMethods._invoke('enable');
-      },
-      disable: function() {
-        return jQMethods._invoke('disable');
-      },
-      destroy: function() {
-        return jQMethods._invoke('destroy');
-      },
-      extendFn: function(methodName, f) {
-        return methods[methodName] = f;
-      },
-      _invoke: function(method) {
-        var waypoints;
-
-        waypoints = $.extend({}, allWaypoints.vertical, allWaypoints.horizontal);
-        return $.each(waypoints, function(key, waypoint) {
-          waypoint[method]();
-          return true;
-        });
-      },
-      _filter: function(selector, axis, test) {
-        var context, waypoints;
-
-        context = contexts[$(selector)[0][contextKey]];
-        if (!context) {
-          return [];
-        }
-        waypoints = [];
-        $.each(context.waypoints[axis], function(i, waypoint) {
-          if (test(context, waypoint)) {
-            return waypoints.push(waypoint);
-          }
-        });
-        waypoints.sort(function(a, b) {
-          return a.offset - b.offset;
-        });
-        return $.map(waypoints, function(waypoint) {
-          return waypoint.element;
-        });
-      }
-    };
-    $[wps] = function() {
-      var args, method;
-
-      method = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      if (jQMethods[method]) {
-        return jQMethods[method].apply(null, args);
-      } else {
-        return jQMethods.aggregate.call(null, method);
-      }
-    };
-    $[wps].settings = {
-      resizeThrottle: 100,
-      scrollThrottle: 30
-    };
-    return $w.on('load.waypoints', function() {
-      return $[wps]('refresh');
-    });
-  });
-
-}).call(this);
-
-// Generated by CoffeeScript 1.6.2
-/*
-Sticky Elements Shortcut for jQuery Waypoints - v2.0.5
-Copyright (c) 2011-2014 Caleb Troughton
+  if (window.jQuery) {
+    window.jQuery.fn.waypoint = createExtension(window.jQuery)
+  }
+  if (window.Zepto) {
+    window.Zepto.fn.waypoint = createExtension(window.Zepto)
+  }
+}())
+;
+/*!
+Waypoints Sticky Element Shortcut - 3.1.1
+Copyright © 2011-2015 Caleb Troughton
 Licensed under the MIT license.
-https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
+https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 */
-
-
 (function() {
-  (function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-      return define(['jquery', 'waypoints'], factory);
-    } else {
-      return factory(root.jQuery);
-    }
-  })(window, function($) {
-    var defaults, wrap;
+  'use strict'
 
-    defaults = {
-      wrapper: '<div class="sticky-wrapper" />',
-      stuckClass: 'stuck',
-      direction: 'down right'
-    };
-    wrap = function($elements, options) {
-      var $parent;
+  var $ = window.jQuery
+  var Waypoint = window.Waypoint
 
-      $elements.wrap(options.wrapper);
-      $parent = $elements.parent();
-      return $parent.data('isWaypointStickyWrapper', true);
-    };
-    $.waypoints('extendFn', 'sticky', function(opt) {
-      var $wrap, options, originalHandler;
+  /* http://imakewebthings.com/waypoints/shortcuts/sticky-elements */
+  function Sticky(options) {
+    this.options = $.extend({}, Waypoint.defaults, Sticky.defaults, options)
+    this.element = this.options.element
+    this.$element = $(this.element)
+    this.createWrapper()
+    this.createWaypoint()
+  }
 
-      options = $.extend({}, $.fn.waypoint.defaults, defaults, opt);
-      $wrap = wrap(this, options);
-      originalHandler = options.handler;
-      options.handler = function(direction) {
-        var $sticky, shouldBeStuck;
+  /* Private */
+  Sticky.prototype.createWaypoint = function() {
+    var originalHandler = this.options.handler
 
-        $sticky = $(this).children(':first');
-        shouldBeStuck = options.direction.indexOf(direction) !== -1;
-        $sticky.toggleClass(options.stuckClass, shouldBeStuck);
-        $wrap.height(shouldBeStuck ? $sticky.outerHeight() : '');
-        if (originalHandler != null) {
-          return originalHandler.call(this, direction);
+    this.waypoint = new Waypoint($.extend({}, this.options, {
+      element: this.wrapper,
+      handler: $.proxy(function(direction) {
+        var shouldBeStuck = this.options.direction.indexOf(direction) > -1
+        var wrapperHeight = shouldBeStuck ? this.$element.outerHeight(true) : ''
+
+        this.$wrapper.height(wrapperHeight)
+        this.$element.toggleClass(this.options.stuckClass, shouldBeStuck)
+
+        if (originalHandler) {
+          originalHandler.call(this, direction)
         }
-      };
-      $wrap.waypoint(options);
-      return this.data('stuckClass', options.stuckClass);
-    });
-    return $.waypoints('extendFn', 'unsticky', function() {
-      var $parent;
+      }, this)
+    }))
+  }
 
-      $parent = this.parent();
-      if (!$parent.data('isWaypointStickyWrapper')) {
-        return this;
-      }
-      $parent.waypoint('destroy');
-      this.unwrap();
-      return this.removeClass(this.data('stuckClass'));
-    });
-  });
+  /* Private */
+  Sticky.prototype.createWrapper = function() {
+    this.$element.wrap(this.options.wrapper)
+    this.$wrapper = this.$element.parent()
+    this.wrapper = this.$wrapper[0]
+  }
 
-}).call(this);
+  /* Public */
+  Sticky.prototype.destroy = function() {
+    if (this.$element.parent()[0] === this.wrapper) {
+      this.waypoint.destroy()
+      this.$element.removeClass(this.options.stuckClass).unwrap()
+    }
+  }
 
+  Sticky.defaults = {
+    wrapper: '<div class="sticky-wrapper" />',
+    stuckClass: 'stuck',
+    direction: 'down right'
+  }
+
+  Waypoint.Sticky = Sticky
+}())
+;
 /*!
  * imagesLoaded PACKAGED v3.0.4
  * JavaScript is all like "You images are done yet or what?"
@@ -7567,40 +7709,33 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-/*global jQuery */
-/*jshint multistr:true browser:true */
+/*jshint browser:true */
 /*!
-* FitVids 1.0
+* FitVids 1.1
 *
 * Copyright 2013, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
 * Credit to Thierry Koblentz - http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
 * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 *
-* Date: Thu Sept 01 18:00:00 2011 -0500
 */
 
-(function( $ ){
+;(function( $ ){
 
-  "use strict";
+  'use strict';
 
   $.fn.fitVids = function( options ) {
     var settings = {
-      customSelector: null
+      customSelector: null,
+      ignore: null
     };
 
     if(!document.getElementById('fit-vids-style')) {
-
-      var div = document.createElement('div'),
-          ref = document.getElementsByTagName('base')[0] || document.getElementsByTagName('script')[0],
-          cssStyles = '&shy;<style>.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style>';
-
-      div.className = 'fit-vids-style';
-      div.id = 'fit-vids-style';
-      div.style.display = 'none';
-      div.innerHTML = cssStyles;
-
-      ref.parentNode.insertBefore(div,ref);
-
+      // appendStyles: https://github.com/toddmotto/fluidvids/blob/master/dist/fluidvids.js
+      var head = document.head || document.getElementsByTagName('head')[0];
+      var css = '.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}';
+      var div = document.createElement("div");
+      div.innerHTML = '<p>x</p><style id="fit-vids-style">' + css + '</style>';
+      head.appendChild(div.childNodes[1]);
     }
 
     if ( options ) {
@@ -7609,36 +7744,56 @@ if ( typeof define === 'function' && define.amd ) {
 
     return this.each(function(){
       var selectors = [
-        "iframe[src*='player.vimeo.com']",
-        "iframe[src*='youtube.com']",
-        "iframe[src*='youtube-nocookie.com']",
-        "iframe[src*='kickstarter.com'][src*='video.html']",
-        "object",
-        "embed"
+        'iframe[src*="player.vimeo.com"]',
+        'iframe[src*="youtube.com"]',
+        'iframe[src*="youtube-nocookie.com"]',
+        'iframe[src*="kickstarter.com"][src*="video.html"]',
+        'object',
+        'embed'
       ];
 
       if (settings.customSelector) {
         selectors.push(settings.customSelector);
       }
 
+      var ignoreList = '.fitvidsignore';
+
+      if(settings.ignore) {
+        ignoreList = ignoreList + ', ' + settings.ignore;
+      }
+
       var $allVideos = $(this).find(selectors.join(','));
-      $allVideos = $allVideos.not("object object"); // SwfObj conflict patch
+      $allVideos = $allVideos.not('object object'); // SwfObj conflict patch
+      $allVideos = $allVideos.not(ignoreList); // Disable FitVids on this video.
 
       $allVideos.each(function(){
         var $this = $(this);
+        if($this.parents(ignoreList).length > 0) {
+          return; // Disable FitVids on this video.
+        }
         if (this.tagName.toLowerCase() === 'embed' && $this.parent('object').length || $this.parent('.fluid-width-video-wrapper').length) { return; }
+        if ((!$this.css('height') && !$this.css('width')) && (isNaN($this.attr('height')) || isNaN($this.attr('width'))))
+        {
+          $this.attr('height', 9);
+          $this.attr('width', 16);
+        }
         var height = ( this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10))) ) ? parseInt($this.attr('height'), 10) : $this.height(),
             width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
             aspectRatio = height / width;
-        if(!$this.attr('id')){
-          var videoID = 'fitvid' + Math.floor(Math.random()*999999);
-          $this.attr('id', videoID);
+        if(!$this.attr('name')){
+          var videoName = 'fitvid' + $.fn.fitVids._count;
+          $this.attr('name', videoName);
+          $.fn.fitVids._count++;
         }
-        $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
+        $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+'%');
         $this.removeAttr('height').removeAttr('width');
       });
     });
   };
+  
+  // Internal counter for unique video names.
+  $.fn.fitVids._count = 0;
+  
 // Works with either jQuery or Zepto
 })( window.jQuery || window.Zepto );
 
@@ -9107,7 +9262,7 @@ if ( typeof define === 'function' && define.amd ) {
     };
 });
 /*
- * jQuery FlexSlider v2.6.0
+ * jQuery FlexSlider v2.6.3
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  */
@@ -9326,7 +9481,7 @@ if ( typeof define === 'function' && define.amd ) {
             for (var i = 0; i < slider.pagingCount; i++) {
               slide = slider.slides.eq(i);
               if ( undefined === slide.attr( 'data-thumb-alt' ) ) { slide.attr( 'data-thumb-alt', '' ); }
-              altText = ( '' !== slide.attr( 'data-thumb-alt' ) ) ? altText = ' alt="' + slide.attr( 'data-thumb-alt' ) + '"' : '';
+              var altText = ( '' !== slide.attr( 'data-thumb-alt' ) ) ? altText = ' alt="' + slide.attr( 'data-thumb-alt' ) + '"' : '';
               item = (slider.vars.controlNav === "thumbnails") ? '<img src="' + slide.attr( 'data-thumb' ) + '"' + altText + '/>' : '<a href="#">' + j + '</a>';
               if ( 'thumbnails' === slider.vars.controlNav && true === slider.vars.thumbCaptions ) {
                 var captn = slide.attr( 'data-thumbcaption' );
@@ -9700,7 +9855,7 @@ if ( typeof define === 'function' && define.amd ) {
       smoothHeight: function(dur) {
         if (!vertical || fade) {
           var $obj = (fade) ? slider : slider.viewport;
-          (dur) ? $obj.animate({"height": slider.slides.eq(slider.animatingTo).height()}, dur) : $obj.height(slider.slides.eq(slider.animatingTo).height());
+          (dur) ? $obj.animate({"height": slider.slides.eq(slider.animatingTo).innerHeight()}, dur) : $obj.innerHeight(slider.slides.eq(slider.animatingTo).innerHeight());
         }
       },
       sync: function(action) {
@@ -9884,12 +10039,8 @@ if ( typeof define === 'function' && define.amd ) {
           }
         } else { // FADE:
           if (!touch) {
-            //slider.slides.eq(slider.currentSlide).fadeOut(slider.vars.animationSpeed, slider.vars.easing);
-            //slider.slides.eq(target).fadeIn(slider.vars.animationSpeed, slider.vars.easing, slider.wrapup);
-
             slider.slides.eq(slider.currentSlide).css({"zIndex": 1}).animate({"opacity": 0}, slider.vars.animationSpeed, slider.vars.easing);
             slider.slides.eq(target).css({"zIndex": 2}).animate({"opacity": 1}, slider.vars.animationSpeed, slider.vars.easing, slider.wrapup);
-
           } else {
             slider.slides.eq(slider.currentSlide).css({ "opacity": 0, "zIndex": 1 });
             slider.slides.eq(target).css({ "opacity": 1, "zIndex": 2 });
@@ -10279,7 +10430,7 @@ if ( typeof define === 'function' && define.amd ) {
             selector = (options.selector) ? options.selector : ".slides > li",
             $slides = $this.find(selector);
 
-      if ( ( $slides.length === 1 && options.allowOneSlide === true ) || $slides.length === 0 ) {
+      if ( ( $slides.length === 1 && options.allowOneSlide === false ) || $slides.length === 0 ) {
           $slides.fadeIn(400);
           if (options.start) { options.start($this); }
         } else if ($this.data('flexslider') === undefined) {
@@ -10302,8 +10453,9 @@ if ( typeof define === 'function' && define.amd ) {
   };
 })(jQuery);
 
-/*! odometer 0.4.7 */
-(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G=[].slice;q='<span class="odometer-value"></span>',n='<span class="odometer-ribbon"><span class="odometer-ribbon-inner">'+q+"</span></span>",d='<span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner">'+n+"</span></span>",g='<span class="odometer-formatting-mark"></span>',c="(,ddd).dd",h=/^\(?([^)]*)\)?(?:(.)(d+))?$/,i=30,f=2e3,a=20,j=2,e=.5,k=1e3/i,b=1e3/a,o="transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd",y=document.createElement("div").style,p=null!=y.transition||null!=y.webkitTransition||null!=y.mozTransition||null!=y.oTransition,w=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,l=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,s=function(a){var b;return b=document.createElement("div"),b.innerHTML=a,b.children[0]},v=function(a,b){return a.className=a.className.replace(new RegExp("(^| )"+b.split(" ").join("|")+"( |$)","gi")," ")},r=function(a,b){return v(a,b),a.className+=" "+b},z=function(a,b){var c;return null!=document.createEvent?(c=document.createEvent("HTMLEvents"),c.initEvent(b,!0,!0),a.dispatchEvent(c)):void 0},u=function(){var a,b;return null!=(a=null!=(b=window.performance)&&"function"==typeof b.now?b.now():void 0)?a:+new Date},x=function(a,b){return null==b&&(b=0),b?(a*=Math.pow(10,b),a+=.5,a=Math.floor(a),a/=Math.pow(10,b)):Math.round(a)},A=function(a){return 0>a?Math.ceil(a):Math.floor(a)},t=function(a){return a-x(a)},C=!1,(B=function(){var a,b,c,d,e;if(!C&&null!=window.jQuery){for(C=!0,d=["html","text"],e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(function(a){var b;return b=window.jQuery.fn[a],window.jQuery.fn[a]=function(a){var c;return null==a||null==(null!=(c=this[0])?c.odometer:void 0)?b.apply(this,arguments):this[0].odometer.update(a)}}(a));return e}})(),setTimeout(B,0),m=function(){function a(b){var c,d,e,g,h,i,l,m,n,o,p=this;if(this.options=b,this.el=this.options.el,null!=this.el.odometer)return this.el.odometer;this.el.odometer=this,m=a.options;for(d in m)g=m[d],null==this.options[d]&&(this.options[d]=g);null==(h=this.options).duration&&(h.duration=f),this.MAX_VALUES=this.options.duration/k/j|0,this.resetFormat(),this.value=this.cleanValue(null!=(n=this.options.value)?n:""),this.renderInside(),this.render();try{for(o=["innerHTML","innerText","textContent"],i=0,l=o.length;l>i;i++)e=o[i],null!=this.el[e]&&!function(a){return Object.defineProperty(p.el,a,{get:function(){var b;return"innerHTML"===a?p.inside.outerHTML:null!=(b=p.inside.innerText)?b:p.inside.textContent},set:function(a){return p.update(a)}})}(e)}catch(q){c=q,this.watchForMutations()}}return a.prototype.renderInside=function(){return this.inside=document.createElement("div"),this.inside.className="odometer-inside",this.el.innerHTML="",this.el.appendChild(this.inside)},a.prototype.watchForMutations=function(){var a,b=this;if(null!=l)try{return null==this.observer&&(this.observer=new l(function(){var a;return a=b.el.innerText,b.renderInside(),b.render(b.value),b.update(a)})),this.watchMutations=!0,this.startWatchingMutations()}catch(c){a=c}},a.prototype.startWatchingMutations=function(){return this.watchMutations?this.observer.observe(this.el,{childList:!0}):void 0},a.prototype.stopWatchingMutations=function(){var a;return null!=(a=this.observer)?a.disconnect():void 0},a.prototype.cleanValue=function(a){var b;return"string"==typeof a&&(a=a.replace(null!=(b=this.format.radix)?b:".","<radix>"),a=a.replace(/[.,]/g,""),a=a.replace("<radix>","."),a=parseFloat(a,10)||0),x(a,this.format.precision)},a.prototype.bindTransitionEnd=function(){var a,b,c,d,e,f,g=this;if(!this.transitionEndBound){for(this.transitionEndBound=!0,b=!1,e=o.split(" "),f=[],c=0,d=e.length;d>c;c++)a=e[c],f.push(this.el.addEventListener(a,function(){return b?!0:(b=!0,setTimeout(function(){return g.render(),b=!1,z(g.el,"odometerdone")},0),!0)},!1));return f}},a.prototype.resetFormat=function(){var a,b,d,e,f,g,i,j;if(a=null!=(i=this.options.format)?i:c,a||(a="d"),d=h.exec(a),!d)throw new Error("Odometer: Unparsable digit format");return j=d.slice(1,4),g=j[0],f=j[1],b=j[2],e=(null!=b?b.length:void 0)||0,this.format={repeating:g,radix:f,precision:e}},a.prototype.render=function(a){var b,c,d,e,f,g,h;for(null==a&&(a=this.value),this.stopWatchingMutations(),this.resetFormat(),this.inside.innerHTML="",f=this.options.theme,b=this.el.className.split(" "),e=[],g=0,h=b.length;h>g;g++)c=b[g],c.length&&((d=/^odometer-theme-(.+)$/.exec(c))?f=d[1]:/^odometer(-|$)/.test(c)||e.push(c));return e.push("odometer"),p||e.push("odometer-no-transitions"),e.push(f?"odometer-theme-"+f:"odometer-auto-theme"),this.el.className=e.join(" "),this.ribbons={},this.formatDigits(a),this.startWatchingMutations()},a.prototype.formatDigits=function(a){var b,c,d,e,f,g,h,i,j,k;if(this.digits=[],this.options.formatFunction)for(d=this.options.formatFunction(a),j=d.split("").reverse(),f=0,h=j.length;h>f;f++)c=j[f],c.match(/0-9/)?(b=this.renderDigit(),b.querySelector(".odometer-value").innerHTML=c,this.digits.push(b),this.insertDigit(b)):this.addSpacer(c);else for(e=!this.format.precision||!t(a)||!1,k=a.toString().split("").reverse(),g=0,i=k.length;i>g;g++)b=k[g],"."===b&&(e=!0),this.addDigit(b,e)},a.prototype.update=function(a){var b,c=this;return a=this.cleanValue(a),(b=a-this.value)?(v(this.el,"odometer-animating-up odometer-animating-down odometer-animating"),b>0?r(this.el,"odometer-animating-up"):r(this.el,"odometer-animating-down"),this.stopWatchingMutations(),this.animate(a),this.startWatchingMutations(),setTimeout(function(){return c.el.offsetHeight,r(c.el,"odometer-animating")},0),this.value=a):void 0},a.prototype.renderDigit=function(){return s(d)},a.prototype.insertDigit=function(a,b){return null!=b?this.inside.insertBefore(a,b):this.inside.children.length?this.inside.insertBefore(a,this.inside.children[0]):this.inside.appendChild(a)},a.prototype.addSpacer=function(a,b,c){var d;return d=s(g),d.innerHTML=a,c&&r(d,c),this.insertDigit(d,b)},a.prototype.addDigit=function(a,b){var c,d,e,f;if(null==b&&(b=!0),"-"===a)return this.addSpacer(a,null,"odometer-negation-mark");if("."===a)return this.addSpacer(null!=(f=this.format.radix)?f:".",null,"odometer-radix-mark");if(b)for(e=!1;;){if(!this.format.repeating.length){if(e)throw new Error("Bad odometer format without digits");this.resetFormat(),e=!0}if(c=this.format.repeating[this.format.repeating.length-1],this.format.repeating=this.format.repeating.substring(0,this.format.repeating.length-1),"d"===c)break;this.addSpacer(c)}return d=this.renderDigit(),d.querySelector(".odometer-value").innerHTML=a,this.digits.push(d),this.insertDigit(d)},a.prototype.animate=function(a){return p&&"count"!==this.options.animation?this.animateSlide(a):this.animateCount(a)},a.prototype.animateCount=function(a){var c,d,e,f,g,h=this;if(d=+a-this.value)return f=e=u(),c=this.value,(g=function(){var i,j,k;return u()-f>h.options.duration?(h.value=a,h.render(),void z(h.el,"odometerdone")):(i=u()-e,i>b&&(e=u(),k=i/h.options.duration,j=d*k,c+=j,h.render(Math.round(c))),null!=w?w(g):setTimeout(g,b))})()},a.prototype.getDigitCount=function(){var a,b,c,d,e,f;for(d=1<=arguments.length?G.call(arguments,0):[],a=e=0,f=d.length;f>e;a=++e)c=d[a],d[a]=Math.abs(c);return b=Math.max.apply(Math,d),Math.ceil(Math.log(b+1)/Math.log(10))},a.prototype.getFractionalDigitCount=function(){var a,b,c,d,e,f,g;for(e=1<=arguments.length?G.call(arguments,0):[],b=/^\-?\d*\.(\d*?)0*$/,a=f=0,g=e.length;g>f;a=++f)d=e[a],e[a]=d.toString(),c=b.exec(e[a]),e[a]=null==c?0:c[1].length;return Math.max.apply(Math,e)},a.prototype.resetDigits=function(){return this.digits=[],this.ribbons=[],this.inside.innerHTML="",this.resetFormat()},a.prototype.animateSlide=function(a){var b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,s,t,u,v,w,x,y,z,B,C,D,E;if(s=this.value,j=this.getFractionalDigitCount(s,a),j&&(a*=Math.pow(10,j),s*=Math.pow(10,j)),d=a-s){for(this.bindTransitionEnd(),f=this.getDigitCount(s,a),g=[],b=0,m=v=0;f>=0?f>v:v>f;m=f>=0?++v:--v){if(t=A(s/Math.pow(10,f-m-1)),i=A(a/Math.pow(10,f-m-1)),h=i-t,Math.abs(h)>this.MAX_VALUES){for(l=[],n=h/(this.MAX_VALUES+this.MAX_VALUES*b*e),c=t;h>0&&i>c||0>h&&c>i;)l.push(Math.round(c)),c+=n;l[l.length-1]!==i&&l.push(i),b++}else l=function(){E=[];for(var a=t;i>=t?i>=a:a>=i;i>=t?a++:a--)E.push(a);return E}.apply(this);for(m=w=0,y=l.length;y>w;m=++w)k=l[m],l[m]=Math.abs(k%10);g.push(l)}for(this.resetDigits(),D=g.reverse(),m=x=0,z=D.length;z>x;m=++x)for(l=D[m],this.digits[m]||this.addDigit(" ",m>=j),null==(u=this.ribbons)[m]&&(u[m]=this.digits[m].querySelector(".odometer-ribbon-inner")),this.ribbons[m].innerHTML="",0>d&&(l=l.reverse()),o=C=0,B=l.length;B>C;o=++C)k=l[o],q=document.createElement("div"),q.className="odometer-value",q.innerHTML=k,this.ribbons[m].appendChild(q),o===l.length-1&&r(q,"odometer-last-value"),0===o&&r(q,"odometer-first-value");return 0>t&&this.addDigit("-"),p=this.inside.querySelector(".odometer-radix-mark"),null!=p&&p.parent.removeChild(p),j?this.addSpacer(this.format.radix,this.digits[j-1],"odometer-radix-mark"):void 0}},a}(),m.options=null!=(E=window.odometerOptions)?E:{},setTimeout(function(){var a,b,c,d,e;if(window.odometerOptions){d=window.odometerOptions,e=[];for(a in d)b=d[a],e.push(null!=(c=m.options)[a]?(c=m.options)[a]:c[a]=b);return e}},0),m.init=function(){var a,b,c,d,e,f;if(null!=document.querySelectorAll){for(b=document.querySelectorAll(m.options.selector||".odometer"),f=[],c=0,d=b.length;d>c;c++)a=b[c],f.push(a.odometer=new m({el:a,value:null!=(e=a.innerText)?e:a.textContent}));return f}},null!=(null!=(F=document.documentElement)?F.doScroll:void 0)&&null!=document.createEventObject?(D=document.onreadystatechange,document.onreadystatechange=function(){return"complete"===document.readyState&&m.options.auto!==!1&&m.init(),null!=D?D.apply(this,arguments):void 0}):document.addEventListener("DOMContentLoaded",function(){return m.options.auto!==!1?m.init():void 0},!1),"function"==typeof define&&define.amd?define(["jquery"],function(){return m}):typeof exports===!1?module.exports=m:window.Odometer=m}).call(this);
+/*! odometer 0.4.8 */
+(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G=[].slice;q='<span class="odometer-value"></span>',n='<span class="odometer-ribbon"><span class="odometer-ribbon-inner">'+q+"</span></span>",d='<span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner">'+n+"</span></span>",g='<span class="odometer-formatting-mark"></span>',c="(,ddd).dd",h=/^\(?([^)]*)\)?(?:(.)(d+))?$/,i=30,f=2e3,a=20,j=2,e=.5,k=1e3/i,b=1e3/a,o="transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd",y=document.createElement("div").style,p=null!=y.transition||null!=y.webkitTransition||null!=y.mozTransition||null!=y.oTransition,w=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,l=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,s=function(a){var b;return b=document.createElement("div"),b.innerHTML=a,b.children[0]},v=function(a,b){return a.className=a.className.replace(new RegExp("(^| )"+b.split(" ").join("|")+"( |$)","gi")," ")},r=function(a,b){return v(a,b),a.className+=" "+b},z=function(a,b){var c;return null!=document.createEvent?(c=document.createEvent("HTMLEvents"),c.initEvent(b,!0,!0),a.dispatchEvent(c)):void 0},u=function(){var a,b;return null!=(a=null!=(b=window.performance)&&"function"==typeof b.now?b.now():void 0)?a:+new Date},x=function(a,b){return null==b&&(b=0),b?(a*=Math.pow(10,b),a+=.5,a=Math.floor(a),a/=Math.pow(10,b)):Math.round(a)},A=function(a){return 0>a?Math.ceil(a):Math.floor(a)},t=function(a){return a-x(a)},C=!1,(B=function(){var a,b,c,d,e;if(!C&&null!=window.jQuery){for(C=!0,d=["html","text"],e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(function(a){var b;return b=window.jQuery.fn[a],window.jQuery.fn[a]=function(a){var c;return null==a||null==(null!=(c=this[0])?c.odometer:void 0)?b.apply(this,arguments):this[0].odometer.update(a)}}(a));return e}})(),setTimeout(B,0),m=function(){function a(b){var c,d,e,g,h,i,l,m,n,o,p=this;if(this.options=b,this.el=this.options.el,null!=this.el.odometer)return this.el.odometer;this.el.odometer=this,m=a.options;for(d in m)g=m[d],null==this.options[d]&&(this.options[d]=g);null==(h=this.options).duration&&(h.duration=f),this.MAX_VALUES=this.options.duration/k/j|0,this.resetFormat(),this.value=this.cleanValue(null!=(n=this.options.value)?n:""),this.renderInside(),this.render();try{for(o=["innerHTML","innerText","textContent"],i=0,l=o.length;l>i;i++)e=o[i],null!=this.el[e]&&!function(a){return Object.defineProperty(p.el,a,{get:function(){var b;return"innerHTML"===a?p.inside.outerHTML:null!=(b=p.inside.innerText)?b:p.inside.textContent},set:function(a){return p.update(a)}})}(e)}catch(q){c=q,this.watchForMutations()}}return a.prototype.renderInside=function(){return this.inside=document.createElement("div"),this.inside.className="odometer-inside",this.el.innerHTML="",this.el.appendChild(this.inside)},a.prototype.watchForMutations=function(){var a,b=this;if(null!=l)try{return null==this.observer&&(this.observer=new l(function(a){var c;return c=b.el.innerText,b.renderInside(),b.render(b.value),b.update(c)})),this.watchMutations=!0,this.startWatchingMutations()}catch(c){a=c}},a.prototype.startWatchingMutations=function(){return this.watchMutations?this.observer.observe(this.el,{childList:!0}):void 0},a.prototype.stopWatchingMutations=function(){var a;return null!=(a=this.observer)?a.disconnect():void 0},a.prototype.cleanValue=function(a){var b;return"string"==typeof a&&(a=a.replace(null!=(b=this.format.radix)?b:".","<radix>"),a=a.replace(/[.,]/g,""),a=a.replace("<radix>","."),a=parseFloat(a,10)||0),x(a,this.format.precision)},a.prototype.bindTransitionEnd=function(){var a,b,c,d,e,f,g=this;if(!this.transitionEndBound){for(this.transitionEndBound=!0,b=!1,e=o.split(" "),f=[],c=0,d=e.length;d>c;c++)a=e[c],f.push(this.el.addEventListener(a,function(){return b?!0:(b=!0,setTimeout(function(){return g.render(),b=!1,z(g.el,"odometerdone")},0),!0)},!1));return f}},a.prototype.resetFormat=function(){var a,b,d,e,f,g,i,j;if(a=null!=(i=this.options.format)?i:c,a||(a="d"),d=h.exec(a),!d)throw new Error("Odometer: Unparsable digit format");return j=d.slice(1,4),g=j[0],f=j[1],b=j[2],e=(null!=b?b.length:void 0)||0,this.format={repeating:g,radix:f,precision:e}},a.prototype.render=function(a){var b,c,d,e,f,g,h;for(null==a&&(a=this.value),this.stopWatchingMutations(),this.resetFormat(),this.inside.innerHTML="",f=this.options.theme,b=this.el.className.split(" "),e=[],g=0,h=b.length;h>g;g++)c=b[g],c.length&&((d=/^odometer-theme-(.+)$/.exec(c))?f=d[1]:/^odometer(-|$)/.test(c)||e.push(c));return e.push("odometer"),p||e.push("odometer-no-transitions"),f?e.push("odometer-theme-"+f):e.push("odometer-auto-theme"),this.el.className=e.join(" "),this.ribbons={},this.formatDigits(a),this.startWatchingMutations()},a.prototype.formatDigits=function(a){var b,c,d,e,f,g,h,i,j,k;if(this.digits=[],this.options.formatFunction)for(d=this.options.formatFunction(a),j=d.split("").reverse(),f=0,h=j.length;h>f;f++)c=j[f],c.match(/0-9/)?(b=this.renderDigit(),b.querySelector(".odometer-value").innerHTML=c,this.digits.push(b),this.insertDigit(b)):this.addSpacer(c);else for(e=!this.format.precision||!t(a)||!1,k=a.toString().split("").reverse(),g=0,i=k.length;i>g;g++)b=k[g],"."===b&&(e=!0),this.addDigit(b,e)},a.prototype.update=function(a){var b,c=this;return a=this.cleanValue(a),(b=a-this.value)?(v(this.el,"odometer-animating-up odometer-animating-down odometer-animating"),b>0?r(this.el,"odometer-animating-up"):r(this.el,"odometer-animating-down"),this.stopWatchingMutations(),this.animate(a),this.startWatchingMutations(),setTimeout(function(){return c.el.offsetHeight,r(c.el,"odometer-animating")},0),this.value=a):void 0},a.prototype.renderDigit=function(){return s(d)},a.prototype.insertDigit=function(a,b){return null!=b?this.inside.insertBefore(a,b):this.inside.children.length?this.inside.insertBefore(a,this.inside.children[0]):this.inside.appendChild(a)},a.prototype.addSpacer=function(a,b,c){var d;return d=s(g),d.innerHTML=a,c&&r(d,c),this.insertDigit(d,b)},a.prototype.addDigit=function(a,b){var c,d,e,f;if(null==b&&(b=!0),"-"===a)return this.addSpacer(a,null,"odometer-negation-mark");if("."===a)return this.addSpacer(null!=(f=this.format.radix)?f:".",null,"odometer-radix-mark");if(b)for(e=!1;;){if(!this.format.repeating.length){if(e)throw new Error("Bad odometer format without digits");this.resetFormat(),e=!0}if(c=this.format.repeating[this.format.repeating.length-1],this.format.repeating=this.format.repeating.substring(0,this.format.repeating.length-1),"d"===c)break;this.addSpacer(c)}return d=this.renderDigit(),d.querySelector(".odometer-value").innerHTML=a,this.digits.push(d),this.insertDigit(d)},a.prototype.animate=function(a){return p&&"count"!==this.options.animation?this.animateSlide(a):this.animateCount(a)},a.prototype.animateCount=function(a){var c,d,e,f,g,h=this;if(d=+a-this.value)return f=e=u(),c=this.value,(g=function(){var i,j,k;return u()-f>h.options.duration?(h.value=a,h.render(),void z(h.el,"odometerdone")):(i=u()-e,i>b&&(e=u(),k=i/h.options.duration,j=d*k,c+=j,h.render(Math.round(c))),null!=w?w(g):setTimeout(g,b))})()},a.prototype.getDigitCount=function(){var a,b,c,d,e,f;for(d=1<=arguments.length?G.call(arguments,0):[],a=e=0,f=d.length;f>e;a=++e)c=d[a],d[a]=Math.abs(c);return b=Math.max.apply(Math,d),Math.ceil(Math.log(b+1)/Math.log(10))},a.prototype.getFractionalDigitCount=function(){var a,b,c,d,e,f,g;for(e=1<=arguments.length?G.call(arguments,0):[],b=/^\-?\d*\.(\d*?)0*$/,a=f=0,g=e.length;g>f;a=++f)d=e[a],e[a]=d.toString(),c=b.exec(e[a]),null==c?e[a]=0:e[a]=c[1].length;return Math.max.apply(Math,e)},a.prototype.resetDigits=function(){return this.digits=[],this.ribbons=[],this.inside.innerHTML="",this.resetFormat()},a.prototype.animateSlide=function(a){var b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,s,t,u,v,w,x,y,z,B,C,D,E;if(s=this.value,j=this.getFractionalDigitCount(s,a),j&&(a*=Math.pow(10,j),s*=Math.pow(10,j)),d=a-s){for(this.bindTransitionEnd(),f=this.getDigitCount(s,a),g=[],b=0,m=v=0;f>=0?f>v:v>f;m=f>=0?++v:--v){if(t=A(s/Math.pow(10,f-m-1)),i=A(a/Math.pow(10,f-m-1)),h=i-t,Math.abs(h)>this.MAX_VALUES){for(l=[],n=h/(this.MAX_VALUES+this.MAX_VALUES*b*e),c=t;h>0&&i>c||0>h&&c>i;)l.push(Math.round(c)),c+=n;l[l.length-1]!==i&&l.push(i),b++}else l=function(){E=[];for(var a=t;i>=t?i>=a:a>=i;i>=t?a++:a--)E.push(a);return E}.apply(this);for(m=w=0,y=l.length;y>w;m=++w)k=l[m],l[m]=Math.abs(k%10);g.push(l)}for(this.resetDigits(),D=g.reverse(),m=x=0,z=D.length;z>x;m=++x)for(l=D[m],this.digits[m]||this.addDigit(" ",m>=j),null==(u=this.ribbons)[m]&&(u[m]=this.digits[m].querySelector(".odometer-ribbon-inner")),this.ribbons[m].innerHTML="",0>d&&(l=l.reverse()),o=C=0,B=l.length;B>C;o=++C)k=l[o],q=document.createElement("div"),q.className="odometer-value",q.innerHTML=k,this.ribbons[m].appendChild(q),o===l.length-1&&r(q,"odometer-last-value"),0===o&&r(q,"odometer-first-value");return 0>t&&this.addDigit("-"),p=this.inside.querySelector(".odometer-radix-mark"),null!=p&&p.parent.removeChild(p),j?this.addSpacer(this.format.radix,this.digits[j-1],"odometer-radix-mark"):void 0}},a}(),m.options=null!=(E=window.odometerOptions)?E:{},setTimeout(function(){var a,b,c,d,e;if(window.odometerOptions){d=window.odometerOptions,e=[];for(a in d)b=d[a],e.push(null!=(c=m.options)[a]?(c=m.options)[a]:c[a]=b);return e}},0),m.init=function(){var a,b,c,d,e,f;if(null!=document.querySelectorAll){for(b=document.querySelectorAll(m.options.selector||".odometer"),f=[],c=0,d=b.length;d>c;c++)a=b[c],f.push(a.odometer=new m({el:a,value:null!=(e=a.innerText)?e:a.textContent}));return f}},null!=(null!=(F=document.documentElement)?F.doScroll:void 0)&&null!=document.createEventObject?(D=document.onreadystatechange,document.onreadystatechange=function(){return"complete"===document.readyState&&m.options.auto!==!1&&m.init(),null!=D?D.apply(this,arguments):void 0}):document.addEventListener("DOMContentLoaded",function(){return m.options.auto!==!1?m.init():void 0},!1),"function"==typeof define&&define.amd?define([],function(){return m}):"undefined"!=typeof exports&&null!==exports?module.exports=m:window.Odometer=m}).call(this);
+
 /*!
  * Chart.js
  * http://chartjs.org/
@@ -13708,7 +13860,7 @@ colors = jQuery.Color.names = {
 // ignore camel case because it breaks jshint for vars from php localisation
 /* jshint camelcase: false */
 
-/* global jQuery: false, skrollr: false, paceOptions: false, Pace: false, Odometer: false */
+/* global jQuery: false, skrollr: false, paceOptions: false, Pace: false, Odometer: false, Waypoint: true */
 
 // If script is not localized apply defaults
 
@@ -13909,7 +14061,7 @@ function oxyThemeScripts($) {
                                 return parseInt( $elem.attr( 'data-comments') );
                             }
                         },
-                        sortBy: 'default',
+
                         layoutMode: $container.attr( 'data-layout' ),
                         resizable: false,
                         masonry: {
@@ -13918,7 +14070,7 @@ function oxyThemeScripts($) {
                         }
                     }, function(){
                         // refresh waypoints after layout
-                        $.waypoints('refresh');
+                        Waypoint.refreshAll();
                         $container.removeClass( 'no-transition' );
                         onScrollInit( $items.find( '.portfolio-os-animation' ), $container );
                         onScrollInit( $items.find( '.blog-os-animation' ), $container );
@@ -14018,35 +14170,34 @@ function oxyThemeScripts($) {
         setDimensions:false,
         success: function(mediaElement, node, player) {
             // video tag is initially hidden ( in order to hide the poster and display the cover bg only )
-            var attr = $(mediaElement).attr('poster');
+            var attr = $(node).attr('poster');
             var hasPoster = false;
 
             if(typeof attr !== typeof undefined && attr !== '') {
                 hasPoster = true;
-                $(mediaElement).parent().css('background-image','url(\'' + $(mediaElement).attr('poster') + '\')');
+                $(node).parent().css('background-image','url(\'' + $(mediaElement).attr('poster') + '\')');
             }
-            var $section = $(mediaElement).closest('section');
+            var $section = $(node).closest('section');
 
             // loadded data event does not trigger on ios, its dektop only
-            mediaElement.addEventListener('loadeddata', function () {
+            node.addEventListener('loadeddata', function () {
                 // player arg has media property filled only after loadeddata even triggers ( first frame loaded! )
                 var containerHeight    = $section.outerHeight();
                 var containerWidth     = $section.outerWidth();
-                var playerHeight       = player.media.videoHeight;
-                var playerWidth        = player.media.videoWidth;
+                var playerHeight       = player.node.videoHeight;
+                var playerWidth        = player.node.videoWidth;
                 var aspectRatio        = ( playerHeight / playerWidth * 100 ) + '%';
                 var scaleFactor        = containerWidth /playerWidth;
                 var playerActualHeight = playerHeight * scaleFactor;
-
-                $(mediaElement).parent().css('padding-bottom', aspectRatio);
+                $(node).parent().css('padding-bottom', aspectRatio);
                 if( playerActualHeight >= containerHeight ){
-                    $(mediaElement).css('top', ( containerHeight - (playerHeight * scaleFactor) )/2 );
+                    $(node).css('top', ( containerHeight - (playerHeight * scaleFactor) )/2 );
                 }
                 else {
-                    $(mediaElement).css('background-image', '');
+                    $(node).css('background-image', '');
                 }
 
-                $(mediaElement).show();
+                $(node).show();
 
                 $(window).smartresize(function(){
                         containerHeight    = $section.outerHeight();
@@ -14054,10 +14205,10 @@ function oxyThemeScripts($) {
                         scaleFactor        = containerWidth /playerWidth;
                         playerActualHeight = playerHeight * scaleFactor;
                     if( playerActualHeight >= containerHeight ){
-                        $(mediaElement).css('top', ( containerHeight - (playerHeight * scaleFactor) )/2 );
+                        $(node).css('top', ( containerHeight - (playerHeight * scaleFactor) )/2 );
                     }
                     else {
-                        $(mediaElement).css('background-image', '');
+                        $(node).css('background-image', '');
                     }
                 });
             });
@@ -14065,12 +14216,12 @@ function oxyThemeScripts($) {
             // mobile needs a javascript controller for the video
             if( $('body[class*="oxy-agent-"]').length ) {
                 $section.on('click', function (e) {
-                    if(mediaElement.paused) {
-                        mediaElement.play();
+                    if(node.paused) {
+                        node.play();
                     }
                     else{
                         // ipad-only control, since it does not go fullscreen automatically
-                        mediaElement.pause();
+                        node.pause();
                     }
                 });
 
@@ -14081,13 +14232,13 @@ function oxyThemeScripts($) {
                 // when pausing mobile videos, display the play button
                 // and hide the video if there is a poster
                 if(hasPoster){
-                    mediaElement.addEventListener('pause', function () {
+                    node.addEventListener('pause', function () {
                         $section.find('.mejs-overlay-play').show();
-                        $(mediaElement).hide();
+                        $(node).hide();
                     });
 
-                    mediaElement.addEventListener('play', function () {
-                        $(mediaElement).show();
+                    node.addEventListener('play', function () {
+                        $(node).show();
                     });
                 }
             }
@@ -14274,7 +14425,7 @@ function oxyThemeScripts($) {
         });
     }
 
-    $('.menu a, a.scroll-to-id, .bullet-nav a').on('click', function(e) {
+    $('.navbar a, a.scroll-to-id, .bullet-nav a').on('click', function(e) {
         if(this.hash) {
           scrollToHash(this.hash);
           e.preventDefault();
@@ -14325,10 +14476,13 @@ function oxyThemeScripts($) {
         'position': 'relative',
         'z-index': '1100'
     });
-    // stop navbar when at top of the page
-    header.waypoint('sticky', {
-        stuckClass: 'navbar-stuck'
-    });
+    if(header.length > 0) {
+        // stop navbar when at top of the page
+        var sticky = new Waypoint.Sticky({
+            element: header[0],
+            stuckClass: 'navbar-stuck'
+        });
+    }
 
     // trigger the waypoint only for fixed position navbar
     var menuContainer = $('#masthead.navbar-sticky');
@@ -14352,7 +14506,7 @@ function oxyThemeScripts($) {
                 menuContainer.one('MSTransitionEnd webkitTransitionEnd oTransitionEnd transitionend', function(){
                     // refresh waypoints only once transition ends in order to get correct offsets for sections.
                     if( !menuContainer.hasClass( 'refreshing' ) ) {
-                        $.waypoints('refresh');
+                        Waypoint.refreshAll();
                     }
                     menuContainer.toggleClass('refreshing');
                 });
@@ -14385,12 +14539,11 @@ function oxyThemeScripts($) {
                 'animation-delay':          osAnimationDelay
             });
 
-            var osTrigger = ( trigger ) ? trigger : osElement;
-
-            osTrigger.waypoint(function() {
-                osElement.addClass('animated').addClass(osAnimationClass);
-            },{
-                triggerOnce: true,
+            new Waypoint({
+                element: osElement[0],
+                handler: function() {
+                    $(this.element).addClass('animated').addClass(osAnimationClass);
+                },
                 offset: '90%'
             });
         });
@@ -14453,14 +14606,13 @@ function oxyThemeScripts($) {
     $('.chart').each( function() {
         var $chart = $(this);
         $chart.waypoint(function() {
-            var $waypoint = $(this);
-            $waypoint.easyPieChart({
-                barColor: $waypoint.attr('data-bar-color'),
-                trackColor: $waypoint.attr('data-track-color'),
-                lineWidth: $waypoint.attr('data-line-width'),
+            $chart.easyPieChart({
+                barColor: $chart.attr('data-bar-color'),
+                trackColor: $chart.attr('data-track-color'),
+                lineWidth: $chart.attr('data-line-width'),
                 scaleColor: false,
                 animate: 1000,
-                size: $waypoint.attr('data-size'),
+                size: $chart.attr('data-size'),
                 lineCap: 'square'
             });
         },{
@@ -14560,7 +14712,7 @@ function oxyThemeScripts($) {
                 });
                 $container.isotope( 'appended', $( newElements ), function(){
                     $container.isotope( 'reLayout', function() {
-                        $.waypoints('refresh');
+                        Waypoint.refreshAll();
                     });
                 });
             }

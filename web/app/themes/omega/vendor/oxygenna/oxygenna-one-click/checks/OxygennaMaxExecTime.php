@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -20,7 +20,7 @@ class OxygennaMaxExecTime extends OxygennaSystemCheck
     public function __construct($args)
     {
         $this->args = $args;
-        parent::__construct(__('PHP', 'omega-admin-td') . ' - ' . 'max_execution_time');
+        parent::__construct(esc_html__('PHP', 'omega-admin-td') . ' - ' . 'max_execution_time');
     }
 
     public function check()

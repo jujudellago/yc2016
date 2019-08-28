@@ -10,31 +10,28 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see     https://docs.woothemes.com/document/template-structure/
- * @author  WooThemes
+ * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 2.6.1
+ * @version 3.6.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 global $product, $woocommerce_loop;
 
+// Ensure visibility.
+if ( empty( $product ) || ! $product->is_visible() ) {
+	return;
+}
+
 // Store loop count we're currently on
 if ( empty( $woocommerce_loop['loop'] ) ) {
-	$woocommerce_loop['loop'] = 0;
+    $woocommerce_loop['loop'] = 0;
 }
 
 // Store column count for displaying the grid
 if ( empty( $woocommerce_loop['columns'] ) ) {
-	$woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
-}
-
-// Ensure visibility
-if ( empty( $product ) || ! $product->is_visible() ) {
-	return;
+    $woocommerce_loop['columns'] = apply_filters( 'loop_shop_columns', 4 );
 }
 
 // Increase loop count
@@ -42,22 +39,24 @@ $woocommerce_loop['loop']++;
 
 // Extra post classes
 $classes = array();
-if ( 0 === ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] || 1 === $woocommerce_loop['columns'] ) {
-	$classes[] = 'first';
-}
-if ( 0 === $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
-	$classes[] = 'last';
-}
 
 $columns = 12 / $woocommerce_loop['columns'];
-$columns = str_replace('.', '-', $columns);
-$classes[] = 'col-md-' . $columns . ' text-center';
-?>
-<li <?php post_class( $classes ); ?>>
+$columns    = str_replace('.', '-', $columns);
 
-	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
+$classes = 'col-md-' . $columns . ' text-center';
 
-	<?php
+if ( function_exists('wc_product_class') ) { ?>
+
+	<li <?php wc_product_class( $classes, $product ); ?>>
+		<?php
+		/**
+		 * Hook: woocommerce_before_shop_loop_item.
+		 *
+		 * @hooked woocommerce_template_loop_product_link_open - 10
+		 */
+		do_action( 'woocommerce_before_shop_loop_item' );
+
+
 		/**
 		 * woocommerce_before_shop_loop_item_title hook
 		 *
@@ -65,22 +64,30 @@ $classes[] = 'col-md-' . $columns . ' text-center';
 		 * @hooked woocommerce_template_loop_product_thumbnail - 10
 		 */
 		do_action( 'woocommerce_before_shop_loop_item_title' );
-	?>
+		?>
 
-	<h3 class="product-title bordered bordered-small text-center">
-		<?php the_title(); ?>
-	</h3>
-    <div class="product-info">
-	<?php
-		/**
-		 * woocommerce_after_shop_loop_item_title hook
-		 *
-		 * @hooked woocommerce_template_loop_price - 10
-		 */
-		do_action( 'woocommerce_after_shop_loop_item_title' );
-	?>
-    </div>
-
-	<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>
-
-</li>
+		<h3 class="product-title bordered bordered-small text-center">
+			<?php the_title(); ?>
+		</h3>
+	    <div class="product-info">
+		<?php
+			/**
+			 * Hook: woocommerce_after_shop_loop_item_title.
+			 *
+			 * @hooked woocommerce_template_loop_rating - 5
+			 * @hooked woocommerce_template_loop_price - 10
+			 */
+			do_action( 'woocommerce_after_shop_loop_item_title' );
+		?>
+	    </div>
+		<?php 
+			/**
+			 * Hook: woocommerce_after_shop_loop_item.
+			 *
+			 * @hooked woocommerce_template_loop_product_link_close - 5
+			 * @hooked woocommerce_template_loop_add_to_cart - 10
+			 */
+			do_action( 'woocommerce_after_shop_loop_item' );
+		?>
+	</li>
+<?php } ?>

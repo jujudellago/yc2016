@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 global $post;
 $image = get_post_meta( $post->ID, THEME_SHORT.'_masonry_image', true );

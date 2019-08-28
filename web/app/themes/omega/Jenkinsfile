@@ -1,0 +1,123 @@
+pipeline {
+  agent any
+
+  tools {nodejs 'Node 5.12.0'}
+
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+
+  environment {
+    SSH_DEPLOY_CONFIG_NAME = "${env.BRANCH_NAME == 'develop' ? 'WordPress Dev' : 'Omega Production'}"
+    THEME_FOLDER = 'omega'
+  }
+
+  stages {
+    stage('Build') {
+      when {
+        anyOf {
+          branch 'master';
+          branch 'develop'
+        }
+      }
+      steps {
+        sshagent(['langans-key']) {
+          sh 'printenv'
+          sh 'composer install --no-dev'
+          sh 'ant wordpress'
+        }
+      }
+    }
+
+    stage('Archive') {
+      when {
+        anyOf {
+          branch 'master';
+          branch 'develop'
+        }
+      }
+      steps {
+        archiveArtifacts 'artifacts/**/*.*'
+      }
+    }
+
+    stage('Deploy') {
+      when {
+        anyOf {
+          branch 'master';
+          branch 'develop'
+        }
+      }
+      steps {
+        sshPublisher(
+          publishers: [
+            sshPublisherDesc(
+              configName: env.SSH_DEPLOY_CONFIG_NAME,
+              transfers: [
+                sshTransfer(
+                  cleanRemote: false,
+                  excludes: '',
+                  execCommand: """unzip ${env.JOB_NAME}/${env.BUILD_NUMBER}/build.zip -d ${env.JOB_NAME}/${env.BUILD_NUMBER}/${env.THEME_FOLDER}/
+rm -rf wordpress/wp-content/themes/${env.THEME_FOLDER}
+mv ${env.JOB_NAME}/${env.BUILD_NUMBER}/${env.THEME_FOLDER} wordpress/wp-content/themes/
+rm -rf ${env.JOB_NAME}""",
+                  execTimeout: 120000,
+                  flatten: false,
+                  makeEmptyDirs: false,
+                  noDefaultExcludes: false,
+                  patternSeparator: '[, ]+',
+                  remoteDirectory: "${env.JOB_NAME}/${env.BUILD_NUMBER}",
+                  remoteDirectorySDF: false,
+                  removePrefix: 'artifacts/wordpress',
+                  sourceFiles: 'artifacts/wordpress/build.zip'
+                )
+              ],
+              usePromotionTimestamp: false,
+              useWorkspaceInPromotion: false,
+              verbose: false
+            )
+          ]
+        )
+        slackSend message: "Finished deploy of ${env.THEME_FOLDER} branch ${env.BRANCH_NAME} to ${env.SSH_DEPLOY_CONFIG_NAME}", color: 'good'
+      }
+    }
+
+    stage('Update Documentation Site') {
+      when {
+        branch 'master';
+      }
+      steps {
+        sshPublisher(
+          publishers: [
+            sshPublisherDesc(
+              configName: 'Oxygenna Docs',
+              transfers: [
+                sshTransfer(
+                  cleanRemote: false,
+                  excludes: '',
+                  execCommand: """unzip ${env.JOB_NAME}/${env.BUILD_NUMBER}/docs/docs.zip -d ${env.JOB_NAME}/${env.BUILD_NUMBER}/docs/${env.THEME_FOLDER}/
+rm -rf /var/www/wordpress/${env.THEME_FOLDER}
+mv ${env.JOB_NAME}/${env.BUILD_NUMBER}/docs/${env.THEME_FOLDER} /var/www/wordpress/
+rm -rf ${env.JOB_NAME}""",
+                  execTimeout: 120000,
+                  flatten: false,
+                  makeEmptyDirs: false,
+                  noDefaultExcludes: false,
+                  patternSeparator: '[, ]+',
+                  remoteDirectory: "${env.JOB_NAME}/${env.BUILD_NUMBER}/docs",
+                  remoteDirectorySDF: false,
+                  removePrefix: 'artifacts/wordpress',
+                  sourceFiles: 'artifacts/wordpress/docs.zip'
+                )
+              ],
+              usePromotionTimestamp: false,
+              useWorkspaceInPromotion: false,
+              verbose: false
+            )
+          ]
+        )
+        slackSend message: "Updated documentation for ${env.THEME_FOLDER}", color: 'good'
+      }
+    }
+  }
+}

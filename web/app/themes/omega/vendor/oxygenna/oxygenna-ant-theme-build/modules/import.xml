@@ -23,6 +23,43 @@
         <watermark-folder dir="import" filter="**/images/*_notinclude*"></watermark-folder>
     </target>
 
+
+    <!-- ant export-site -Dsite="charity" -watermark="true"  -->
+
+    <target name="export-site">
+        <!-- remove old images folders from all demo packages-->
+        <echo message="exporting images from ${site}"></echo>
+
+        <!-- remove old images folders from all demo packages-->
+        <apply executable="rm">
+            <arg value="-rf"/>
+            <arg value="*"/>
+            <dirset dir="import" includes="**/${site}/images"/>
+        </apply>
+
+        <!-- create new image folders in all demo packages -->
+        <apply executable="mkdir">
+            <arg value="-p"/>
+            <srcfile suffix="/images" />
+            <dirset dir="import" includes="${site}"/>
+        </apply>
+
+        <!-- download images for all demo packages -->
+        <apply executable="${basedir}/vendor/oxygenna/oxygenna-ant-theme-build/inc/create-snapshot.sh">
+            <dirset dir="import" includes="${site}"/>
+        </apply>
+
+        <if>
+            <equals arg1="${watermark}" arg2="true" />
+            <then>
+                <watermark-folder dir="import" filter="**/${site}/images/*-notinclude*"></watermark-folder>
+                <watermark-folder dir="import" filter="**/${site}/images/*_notinclude*"></watermark-folder>
+                <watermark-folder dir="import" filter="**/${site}/images/*-not-include*"></watermark-folder>
+                <watermark-folder dir="import" filter="**/${site}/images/*_not_include*"></watermark-folder>
+            </then>
+        </if>
+    </target>
+
     <target name="create-snapshot-nowatermark">
         <!-- remove old images folders from all demo packages-->
         <apply executable="rm">

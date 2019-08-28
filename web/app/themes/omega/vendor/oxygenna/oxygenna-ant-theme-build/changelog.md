@@ -19,3 +19,8 @@
 > 18th June 2015
 
 - Fixed node-build task to work with older grunt builds
+
+# 1.1.3
+> 24th September 2015
+
+- Added individual export to create snapshot ant export-site -Dsite="education" -Dwatermark="true"

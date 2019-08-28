@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 global $post;
 $extra_post_class = oxy_get_option('blog_post_icons') === 'on' ? 'post-showinfo' : '';

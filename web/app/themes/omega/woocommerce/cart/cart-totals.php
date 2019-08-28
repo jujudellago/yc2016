@@ -19,12 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<table class="table table-simple-body-headers table-totals" cellspacing="0">
 		<thead>
 			<th colspan=2 class="text-center">
-				<?php _e( 'Cart Totals', 'woocommerce' ); ?>
+				<?php _e( 'Cart totals', 'woocommerce' ); ?>
 			</th>
 		</thead>
 		<tbody>
 			<tr class="cart-subtotal">
-				<th><?php _e( 'Cart Subtotal', 'woocommerce' ); ?></th>
+				<th><?php _e( 'Subtotal', 'woocommerce' ); ?></th>
 				<td><?php wc_cart_totals_subtotal_html(); ?></td>
 			</tr>
 

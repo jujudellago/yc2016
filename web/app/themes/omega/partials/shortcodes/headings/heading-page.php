@@ -14,7 +14,7 @@
                 </li>
                 <?php if (is_page()) :
                     global $post;
-                    $ancestors = get_post_ancestors( $post );
+                    $ancestors = array_reverse(get_post_ancestors( $post ));
                     foreach ($ancestors as $ancestor) {
                         $parent_post = get_post($ancestor);
                         $parent_title = $parent_post->post_title;  ?>

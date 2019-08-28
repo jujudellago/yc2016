@@ -391,28 +391,28 @@ class OxygennaTypography
                         case 'body':
                             $css .= <<<CSS
 body {
-    font-family: {$family}
+    font-family: {$family};
 }
 CSS;
                             break;
                         case 'headings':
                             $css .= <<<CSS
 h1, h2, h3, h4, h5, h6 {
-    font-family: {$family}
+    font-family: {$family};
 }
 CSS;
                             break;
                         case 'blockquote':
                             $css .= <<<CSS
 blockquote {
-    font-family: {$family}
+    font-family: {$family};
 }
 CSS;
                             break;
                         case 'forms':
                             $css .= <<<CSS
 input, textarea, .btn, button {
-    font-family: {$family}
+    font-family: {$family};
 }
 CSS;
                             break;
@@ -432,12 +432,13 @@ CSS;
     {
         $font_info = $this->fetch_font($font['family'], $font['provider']);
         switch ($font['provider']) {
-            case 'google_fonts':
             case 'system_fonts':
+                return $font_info['family'];
+            case 'google_fonts':
                 // wrap font family in quotes if it contains spaces
                 return preg_match('/\s/', $font_info['family']) ? '\''.$font_info['family'].'\'' : $font_info['family'];
             default:
-                return $font_info['css_stack'] . ';';
+                return $font_info['css_stack'];
         }
     }
 

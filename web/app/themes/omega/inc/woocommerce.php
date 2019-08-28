@@ -8,10 +8,19 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 add_theme_support( 'woocommerce' );
+
+// Adds support for new gallery since WC 3.0
+function oxy_woo_product_gallery()
+{
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
+add_action('after_setup_theme', 'oxy_woo_product_gallery');
 
 if( oxy_is_woocommerce_active() ) {
      // Dequeue WooCommerce stylesheet(s)
@@ -88,8 +97,8 @@ if( oxy_is_woocommerce_active() ) {
     function oxy_single_product_hooks() {
         if( is_product() ) {
             // we need to reposition the messages before the breadcrumbs
-            remove_action( 'woocommerce_before_single_product', 'wc_print_notices', 12);
-            add_action( 'woocommerce_before_main_content', 'wc_print_notices', 15 );
+            remove_action( 'woocommerce_before_single_product', 'woocommerce_output_all_notices', 10);
+            add_action( 'woocommerce_before_main_content', 'woocommerce_output_all_notices', 15 );
             add_action('woocommerce_before_main_content', 'oxy_shop_product_widget', 11);
         }
     }
@@ -146,7 +155,7 @@ if( oxy_is_woocommerce_active() ) {
 
     function oxy_woocommerce_template_loop_product_thumbnail(){
         global $product;
-        $image_ids = $product->get_gallery_attachment_ids();
+        $image_ids = $product->get_gallery_image_ids();
         $back_image = array_shift( $image_ids );
         echo '<div class="product-image">';
         echo '<div class="product-image-front">' .woocommerce_get_product_thumbnail() . '</div>';
@@ -162,7 +171,7 @@ if( oxy_is_woocommerce_active() ) {
         global $post;
         if( is_shop() ) {
 
-            oxy_page_header( woocommerce_get_page_id( 'shop' ), array( 'heading_type' => 'page' ) );
+            oxy_page_header( wc_get_page_id( 'shop' ), array( 'heading_type' => 'page' ) );
         }
         else if( is_product_category() ) {
             $category = get_queried_object();
@@ -226,31 +235,6 @@ if( oxy_is_woocommerce_active() ) {
                 'height',
                 'transparency'
             ), $heading, $queried_object->term_id );
-        }
-    }
-
-    // Change number or products per row to based on options
-    add_filter( 'loop_shop_columns', 'oxy_woocom_loop_columns' );
-    if( !function_exists( 'oxy_woocom_loop_columns' ) ) {
-        function oxy_woocom_loop_columns() {
-            if( is_shop() || is_product()) {
-                return oxy_get_option( 'woocommerce_shop_page_columns', 3);
-            }
-            else if( is_product_category() ) {
-                $category = get_queried_object();
-                if( isset($category->term_id) ) {
-                    return get_option( THEME_SHORT . '-tax-mtb-product_columns'. $category->term_id, 3 );
-                }
-            }
-            else if( is_product_tag() ) {
-                $tag = get_queried_object();
-                if( isset($tag->term_id) ) {
-                    return get_option( THEME_SHORT . '-tax-mtb-product_columns'. $tag->term_id, 3 );
-                }
-            }
-            else {
-                return 3;
-            }
         }
     }
 
@@ -339,7 +323,7 @@ if ( ! function_exists( 'woocommerce_site_note' ) ) {
         if ( empty( $notice ) ) {
             $notice = __( 'This is a demo store for testing purposes &mdash; no orders shall be fulfilled.', 'woocommerce' );
         }
-        echo '<div class="alert alert-info">' . wp_kses_post( $notice ) . '</div>';
+        echo '<div class="alert alert-info alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' . wp_kses_post( $notice ) . '</div>';
 
     }
 }

@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 function oxy_activate_theme( $theme ) {
@@ -613,6 +613,10 @@ function oxy_save_all_swatches_ajax() {
     $resp->status = 'failed';
     if( isset( $_POST['nonce'] ) ) {
         if( wp_verify_nonce( $_POST['nonce'], 'install-defaults') ) {
+            // Clears all swatches. Fixes a bug where deleted swatches were still loaded.
+            update_option( THEME_SHORT . '-swatch-list', array() );
+            update_option( THEME_SHORT . '-swatch-files', array() );
+
             $swatches = get_posts( array(
                 'post_type'      => 'oxy_swatch',
                 'meta_key'       => THEME_SHORT . '_status',
@@ -670,20 +674,6 @@ if ( ! function_exists( 'unregister_post_type' ) ) {
     }
 }
 
-/**
- * Deregisters Grid Elements post type for VC >= 4.4
- *
- * @return boolean
- * @author
- **/
-
-if ( ! function_exists( 'unregister_vc_grid_element' ) ) {
-    function unregister_vc_grid_element(){
-        unregister_post_type( 'vc_grid_item' );
-    }
-}
-add_action('init', 'unregister_vc_grid_element',20);
-
 // Enabling the media upload of SVGs
 function oxy_cc_mime_types($mimes) {
     $mimes['svg'] = 'image/svg+xml';
@@ -694,15 +684,6 @@ if ( oxy_get_option('enable_svg') !== 'off') {
     add_filter('upload_mimes', 'oxy_cc_mime_types');
 }
 
-// Remove Grid Elements option page for VC
-add_action( 'admin_menu', 'adjust_the_wp_menu', 50 );
-
-function adjust_the_wp_menu() {
-    if ( defined('VC_PAGE_MAIN_SLUG') && class_exists('Vc_Grid_Item_Editor') ) {
-        remove_submenu_page( VC_PAGE_MAIN_SLUG, 'edit.php?post_type=' . rawurlencode( Vc_Grid_Item_Editor::postType() ) );
-    }
-}
-
 // Remove visual composer nag
 function oxy_remove_vc_nag() {
     if(is_admin()) {
@@ -711,3 +692,18 @@ function oxy_remove_vc_nag() {
     }
 }
 add_action('admin_init', 'oxy_remove_vc_nag');
+
+/**
+ * Fix for backend swatch js error of VC using media without enqueuing it.
+ *
+ * @param  String $hook Current admin page.
+ * @return void
+ */
+function oxy_admin_fix_media_vc_stack_error($hook)
+{
+    $screen = get_current_screen();
+    if ('oxy_swatch' === $screen->post_type && 'post' === $screen->base) {
+        wp_enqueue_media();
+    }
+}
+add_action('admin_enqueue_scripts', 'oxy_admin_fix_media_vc_stack_error');

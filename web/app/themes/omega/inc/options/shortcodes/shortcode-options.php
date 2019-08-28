@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 // get available menus for menu shortcode
@@ -435,7 +435,7 @@ return array(
     'services' =>array(
         'shortcode'     => 'services',
         'title'         => __('Services', 'omega-admin-td'),
-        'desc'          => __('Displays a horizontal / vertical list of services.', 'omega-admin-td'),
+        'desc'          => __('Displays a horizontal list of services.', 'omega-admin-td'),
         'insert_with'   => 'dialog',
         'has_content'   => false,
         'sections'      => array(
@@ -467,7 +467,7 @@ return array(
                         )
                     ),
                     array(
-                        'name'    => __('Columns (horizontal style)', 'omega-admin-td'),
+                        'name'    => __('Columns', 'omega-admin-td'),
                         'desc'    => __('Number of columns to show the services in', 'omega-admin-td'),
                         'id'      => 'columns',
                         'type'    => 'select',
@@ -3577,7 +3577,7 @@ return array(
                         'desc'    => __('Which side of the button to show the icon.', 'PLUGIN_TD'),
                         'id'      => 'icon_position',
                         'type'    => 'select',
-                        'default' => 'right',
+                        'default' => 'left',
                         'options' => array(
                             'left'  => __('Left', 'PLUGIN_TD'),
                             'right' => __('Right', 'PLUGIN_TD'),
@@ -4926,10 +4926,10 @@ return array(
                         'desc'    => __('Causes the media to automatically play as soon as the media file is ready.', 'omega-admin-td'),
                         'type'    => 'select',
                         'options' => array(
-                            'on'  => __('On', 'omega-admin-td'),
-                            '' => __('Off', 'omega-admin-td')
+                            '1'  => __('On', 'omega-admin-td'),
+                            '0' => __('Off', 'omega-admin-td')
                         ),
-                        'default' => ''
+                        'default' => '0'
                     ),
                     array(
                         'name'    => __('Preload', 'omega-admin-td'),
@@ -4937,11 +4937,11 @@ return array(
                         'desc'    => __('Specifies if and how the audio should be loaded when the page loads.', 'omega-admin-td'),
                         'type'    => 'select',
                         'options' => array(
-                            ''     => __('Audio should not be loaded', 'omega-admin-td'),
+                            'none'     => __('Audio should not be loaded', 'omega-admin-td'),
                             'auto'     => __('Audio should be loaded', 'omega-admin-td'),
                             'metadata' => __('Metadata should be loaded', 'omega-admin-td')
                         ),
-                        'default' => ''
+                        'default' => 'none'
                     ),
                 )
             ),

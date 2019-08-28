@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 /******************************
@@ -76,6 +76,24 @@ function oxy_display_image_sizes( $sizes ) {
 // hook for displaying the size in the media screen
 add_filter( 'image_size_names_choose', 'oxy_display_image_sizes');
 
+/**
+ * Hides the custom post template for pages on WordPress 4.6 and older
+ *
+ * @param array $post_templates Array of page templates.
+ * @return array Filtered array of page templates.
+ */
+function makewp_exclude_page_templates( $post_templates ) {
+    if ( version_compare( $GLOBALS['wp_version'], '4.7', '<' ) ) {
+        unset( $post_templates['template-post-leftsidebar.php'] );
+        unset( $post_templates['template-post-rightsidebar.php'] );
+        unset( $post_templates['template-post-normal.php'] );
+        unset( $post_templates['template-post-narrow.php'] );
+        unset( $post_templates['template-post-wide.php'] );
+    }
+
+    return $post_templates;
+}
+add_filter( 'theme_page_templates', 'makewp_exclude_page_templates' );
 
 /******************************
  *
@@ -223,12 +241,8 @@ function oxy_load_scripts() {
         }
     }
 
-    if (!array_key_exists('vc_editable', $_GET) && wp_style_is('js_composer_front', 'registered')) {
-        wp_deregister_style('js_composer_front');
-    }
-    else {
-        wp_enqueue_style(THEME_SHORT.'-vc-frontend', OXY_THEME_URI . 'inc/assets/stylesheets/visual-composer/vc-frontend.css', array(), false, 'all');
-    }
+    wp_enqueue_style(THEME_SHORT.'-vc-frontend', OXY_THEME_URI . 'inc/assets/stylesheets/visual-composer/vc-frontend.css', array(), false, 'all');
+
 
 }
 add_action( 'wp_enqueue_scripts', 'oxy_load_scripts' );
@@ -1225,7 +1239,7 @@ function oxy_woo_page_title( $echo = false ){
 
     }
     else {
-        $shop_page_id = woocommerce_get_page_id( 'shop' );
+        $shop_page_id = wc_get_page_id( 'shop' );
         $page_title   = get_the_title( $shop_page_id );
     }
     if($echo){
@@ -1910,7 +1924,7 @@ function oxy_edit_widgets($params) {
 add_filter('dynamic_sidebar_params', 'oxy_edit_widgets');
 
 
-function oxy_remove_title_from_icon_only_menu_item( $title, $id ) {
+function oxy_remove_title_from_icon_only_menu_item( $title, $id = null ) {
     if (is_nav_menu_item($id) && $title === 'ICON_ONLY') {
         return false;
     }

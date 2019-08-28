@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 /**
@@ -76,6 +76,9 @@ class OxygennaSelect extends OxygennaOption
         $data = array();
         switch ($database) {
             case 'custom_post_type':
+                if ($this->_field['post_type'] === 'oxy_service') {
+                    $this->_field['blank'] = __('Select a Service post', 'omega-admin-td');
+                }
             case 'custom_post_id':
                 if (isset($this->_field['post_type'])) {
                     $data = get_posts(array(

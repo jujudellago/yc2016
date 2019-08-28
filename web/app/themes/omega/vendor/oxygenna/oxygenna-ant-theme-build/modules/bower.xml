@@ -1,0 +1,70 @@
+<project>
+    <target name="bower">
+        <antcall target="bower-build"></antcall>
+        <antcall target="bower-clone-repo"></antcall>
+        <antcall target="bower-copy-files"></antcall>
+        <antcall target="bower-commit-repo"></antcall>
+        <antcall target="bower-remove-repo"></antcall>
+    </target>
+
+    <target name="bower-build">
+        <echo message="Making bower build" />
+        <exec executable="bash" dir="app">
+            <arg value="-c"/>
+            <arg value="gulp bower"/>
+        </exec>
+    </target>
+
+    <target name="bower-clone-repo">
+        <echo message="Downloading ${bower.repo}" />
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="git clone --depth=1 ${bower.repo} ${bower.folder}"/>
+        </exec>
+    </target>
+
+    <target name="bower-copy-files">
+        <copy todir="${bower.folder}" overwrite="true">
+            <fileset dir="app/dist"></fileset>
+        </copy>
+
+        <copy todir="${bower.folder}" overwrite="true">
+            <fileset file="app/bower.json"></fileset>
+        </copy>
+
+        <replace file="${bower.folder}/bower.json">
+            <replacefilter token='"version": "0.0.0"' value='"version": "${project.version}"' />
+        </replace>
+    </target>
+
+    <target name="bower-commit-repo">
+        <echo message="Committing to ${bower.repo}" />
+
+        <exec executable="bash" dir="${bower.folder}">
+            <arg value="-c"/>
+            <arg value="git add ."/>
+        </exec>
+
+        <exec executable="bash" dir="${bower.folder}">
+            <arg value="-c"/>
+            <arg value="git commit -m 'Version ${project.version} added'"/>
+        </exec>
+
+        <exec executable="bash" dir="${bower.folder}">
+            <arg value="-c"/>
+            <arg value="git tag ${project.version}"/>
+        </exec>
+
+        <exec executable="bash" dir="${bower.folder}">
+            <arg value="-c"/>
+            <arg value="git push origin master --tags"/>
+        </exec>
+    </target>
+
+    <target name="bower-remove-repo">
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="rm -rf triangular-bower"/>
+        </exec>
+    </target>
+</project>

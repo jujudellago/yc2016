@@ -29,7 +29,8 @@
 
 <div id="ls-screen-options" class="metabox-prefs hidden">
 	<div id="screen-options-wrap" class="hidden">
-		<form id="ls-screen-options-form" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
+		<form id="ls-screen-options-form" method="post">
+			<?php wp_nonce_field('ls-save-screen-options'); ?>
 			<h5><?php _e('Show on screen', 'LayerSlider') ?></h5>
 			<label>
 				<input type="checkbox" name="showTooltips"<?php echo $lsScreenOptions['showTooltips'] == 'true' ? ' checked="checked"' : ''?>> <?php _e('Tooltips', 'LayerSlider') ?>
@@ -46,7 +47,7 @@
 	<!-- Page title -->
 	<h2>
 		<?php _e('LayerSlider Skin Editor', 'LayerSlider') ?>
-		<a href="?page=layerslider" class="add-new-h2"><?php _e('Back to the list', 'LayerSlider') ?></a>
+		<a href="<?php echo admin_url('admin.php?page=layerslider-options') ?>" class="add-new-h2"><?php _e('&larr; Options', 'LayerSlider') ?></a>
 	</h2>
 
 	<!-- Error messages -->
@@ -58,7 +59,7 @@
 	<!-- End of error messages -->
 
 	<!-- Editor box -->
-	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-box ls-skin-editor-box">
+	<form method="post" class="ls-box ls-skin-editor-box">
 		<input type="hidden" name="ls-user-skins" value="1">
 		<?php wp_nonce_field('save-user-skin'); ?>
 		<h3 class="header medium">
@@ -82,10 +83,10 @@
 			<textarea rows="10" cols="50" name="contents" class="ls-codemirror"><?php echo htmlentities(file_get_contents($file)); ?></textarea>
 			<p class="footer">
 				<?php if(!is_writable($file)) { ?>
-				<?php _e('You need to make this file writable in order to save your changes. See the <a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">Codex</a> for more information.', 'LayerSlider') ?>
+				<?php echo sprintf(__('You need to make this file writable in order to save your changes. See the %sCodex%s for more information.', 'LayerSlider'), '<a href="http://codex.wordpress.org/Changing_File_Permissions" target="_blank">', '</a>') ?>
 				<?php } else { ?>
 				<button class="button-primary"><?php _e('Save changes', 'LayerSlider') ?></button>
-				<?php _e("Modifying a skin with invalid code can break your sliders' appearance. Changes cannot be reverted after saving.", "LayerSlider") ?>
+				<?php _e('Modifying a skin with invalid code can break your sliders’ appearance. Changes cannot be reverted after saving.', 'LayerSlider') ?>
 				<?php } ?>
 			</p>
 		</div>

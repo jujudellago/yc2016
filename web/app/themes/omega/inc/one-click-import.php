@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -407,7 +407,7 @@ function oxy_one_click_details()
         'install_plugins_url' => esc_url(
             add_query_arg(
                 array(
-                    'page'   => THEME_SHORT . '-plugins',
+                    'page'   => 'tgmpa-install-plugins',
                 ),
                 admin_url('admin.php')
             )

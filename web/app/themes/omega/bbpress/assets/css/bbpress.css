@@ -338,3 +338,12 @@
 #bbp-user-body .bbp-pagination-count {
   margin-bottom: 0;
 }
+
+#bbp_topic_subscription {
+  display: block;
+  margin-top: -20px;
+}
+
+.bbp-topics.table {
+  clear: both;
+}

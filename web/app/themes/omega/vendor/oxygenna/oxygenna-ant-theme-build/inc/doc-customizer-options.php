@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 // get arguments from script
@@ -23,6 +23,11 @@ define('OXY_THEME_URI', '');
 define('OXY_THEME_DIR', $theme_root . '/');
 
 function __($myString)
+{
+    return $myString;
+}
+
+function esc_html__($myString)
 {
     return $myString;
 }

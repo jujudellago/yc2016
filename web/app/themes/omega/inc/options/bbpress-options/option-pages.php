@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 $bbpress_header_options = include OXY_THEME_DIR . 'inc/options/global-options/heading-options.php';

@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -20,7 +20,7 @@ class OxygennaDNSCheck extends OxygennaSystemCheck
     public function __construct($args)
     {
         $this->args = $args;
-        parent::__construct(__('DNS Lookup', 'omega-admin-td'), 'warning');
+        parent::__construct(esc_html__('DNS Lookup', 'omega-admin-td'), 'warning');
     }
 
     public function check()
@@ -31,9 +31,9 @@ class OxygennaDNSCheck extends OxygennaSystemCheck
             $this->ok = $ip !== $this->args['domain'];
             $this->value = $ip;
             if ($this->ok) {
-                $this->info = __('Your server can lookup ' . $this->args['domain'], 'omega-admin-td');
+                $this->info = esc_html__('Your server can lookup ' . $this->args['domain'], 'omega-admin-td');
             } else {
-                $this->info = __('Your server can NOT lookup ' . $this->args['domain'], 'omega-admin-td');
+                $this->info = esc_html__('Your server can NOT lookup ' . $this->args['domain'], 'omega-admin-td');
             }
         }
     }

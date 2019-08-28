@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 ?>
 <div class="divider-wrapper" style="visibility:<?php echo $visibility; ?>;background-color:<?php echo $background_colour; ?>">

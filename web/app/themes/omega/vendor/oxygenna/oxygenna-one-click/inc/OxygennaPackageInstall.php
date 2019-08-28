@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -195,13 +195,12 @@ class OxygennaPackageInstall
                 $remove_success = wp_delete_attachment($item->id, true) !== false;
                 break;
             case 'revslider':
-                if (class_exists('RevSlider')) {
-                    $revslider = new RevSlider();
-                    $data = array(
-                        'sliderid' => $item->id
-                    );
+                if (class_exists('RevSliderSlider')) {
+                    $revslider = new RevSliderSlider();
+                    $revslider->id = $item->id;
                     try {
-                        $remove_success = $revslider->deleteSliderFromData($data);
+                        $remove_success = $revslider->delete_slider();
+                        $remove_success = true;
                     } catch (Exception $e) {
                         $remove_success = false;
                     }

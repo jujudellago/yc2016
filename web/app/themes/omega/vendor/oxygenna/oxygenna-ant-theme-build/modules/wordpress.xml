@@ -36,7 +36,7 @@
             <replacefilter token="http://www.oxygenna.com" value="${wordpress.author.url}" />
             <replacefilter token="esponsive-layout, blue, brown, red, custom-background, custom-colors, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready" value="${wordpress.tags}" />
             <replacefilter token="(c) 2014 Oxygenna.com" value="${wordpress.copyright}" />
-            <replacefilter token="1.14.0" value="${wordpress.version}" />
+            <replacefilter token="1.18.12" value="${wordpress.version}" />
             <replacefilter token="omega-td" value="${project.namelower}-td" />
             <replacefilter token="omega-admin-td" value="${project.namelower}-admin-td" />
 
@@ -46,22 +46,22 @@
         <mkdir dir="artifacts/wordpress/build/languages" />
         <exec executable="bash">
             <arg value="-c"/>
-            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=_x --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/languages/${project.namelower}_front.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
+            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=__ngettext:1,2 --keyword=_n:1,2 --keyword=__ngettext_noop:1,2 --keyword=_n_noop:1,2 --keyword=_c --keyword=_nc:4c,1,2 --keyword=_x:1,2c --keyword=_nx:4c,1,2 --keyword=_nx_noop:4c,1,2 --keyword=_ex:1,2c --keyword=esc_attr__ --keyword=esc_attr_e --keyword=esc_attr_x:1,2c --keyword=esc_html__ --keyword=esc_html_e --keyword=esc_html_x:1,2c  --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/languages/${project.namelower}_front.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
         </exec>
 
         <echo message="Creating Admin Language File..." />
         <mkdir dir="artifacts/wordpress/build/inc/languages" />
         <exec executable="bash">
             <arg value="-c"/>
-            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-admin-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=_x --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/inc/languages/${project.namelower}_admin.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
+            <arg value="find artifacts/wordpress/build -iname '*.php' -exec grep -l '${project.namelower}-admin-td' /dev/null {} \; | xargs xgettext --language=PHP --keyword=__ --keyword=_e --keyword=__ngettext:1,2 --keyword=_n:1,2 --keyword=__ngettext_noop:1,2 --keyword=_n_noop:1,2 --keyword=_c --keyword=_nc:4c,1,2 --keyword=_x:1,2c --keyword=_nx:4c,1,2 --keyword=_nx_noop:4c,1,2 --keyword=_ex:1,2c --keyword=esc_attr__ --keyword=esc_attr_e --keyword=esc_attr_x:1,2c --keyword=esc_html__ --keyword=esc_html_e --keyword=esc_html_x:1,2c  --force-po --from-code=UTF-8 --output=artifacts/wordpress/build/inc/languages/${project.namelower}_admin.pot --copyright-holder='${copyright}' --package-name='${theme} Frontend Translation File' --package-version='${wordpress.version}'"/>
         </exec>
 
         <echo message="Copying other translations..." />
-        <copy todir="artifacts/wordpress/build/languages">
+        <copy todir="artifacts/wordpress/build/languages" failonerror="false">
             <fileset dir="languages">
             </fileset>
         </copy>
-        <copy todir="artifacts/wordpress/build/inc/languages">
+        <copy todir="artifacts/wordpress/build/inc/languages" failonerror="false">
             <fileset dir="inc/languages">
             </fileset>
         </copy>
@@ -146,7 +146,6 @@
 
         <!-- copy bundles -->
         <copy todir="artifacts/wordpress/release">
-            <fileset dir="themeforest/wordpress" includes="${wordpress.bundles.wordpress}" />
             <fileset dir="themeforest/shared" includes="${wordpress.bundles.shared}" />
         </copy>
 
@@ -206,10 +205,41 @@
         <mkdir dir="artifacts/wordpress/themeforest" />
 
         <echo message="Creating Theme Preview..." />
-        <zip basedir="themeforest/wordpress/submit/preview" destfile="artifacts/wordpress/themeforest/theme-preview.zip" />
+        <if>
+            <available file="themeforest/wordpress/submit/preview"/>
+            <then>
+                <zip basedir="themeforest/wordpress/submit/preview" destfile="artifacts/wordpress/themeforest/theme-preview.zip" />
+            </then>
+            <else>
+                <if>
+                    <available file="themeforest/preview/templates/wordpress/preview"/>
+                    <then>
+                        <zip basedir="themeforest/preview/templates/wordpress/preview" destfile="artifacts/wordpress/themeforest/theme-preview.zip" />
+                    </then>
+                </if>
+            </else>
+        </if>
 
         <echo message="Creating Thumbnail..." />
-        <copy file="themeforest/wordpress/submit/thumbnail.png" tofile="artifacts/wordpress/themeforest/thumbnail.png" />
+        <if>
+            <available file="themeforest/wordpress/submit/thumbnail.png"/>
+            <then>
+                <copy file="themeforest/wordpress/submit/thumbnail.png" tofile="artifacts/wordpress/themeforest/thumbnail.png" />
+            </then>
+            <else>
+                <if>
+                    <available file="themeforest/preview/templates/wordpress/thumbnail.png"/>
+                    <then>
+                        <copy file="themeforest/preview/templates/wordpress/thumbnail.png" tofile="artifacts/wordpress/themeforest/thumbnail.png" />
+                    </then>
+                </if>
+            </else>
+        </if>
+
+        <mkdir dir="artifacts/wordpress/release/plugins" />
+
+        <echo message="Copying Plugin files..." />
+        <foreach param="plugin-zip-name" list="${wordpress.plugins.list}" target="copy-plugin"/>
 
         <!-- zip up the main file -->
         <echo message="Zipping up main file" />
@@ -223,5 +253,14 @@
 
     <target name="wordpress-upload-themeforest">
         <upload-to-tf dir="wordpress"></upload-to-tf>
+    </target>
+
+    <target name="copy-plugin">
+        <echo message="Copying ${plugin-zip-name}..."/>
+        <copy todir="artifacts/wordpress/release/plugins" flatten="true">
+            <resources>
+                <url url="${wordpress.plugins.url}/${plugin-zip-name}"/>
+            </resources>
+        </copy>
     </target>
 </project>

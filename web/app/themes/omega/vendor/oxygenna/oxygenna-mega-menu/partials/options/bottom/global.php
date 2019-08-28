@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 require_once OXY_TF_DIR . 'inc/options/fields/select/OxygennaSelect.php';

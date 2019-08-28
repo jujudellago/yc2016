@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 ?>
 <div id="masthead" class="navbar navbar-static-top oxy-mega-menu <?php echo implode( ' ', $classes ); ?>" role="banner">

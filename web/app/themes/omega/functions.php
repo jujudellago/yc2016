@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 // create defines
@@ -52,12 +52,11 @@ if( is_admin() ) {
     include OXY_THEME_DIR . 'inc/backend.php';
     include OXY_THEME_DIR . 'inc/options/shortcodes/create-shortcode-options.php';
     include OXY_THEME_DIR . 'inc/theme-metaboxes.php';
+    include OXY_THEME_DIR . 'inc/install-plugins.php';
     include OXY_THEME_DIR . 'inc/visual-composer-extend.php';
     include OXY_THEME_DIR . 'inc/one-click-import.php';
     include OXY_THEME_DIR . 'vendor/oxygenna/oxygenna-one-click/inc/OxygennaOneClick.php';
     include OXY_THEME_DIR . 'vendor/oxygenna/oxygenna-typography/oxygenna-typography.php';
-    include OXY_THEME_DIR . 'vendor/oxygenna/oxygenna-updater/oxygenna-updater.php';
-    include OXY_THEME_DIR . 'vendor/oxygenna/oxygenna-plugins/oxygenna-plugins.php';
 }
 
 include OXY_THEME_DIR . 'inc/visual-composer.php';

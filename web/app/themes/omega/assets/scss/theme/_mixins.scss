@@ -1165,21 +1165,21 @@
   }
 
   // Audio player
-  .mejs-audio {
+  .mejs-controls {
     background-color: $background-invert;
     color: $background;
+    position: relative;
+    margin-bottom: 24px;
   }
-  .mejs-container .mejs-controls .mejs-time span {
-    color: $background;
+  // Fixes video backgrounds
+  .mejs-mediaelement {
+    position: relative;
   }
-  .mejs-controls .mejs-button button:hover {
-    background-color: transparent;
-  }
-  .mejs-controls .mejs-time-rail .mejs-time-loaded {
-    background: $background;
-  }
-  .mejs-controls .mejs-time-rail .mejs-time-current, .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
-    background: $background-complementary;
+
+  // Contact form 7
+  .ajax-loader,
+  .ajax-loader::before {
+    border-top-color: $primary-button-background !important;
   }
 
   // Select 2
@@ -1191,21 +1191,6 @@
   }
   .select2-container .select2-choice .select2-arrow b:after {
     color: $form-color;
-  }
-  .select2-drop-active {
-    background: rgba($form-background, .9);
-    color: $form-color;
-    @include box-shadow(0px 2px 4px rgba(#000, .1));
-  }
-  .select2-results .select2-highlighted {
-    background-color: $form-active;
-    color: $form-color;
-  }
-  .select2-results {
-    background: $form-background;
-  }
-  .select2-search {
-    background: $background;
   }
 
   // Blog
@@ -1483,7 +1468,7 @@
   }
 
   // Product category
-  .product-category h3 {
+  .product-category h2 {
     background: rgba($primary-button-background, .85);
     color: $primary-button-text;
     mark {
@@ -1540,6 +1525,10 @@
 
   .star-rating {
     color: $link-color;
+  }
+
+  #reviews .star-rating {
+    color: $background;
   }
 
   .widget_price_filter .ui-slider {

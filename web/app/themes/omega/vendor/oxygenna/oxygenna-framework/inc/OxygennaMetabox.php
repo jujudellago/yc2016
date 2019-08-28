@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 class OxygennaMetabox
@@ -64,7 +64,7 @@ class OxygennaMetabox
     public function admin_enqueue_scripts()
     {
         $screen = get_current_screen();
-        if (isset($screen) && 'post' == $screen->base &&  isset($this->options['pages']) &&  in_array($screen->post_type, $this->options['pages']) || isset($screen) && 'edit-tags' == $screen->base && isset($this->options['taxonomies']) &&  in_array($screen->taxonomy, $this->options['taxonomies'])) {
+        if (isset($screen) && 'post' == $screen->base &&  isset($this->options['pages']) &&  in_array($screen->post_type, $this->options['pages']) || isset($screen) && 'edit-tags' == $screen->base || 'term' == $screen->base && isset($this->options['taxonomies']) &&  in_array($screen->taxonomy, $this->options['taxonomies'])) {
             wp_enqueue_style('oxy-metabox-global', OXY_TF_URI . 'assets/css/metaboxes/metabox-global.css', array('jquery-oxygenna-ui-theme'));
             wp_enqueue_script('metabox-options-global', OXY_TF_URI . 'assets/javascripts/metabox-options-global.js', array('jquery', 'jquery-ui-tooltip'));
 

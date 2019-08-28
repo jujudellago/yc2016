@@ -1,6 +1,11 @@
 <?php if(!defined('LS_ROOT_FILE')) {  header('HTTP/1.0 403 Forbidden'); exit; }
 
-$queryArgs = array('post_status' => 'publish', 'limit' => 30, 'posts_per_page' => 30);
+$queryArgs = array(
+	'post_status' => 'publish',
+	'limit' => 100,
+	'posts_per_page' => 100,
+	'suppress_filters' => false
+);
 
 if(!empty($slider['properties']['post_orderby'])) {
 	$queryArgs['orderby'] = $slider['properties']['post_orderby']; }
@@ -27,11 +32,11 @@ if(!empty($slider['properties']['post_taxonomy']) && !empty($slider['properties'
 
 $posts = LS_Posts::find($queryArgs)->getParsedObject();
 ?>
-<script type="text/javascript" class="ls-hidden" id="ls-posts-json">window.lsPostsJSON = <?php echo json_encode($posts) ?>;</script>
+<script type="text/javascript" class="ls-hidden" id="ls-posts-json">window.lsPostsJSON = <?php echo $posts ? json_encode($posts) : '[]' ?> || [];</script>
 <div id="ls-post-options">
 	<div class="ls-box ls-modal ls-configure-posts-modal">
 		<h2 class="header">
-			<?php _e('Find posts with the filters above', 'LayerSlider') ?>
+			<?php _e('Find posts with the filters below', 'LayerSlider') ?>
 			<a href="#" class="dashicons dashicons-no"></a>
 		</h2>
 		<div class="inner clearfix">
@@ -50,7 +55,7 @@ $posts = LS_Posts::find($queryArgs)->getParsedObject();
 
 				<!-- Post categories -->
 				<select data-param="post_categories" name="post_categories" class="multiple" multiple="multiple">
-					<option value="0"><?php _e("Don't filter categories", "LayerSlider") ?></option>
+					<option value="0"><?php _e('Don’t filter categories', 'LayerSlider') ?></option>
 					<?php foreach ($postCategories as $item): ?>
 					<?php if(isset($slider['properties']['post_categories']) && in_array($item->term_id, $slider['properties']['post_categories'])) : ?>
 					<option value="<?php echo $item->term_id ?>" selected="selected"><?php echo ucfirst($item->name) ?></option>
@@ -62,7 +67,7 @@ $posts = LS_Posts::find($queryArgs)->getParsedObject();
 
 				<!-- Post tags -->
 				<select data-param="post_tags" name="post_tags" class="multiple" multiple="multiple">
-					<option value="0"><?php _e("Don't filter tags", "LayerSlider") ?></option>
+					<option value="0"><?php _e('Don’t filter tags', 'LayerSlider') ?></option>
 					<?php foreach ($postTags as $item): ?>
 					<?php if(isset($slider['properties']['post_tags']) && in_array($item->term_id, $slider['properties']['post_tags'])) : ?>
 					<option value="<?php echo $item->term_id ?>" selected="selected"><?php echo ucfirst($item->name) ?></option>
@@ -74,7 +79,7 @@ $posts = LS_Posts::find($queryArgs)->getParsedObject();
 
 				<!-- Post taxonomies -->
 				<select data-param="post_taxonomy" name="post_taxonomy" class="ls-post-taxonomy">
-					<option value="0"><?php _e("Don't filter taxonomies", "LayerSlider") ?></option>
+					<option value="0"><?php _e('Don’t filter taxonomies', 'LayerSlider') ?></option>
 					<?php foreach ($postTaxonomies as $key => $item): ?>
 					<?php if(isset($slider['properties']['post_taxonomy']) && $slider['properties']['post_taxonomy'] == $key) : ?>
 					<option value="<?php echo $item->name ?>" selected="selected"><?php echo $item->labels->name ?></option>
@@ -115,14 +120,13 @@ $posts = LS_Posts::find($queryArgs)->getParsedObject();
 
 			<!-- Post offset -->
 			<div class="half">
-				<?php _e('Get the ', 'LayerSlider') ?>
+				<?php _e('Use post from matches: ', 'LayerSlider') ?>
 				<select data-param="post_offset" name="post_offset" class="offset">
-					<option value="-1"><?php _e('following', 'LayerSlider') ?></option>
-					<?php for($c = 0; $c < 30; $c++) : ?>
+					<option value="-1"><?php _e('next in line', 'LayerSlider') ?></option>
+					<?php for($c = 0; $c < 50; $c++) : ?>
 					<option value="<?php echo $c ?>"><?php echo ls_ordinal_number($c+1) ?></option>
 					<?php endfor ?>
 				</select>
-				<?php _e('item in the set of matched selection', 'LayerSlider') ?>
 			</div>
 		</div>
 		<h3 class="subheader preview-subheader"><?php echo _e('Preview from currenty matched elements', 'LayerSlider') ?></h3>

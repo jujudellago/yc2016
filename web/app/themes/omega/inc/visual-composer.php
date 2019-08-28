@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 if(function_exists('vc_set_as_theme')) {
@@ -156,7 +156,6 @@ if( class_exists('WPBakeryVisualComposerAbstract') ) {
         if( null !== $pt_array ) {
             if( in_array( get_post_type(), $pt_array ) ) {
                 wp_enqueue_style( 'oxy_vc_admin', OXY_THEME_URI . 'inc/assets/stylesheets/visual-composer/visual-composer.css', array( 'js_composer' ));
-                wp_enqueue_script( 'oxy_vc_admin', OXY_THEME_URI . 'inc/assets/js/visual-composer/visual-composer.js', array('wpb_js_composer_js_view'), '0.1', true);
             }
         }
     }
@@ -928,8 +927,8 @@ if( class_exists('WPBakeryVisualComposerAbstract') ) {
         // vc_remove_element( 'vc_accordion' );
         vc_remove_element( 'vc_tta_accordion' );
         // vc_remove_element( 'vc_accordion_tab' );
-        vc_remove_element( 'vc_teaser_grid' );
-        vc_remove_element( 'vc_posts_grid' );
+        // vc_remove_element( 'vc_teaser_grid' );
+        // vc_remove_element( 'vc_posts_grid' );
         vc_remove_element( 'vc_carousel' );
         vc_remove_element( 'vc_posts_slider' );
         // vc_remove_element( 'vc_widget_sidebar' );
@@ -938,7 +937,7 @@ if( class_exists('WPBakeryVisualComposerAbstract') ) {
         vc_remove_element( 'vc_cta_button' );
         vc_remove_element( 'vc_cta_button2' );
         vc_remove_element( 'vc_cta' );
-        vc_remove_element( 'vc_btn' );
+        // vc_remove_element( 'vc_btn' );
         // vc_remove_element( 'vc_video' );
         vc_remove_element( 'vc_gmaps' );
         vc_remove_element( 'vc_custom_heading' );
@@ -949,7 +948,7 @@ if( class_exists('WPBakeryVisualComposerAbstract') ) {
         vc_remove_element( 'vc_pie' );
         // vc_remove_element( 'contact- form-7');
         // vc_remove_element( 'layerslider_vc' );
-        vc_remove_element( 'rev_slider' );
+        // vc_remove_element( 'rev_slider' );
         // vc_remove_element( 'rev_slider_vc' );
         // vc_remove_element( 'gravityform' );
         vc_remove_element( 'vc_wp_search' );
@@ -965,10 +964,10 @@ if( class_exists('WPBakeryVisualComposerAbstract') ) {
         vc_remove_element( 'vc_wp_categories' );
         vc_remove_element( 'vc_wp_archives' );
         vc_remove_element( 'vc_wp_rss' );
-        vc_remove_element( 'vc_basic_grid' );
-        vc_remove_element( 'vc_media_grid' );
-        vc_remove_element( 'vc_masonry_grid' );
-        vc_remove_element( 'vc_masonry_media_grid' );
+        // vc_remove_element( 'vc_basic_grid' );
+        // vc_remove_element( 'vc_media_grid' );
+        // vc_remove_element( 'vc_masonry_grid' );
+        // vc_remove_element( 'vc_masonry_media_grid' );
         vc_remove_element( 'vc_icon' );
         vc_remove_element( 'vc_empty_space' );
         // vc_remove_element( 'add_to_cart_url' );

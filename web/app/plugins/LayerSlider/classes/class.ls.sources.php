@@ -12,13 +12,13 @@ class LS_Sources {
 	}
 
 	/**
-	 * Adds the skins from the directory provided, so  
+	 * Adds the skins from the directory provided, so
 	 * users can select them in the slider settings.
 	 *
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to directory that holds your skins. It's assumed to be a direct skin folder if it contains a skin.css file.
-	 * @return void 
+	 * @return void
 	 */
 	public static function addSkins($path) {
 
@@ -28,7 +28,7 @@ class LS_Sources {
 		// It's a direct skin folder
 		if(file_exists($path.'/skin.css')) {
 			$skinsPath = array($path);
-		
+
 		}  else { // Get all children if it's a parent directory
 			$skinsPath = glob($path.'/*', GLOB_ONLYDIR);
 		}
@@ -52,6 +52,10 @@ class LS_Sources {
 			if(file_exists($path.'/info.json')) {
 				$skins[$handle]['info'] = json_decode(file_get_contents($path.'/info.json'), true);
 				$skins[$handle]['name'] = $skins[$handle]['info']['name'];
+
+				if( ! empty( $skins[$handle]['info']['requires'] ) ) {
+					$skins[$handle]['requires'] = $skins[$handle]['info']['requires'];
+				}
 			}
 		}
 
@@ -67,7 +71,7 @@ class LS_Sources {
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $skin The name of the skin/folder
-	 * @return void 
+	 * @return void
 	 */
 	public static function removeSkin($handle) {
 		unset( self::$skins[ strtolower($handle) ] );
@@ -81,7 +85,7 @@ class LS_Sources {
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $skin The name of the skin/folder
-	 * @return array Skin details 
+	 * @return array Skin details
 	 */
 	public static function getSkin($handle) {
 		return self::$skins[ strtolower($handle) ];
@@ -124,10 +128,16 @@ class LS_Sources {
 	 * @param string $skin The name of the skin/folder
 	 * @return string URL for the skin's directory
 	 */
-	public static function urlForSkin($handle) {
+	public static function urlForSkin( $handle ) {
 		$path = self::$skins[ strtolower($handle) ]['dir'];
-		$url = content_url() . str_replace(realpath(WP_CONTENT_DIR), '', $path).'/';
-		return str_replace('\\', '/', $url);
+		$url = content_url() . str_replace(realpath(WP_CONTENT_DIR), '', realpath($path)).'/';
+		$url = set_url_scheme( str_replace('\\', '/', $url) );
+
+		if( has_filter( 'layerslider_skin_url' ) ) {
+			$url = apply_filters( 'layerslider_skin_url', $url, $handle );
+		}
+
+		return $url;
 	}
 
 
@@ -140,7 +150,7 @@ class LS_Sources {
 
 	/**
 	 * Adds an exported ZIP to the list of importable sample sliders.
-	 * 
+	 *
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to the .zip file
@@ -154,47 +164,66 @@ class LS_Sources {
 		// It's a direct slider folder
 		if(file_exists($path.'/slider.zip')) {
 			$slidersPath = array($path);
-		
+
 		}  else { // Get all children if it's a parent directory
 			$slidersPath = glob($path.'/*', GLOB_ONLYDIR);
 		}
 
 		// Iterate over the sliders
-		foreach($slidersPath as $key => $path) {
+		if( ! empty( $slidersPath ) ) {
+			foreach($slidersPath as $key => $path) {
 
-			// Exclude non-valid demo sliders
-			if( !file_exists($path.'/slider.zip') ) { continue; }
+				// Exclude non-valid demo sliders
+				if( !file_exists($path.'/slider.zip') ) { continue; }
 
-			// Gather slider data
-			$handle = strtolower(basename($path));
-			$sliders[$handle] = array(
-				'name' => $handle,
-				'handle' => $handle,
-				'dir' => $path,
-				'file' => $path.DIRECTORY_SEPARATOR.'slider.zip'
-			);
+				// Gather slider data
+				$handle = strtolower(basename($path));
+				$sliders[$handle] = array(
+					'name' => $handle,
+					'handle' => $handle,
+					'dir' => $path,
+					'file' => $path.DIRECTORY_SEPARATOR.'slider.zip',
+					'bundled' => true,
+				);
 
-			// Get skin info (if any)
-			if(file_exists($path.'/info.json')) {
-				$sliders[$handle]['info'] = json_decode(file_get_contents($path.'/info.json'), true);
-				$sliders[$handle]['name'] = $sliders[$handle]['info']['name'];
-			}
+				// Get skin info (if any)
+				if(file_exists($path.'/info.json')) {
+					$sliders[$handle]['info'] = json_decode(file_get_contents($path.'/info.json'), true);
+					$sliders[$handle]['name'] = $sliders[$handle]['info']['name'];
 
-			// Get preview (if any)
-			if(file_exists($path.'/preview.png')) {
-				$url = content_url() . str_replace(realpath(WP_CONTENT_DIR), '', $path).'/preview.png';
-				$sliders[$handle]['preview'] = str_replace('\\', '/', $url);
+					$sliders[$handle]['groups'] = 'free,bundled,';
+					if( ! empty( $sliders[$handle]['info']['groups'] ) ) {
+						$sliders[$handle]['groups'] .= $sliders[$handle]['info']['groups'];
+					}
+
+					$sliders[$handle]['url'] = '#';
+					if( ! empty($sliders[$handle]['info']['url']) ) {
+						$sliders[$handle]['url'] = $sliders[$handle]['info']['url'];
+					}
+
+					if( ! empty( $sliders[$handle]['info']['requires'] ) ) {
+						$sliders[$handle]['requires'] = $sliders[$handle]['info']['requires'];
+					}
+				}
+
+				// Get preview (if any)
+				if(file_exists($path.'/preview.png')) {
+					$url = content_url() . str_replace(realpath(WP_CONTENT_DIR), '', $path).'/preview.png';
+					$sliders[$handle]['preview'] = str_replace('\\', '/', $url);
+				}
 			}
 		}
 
-		self::$sliders = array_merge(self::$sliders, $sliders);
-		ksort( self::$sliders );
+		if( ! empty( $sliders ) ) {
+			self::$sliders = array_merge(self::$sliders, $sliders);
+			ksort( self::$sliders );
+		}
 	}
 
 
 	/**
 	 * Removes a previously added demo slider export by its folder name as being $handle
-	 * 
+	 *
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to the .zip file
@@ -208,7 +237,7 @@ class LS_Sources {
 
 	/**
 	 * Retrieves a previously added demo slider by its folder name as being $handle
-	 * 
+	 *
  	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to the .zip file
@@ -222,7 +251,7 @@ class LS_Sources {
 
 	/**
 	 * Retrieves all demo sliders added previously.
-	 * 
+	 *
  	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to the .zip file
@@ -235,7 +264,7 @@ class LS_Sources {
 
 	/**
 	 * Returns the directory path of a previously added demo slider export by its folder name as being $handle
-	 * 
+	 *
 	 * @since 5.3.0
 	 * @access public
 	 * @param string $path Path to the .zip file

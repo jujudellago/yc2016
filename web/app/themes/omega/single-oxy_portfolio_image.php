@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 get_header();
@@ -27,7 +27,7 @@ $allow_comments = oxy_get_option( 'site_comments' );
 <?php endif; ?>
 
 
-<?php if( $allow_comments === 'portfolio' || $allow_comments === 'all' ) : ?>
+<?php if( ($allow_comments === 'portfolio' || $allow_comments === 'all') && (comments_open() || get_comments_number())) : ?>
 <section class="section <?php echo oxy_get_option( 'portfolio_comments_swatch' ); ?>">
     <div class="container">
         <div class="row element-normal-top element-normal-bottom">

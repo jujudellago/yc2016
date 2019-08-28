@@ -423,3 +423,7 @@
   position: relative;
   border-left-color: #f0ad4e !important;
 }
+
+#TB_ajaxContent {
+  width: auto !important;
+}

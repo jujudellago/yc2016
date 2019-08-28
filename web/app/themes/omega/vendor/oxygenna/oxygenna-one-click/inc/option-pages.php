@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -17,8 +17,8 @@ $installer_throttle = false === $installer_throttle ? 2 : $installer_throttle;
 $installer_throttle *= 1000;
 
 $oxy_theme->register_option_page(array(
-    'page_title' => __('Demo Content', 'omega-admin-td'),
-    'menu_title' => __('Demo Content', 'omega-admin-td'),
+    'page_title' => esc_html__('Demo Content', 'omega-admin-td'),
+    'menu_title' => esc_html__('Demo Content', 'omega-admin-td'),
     'slug'       => THEME_SHORT . '-oneclick',
     'main_menu'  => false,
     'icon'       => 'tools',
@@ -62,13 +62,13 @@ $oxy_theme->register_option_page(array(
     ),
     'sections'   => array(
         'oneclick-setup' => array(
-            'title'   => __('OneClick Installer', 'omega-admin-td'),
-            'header'  => __('Make my site just like the demo site!', 'omega-admin-td'),
+            'title'   => esc_html__('OneClick Installer', 'omega-admin-td'),
+            'header'  => esc_html__('Make my site just like the demo site!', 'omega-admin-td'),
             'fields' => array(
                 array(
-                    'name'        => __('Install Demo Site Content', 'omega-admin-td'),
-                    'button-text' => __('Make Me Beautiful', 'omega-admin-td'),
-                    'desc'        => __('This button will setup your site to look just like the demo site.', 'omega-admin-td'),
+                    'name'        => esc_html__('Install Demo Site Content', 'omega-admin-td'),
+                    'button-text' => esc_html__('Make Me Beautiful', 'omega-admin-td'),
+                    'desc'        => esc_html__('This button will setup your site to look just like the demo site.', 'omega-admin-td'),
                     'id'          => 'oneclick_setup',
                     'attr'        => array(
                         'class'   => 'one-click'

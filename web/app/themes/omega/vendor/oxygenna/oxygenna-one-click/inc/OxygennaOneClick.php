@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -66,7 +66,7 @@ class OxygennaOneClick
         header('Content-Type: application/json');
 
         $return = $this->return_object();
-        $return->data = __('Could not validate nonce', 'omega-admin-td');
+        $return->data = esc_html__('Could not validate nonce', 'omega-admin-td');
 
         if (isset($_POST['nonce'])) {
             if (wp_verify_nonce($_POST['nonce'], 'oxy-importer')) {
@@ -87,7 +87,7 @@ class OxygennaOneClick
         @set_time_limit(900); // 5 minutes should be PLENTY
 
         $return = $this->return_object();
-        $return->data = __('Could not validate nonce', 'omega-admin-td');
+        $return->data = esc_html__('Could not validate nonce', 'omega-admin-td');
 
         // load current install package
         $this->install_package = OxygennaPackageInstall::instance($_POST['installPackageId']);
@@ -99,7 +99,7 @@ class OxygennaOneClick
                     $this->import_post($post);
                 }
                 $return->status = true;
-                $return->data = __('Import Posts OK', 'omega-admin-td');
+                $return->data = esc_html__('Import Posts OK', 'omega-admin-td');
             }
         }
 
@@ -111,7 +111,7 @@ class OxygennaOneClick
     {
         $this->install_package->open_item_log($post['post_title'], $post['post_type']);
 
-        $this->install_package->add_log_message(__('Starting import of "', 'omega-admin-td') . $post['post_title'] . '"');
+        $this->install_package->add_log_message(esc_html__('Starting import of "', 'omega-admin-td') . $post['post_title'] . '"');
 
         $post_return_id = null;
 
@@ -140,14 +140,14 @@ class OxygennaOneClick
                 $post = apply_filters('oxy_one_click_after_insert_post', $post, $this);
 
                 $this->install_package->set_log_status(OXY_IMPORT_OK);
-                $this->install_package->add_log_message(__('Post Created.', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Post Created.', 'omega-admin-td'));
             } else {
                 $this->install_package->set_log_status(OXY_IMPORT_FAIL);
-                $this->install_package->add_log_message(__('Failed to create post.', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Failed to create post.', 'omega-admin-td'));
             }
         } else {
             $this->install_package->set_log_status(OXY_IMPORT_EXISTS);
-            $this->install_package->add_log_message(__('Import stopped reason - Post already exists.', 'omega-admin-td'));
+            $this->install_package->add_log_message(esc_html__('Import stopped reason - Post already exists.', 'omega-admin-td'));
         }
 
         $this->install_package->close_item_log();
@@ -185,7 +185,7 @@ class OxygennaOneClick
 
         if ($new_id !== 0) {
             $this->install_package->item_created($post['post_type'], $new_id);
-            $this->install_package->add_log_message(__('Import Post OK', 'omega-admin-td'));
+            $this->install_package->add_log_message(esc_html__('Import Post OK', 'omega-admin-td'));
             $this->install_package->add_to_map($post['post_type'], $old_id, $new_id);
 
             // handle custom fields
@@ -240,7 +240,7 @@ class OxygennaOneClick
                         }
                     }
                 }
-                $this->install_package->add_log_message(__('Added ' . count($post['custom_fields']) . ' custom fields', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Added ' . count($post['custom_fields']) . ' custom fields', 'omega-admin-td'));
             }
 
             if (isset($post['taxonomies'])) {
@@ -278,18 +278,18 @@ class OxygennaOneClick
                         }
                     }
                 }
-                $this->install_package->add_log_message(__('Added ' . count($taxonomies) . ' taxonomies', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Added ' . count($taxonomies) . ' taxonomies', 'omega-admin-td'));
             }
 
             // handle post_format
             if (isset($post['format']) && $post['format'] !== false) {
-                $this->install_package->add_log_message(__('Set post format ' . $post['format'], 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Set post format ' . $post['format'], 'omega-admin-td'));
                 set_post_format($new_id, $post['format']);
             }
 
             if (isset($post['attachments'])) {
                 foreach ($post['attachments'] as $old_attachment_id) {
-                    $this->install_package->add_log_message(__('Set attachment', 'omega-admin-td'));
+                    $this->install_package->add_log_message(esc_html__('Set attachment', 'omega-admin-td'));
                     $this->update_post_parent($this->install_package->lookup_map('attachments', $old_attachment_id), $new_id);
                 }
             }
@@ -306,17 +306,17 @@ class OxygennaOneClick
         $response = wp_remote_get($image_url, array('timeout' => 120, 'sslverify' => false));
 
         if (is_wp_error($response)) {
-            $this->install_package->add_log_message(__('Could not download - ' . $image_url, 'omega-admin-td'));
+            $this->install_package->add_log_message(esc_html__('Could not download - ' . $image_url, 'omega-admin-td'));
         } else {
             $image_body = wp_remote_retrieve_body($response);
-            $this->install_package->add_log_message(__('Downloaded image data - ' . $image_url, 'omega-admin-td'));
+            $this->install_package->add_log_message(esc_html__('Downloaded image data - ' . $image_url, 'omega-admin-td'));
 
             // next upload to the WP uploads directory
             $upload = wp_upload_bits($post['filename'], null, $image_body);
 
             // did everything go ok?
             if ($upload['error']) {
-                $this->install_package->add_log_message(__('Could not upload to WordPress - ' . $upload['error'], 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Could not upload to WordPress - ' . $upload['error'], 'omega-admin-td'));
             }
 
             // everything is fine so lets
@@ -333,13 +333,13 @@ class OxygennaOneClick
 
             if (0 !== $attach_id) {
                 $this->install_package->item_created($post['post_type'], $attach_id);
-                $this->install_package->add_log_message(__('Attachment created', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Attachment created', 'omega-admin-td'));
 
                 // regenerate thumbnails
                 $attach_data = wp_generate_attachment_metadata($attach_id, $upload['file']);
                 wp_update_attachment_metadata($attach_id, $attach_data);
 
-                $this->install_package->add_log_message(__('Generated Thumbnails', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Generated Thumbnails', 'omega-admin-td'));
 
                 // store old url and new url in map
                 $map = $this->install_package->add_to_map('images', $post['guid'], $upload['url']);
@@ -401,6 +401,54 @@ class OxygennaOneClick
         return $post_content;
     }
 
+    /**
+     * Replaced a shortcode attribute from the log.
+     *
+     * @param string  $content    Post content.
+     * @param string  $shortcode  Shortcode tag to change.
+     * @param string  $param      Shortcode param to change.
+     * @param string  $lookup_map Where to look up the replacement attribute.
+     * @param boolean $multiple   Replace multiple values.
+     * @param string  $multiple_separator Separator char for multiple values (default ,).
+     *
+     * @return string             New Post content with replaced shortcode attribute.
+     */
+    public function replace_shortcode_attachment_id_new($content, $shortcode, $param, $lookup_map, $multiple = false, $multiple_separator = ',')
+    {
+        if (preg_match_all('/\[' . $shortcode . '[^\]]*' . $param . '="([^"]*)"[^\]]*\]/i', $content, $matches)) {
+            $num_matches = count($matches[0]);
+            for ($i = 0; $i < $num_matches; $i++) {
+                // Found shortcode.
+                // Replace old attribute ids with new ones.
+                if (array_key_exists($i, $matches[0]) && array_key_exists($i, $matches[1])) {
+                    $new_string = '';
+                    // Do we have to replace multiples like [gallery ids="1,2,3,4"].
+                    if ($multiple) {
+                        $multiple_matches = explode($multiple_separator, $matches[1][$i]);
+                        $new_ids = array();
+                        foreach ($multiple_matches as $old_id) {
+                            $new_ids[] = $this->install_package->lookup_map($lookup_map, $old_id);
+                        }
+                        $new_ids_separated = implode(',', $new_ids);
+                        $new_string = str_replace($matches[1][$i], $new_ids_separated, $matches[0][$i]);
+                    } else {
+                        $new_id = $this->install_package->lookup_map($lookup_map, $matches[1][$i]);
+                        if (false !== $new_id) {
+                            $new_string = str_replace($matches[1][$i], $new_id, $matches[0][$i]);
+                        }
+                    }
+                    // Replace the shortcode value in the content.
+                    if (!empty($new_string)) {
+                        $old_string = $matches[0][$i];
+                        $content = str_replace($old_string, $new_string, $content);
+                    }
+                }
+            }
+        }
+
+        return $content;
+    }
+
     public function update_post_parent($post_id, $parent_id)
     {
         global $wpdb;
@@ -430,7 +478,7 @@ class OxygennaOneClick
             $menu = json_decode(stripslashes($_POST['data']), true);
 
             $this->install_package->open_item_log($menu['name'], 'menu');
-            $this->install_package->add_log_message(__('Started Import Menu.', 'omega-admin-td'));
+            $this->install_package->add_log_message(esc_html__('Started Import Menu.', 'omega-admin-td'));
 
             $already_exists = wp_get_nav_menu_object($menu['slug']);
 
@@ -446,7 +494,7 @@ class OxygennaOneClick
                     $this->install_package->item_created('nav_menu', $new_menu_id);
                     // everything was ok creating menu so set log and return value
                     $this->install_package->set_log_status(OXY_IMPORT_OK);
-                    $this->install_package->add_log_message(__('Menu Created.', 'omega-admin-td'));
+                    $this->install_package->add_log_message(esc_html__('Menu Created.', 'omega-admin-td'));
 
                     $return->status = true;
                     $return->data = $new_menu_id;
@@ -468,13 +516,13 @@ class OxygennaOneClick
 
                 } else {
                     $this->install_package->set_log_status(OXY_IMPORT_FAIL);
-                    $this->install_package->add_log_message(__('Call to wp_create_nav_menu failed.', 'omega-admin-td'));
+                    $this->install_package->add_log_message(esc_html__('Call to wp_create_nav_menu failed.', 'omega-admin-td'));
                 }
             } else {
                 $return->status = true;
                 $return->data = 'Menu exists';
                 $this->install_package->set_log_status(OXY_IMPORT_EXISTS);
-                $this->install_package->add_log_message(__('Import stopped reason - Menu already exists.', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Import stopped reason - Menu already exists.', 'omega-admin-td'));
             }
 
             $this->install_package->close_item_log();
@@ -598,7 +646,7 @@ class OxygennaOneClick
                         // we have the slider now install
                         switch($slideshow['type']) {
                             case 'layerslider':
-                                if (is_plugin_active('LayerSlider/layerslider.php')) {
+                                if (class_exists('LS_Sliders')) {
                                     // Get importUtil
                                     include LS_ROOT_PATH . '/classes/class.ls.importutil.php';
 
@@ -635,16 +683,16 @@ class OxygennaOneClick
                                 }
                                 break;
                             case 'revslider':
-                                if (is_plugin_active('revslider/revslider.php')) {
+                                if (class_exists('RevSliderSliderImport')) {
                                     $_FILES['import_file']['tmp_name'] = $upload['file'];
-                                    $slider = @new RevSlider();
+                                    $slider = new RevSliderSliderImport();
                                     ob_start();
-                                    $return->data = @$slider->importSliderFromPost('true', 'true');
+                                    $return->data = @$slider->import_slider('true');
                                     ob_end_clean();
 
                                     $this->install_package->item_created($slideshow['type'], $return->data['sliderID']);
                                     $this->install_package->set_log_status(OXY_IMPORT_OK);
-                                    $this->install_package->add_log_message(__('Revslider Created.', 'omega-admin-td'));
+                                    $this->install_package->add_log_message(esc_html__('Revslider Created.', 'omega-admin-td'));
                                     $return->status = true;
                                 }
                                 break;
@@ -655,7 +703,7 @@ class OxygennaOneClick
                 $return->status = true;
                 $return->data = 'Slideshow exists';
                 $this->install_package->set_log_status(OXY_IMPORT_EXISTS);
-                $this->install_package->add_log_message(__('Import stopped reason - Slideshow already exists.', 'omega-admin-td'));
+                $this->install_package->add_log_message(esc_html__('Import stopped reason - Slideshow already exists.', 'omega-admin-td'));
             }
         }
 
@@ -670,14 +718,9 @@ class OxygennaOneClick
         $exists = false;
         switch($slideshow['type']) {
             case 'revslider':
-                if (class_exists('RevSlider')) {
-                    $revslider = new RevSlider();
-                    try {
-                        $revslider->initByAlias($slideshow['alias']);
-                        $exists = true;
-                    } catch (Exception $e) {
-                        $exists = false;
-                    }
+                if (class_exists('RevSliderSlider')) {
+                    $revslider = new RevSliderSlider();
+                    $exists = $revslider->check_alias($slideshow['alias']);
                 }
                 break;
         }

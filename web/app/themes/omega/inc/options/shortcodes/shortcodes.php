@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 /****************** VISUAL COMPOSER SHORTCODES *******************************/
@@ -89,7 +89,7 @@ function oxy_shortcode_section( $atts , $content = '') {
         $background_image_url = $background_image;
     }
 
-    $background_media_style = ( $has_media && !$has_video ) ? 'background-image: url(\''. $background_image_url .'\'); background-repeat:'. $background_image_repeat .'; background-size:'.$background_image_size.'; background-attachment:'. $background_image_attachment.'; background-position: 50% '. $background_position_vertical.'%;': "";
+    $background_media_style = ( $has_media ) ? 'background-image: url(\''. $background_image_url .'\'); background-repeat:'. $background_image_repeat .'; background-size:'.$background_image_size.'; background-attachment:'. $background_image_attachment.'; background-position: 50% '. $background_position_vertical.'%;': "";
 
     // create parallax data attributes if needed
     $parallax_data_attr = array();
@@ -111,6 +111,12 @@ function oxy_shortcode_section( $atts , $content = '') {
     include( locate_template( 'partials/shortcodes/section.php' ) );
     $output = ob_get_contents();
     ob_end_clean();
+
+    if( class_exists('WPBakeryVisualComposerAbstract') ) {
+        $class = Vc_Shortcodes_Manager::getInstance()->getElementClass('vc_row');
+        // Filter for overriding output
+        $output = apply_filters( 'vc_shortcode_output', $output, $class, $atts );
+    }
     return $output;
 }
 add_shortcode( 'vc_row', 'oxy_shortcode_section' );
@@ -194,6 +200,11 @@ function oxy_section_vc_row_inner( $atts, $content ) {
     $output .= do_shortcode( $content );
     $output .= '</div>';
 
+    if( class_exists('WPBakeryVisualComposerAbstract') ) {
+        $class = Vc_Shortcodes_Manager::getInstance()->getElementClass('vc_row_inner');
+        // Filter for overriding output
+        $output = apply_filters( 'vc_shortcode_output', $output, $class, $atts );
+    }
     return $output;
 }
 add_shortcode( 'vc_row_inner', 'oxy_section_vc_row_inner' );
@@ -219,7 +230,7 @@ function oxy_section_vc_column( $atts, $content ) {
 
     $fraction = array('whole' => 0);
     preg_match('/^((?P<whole>\d+)(?=\s))?(\s*)?(?P<numerator>\d+)\/(?P<denominator>\d+)$/', $width, $fraction);
-    $decimal_width = $fraction['whole'] + $fraction['numerator'] / $fraction['denominator'];
+    $decimal_width = (int) $fraction['whole'] + (int) $fraction['numerator'] / (int) $fraction['denominator'];
     $col_width_class = ($decimal_width * 12);
     $col_width_class = str_replace('.', '-', $col_width_class);
     $col_md_width_class = 'col-md-' . $col_width_class;
@@ -959,7 +970,7 @@ function oxy_shortcode_button($atts , $content = '' ) {
         $modal_atts = 'data-toggle="modal" data-target="#' . $modal. '"';
         $link = '#';
     }
-    
+
     $fancy_class = '';
     $custom_style = '';
     $icon_style = '';
@@ -1026,7 +1037,7 @@ function oxy_shortcode_service( $atts, $content = '') {
         'link_image'        => 'on',
         'show_excerpt'      => 'show',
         'align'             => 'center',
-        'show_readmore'     => 'show',
+        'show_readmore'     => 'hide',
         'readmore_text'     => 'read more',
         // global options
         'extra_classes'          => '',
@@ -2293,7 +2304,7 @@ function oxy_shortcode_google_map( $atts, $content = null) {
         'map_type'       => 'ROADMAP',
         'map_zoom'       => '15',
         'map_style'      => 'flat',
-        'map_scrollable' => 'off',
+        'map_scrollable' => 'on',
         'marker'         => 'show',
         'auto_center'    => 'auto',
         'latlng'         => '51.5171,0.1062',
@@ -2336,7 +2347,7 @@ function oxy_shortcode_google_map( $atts, $content = null) {
 
     $map_id = 'map' . rand(1, 1000);
 
-    wp_enqueue_script(THEME_SHORT.'-google-map-api', 'https://maps.googleapis.com/maps/api/js?' . $api_key . '&v=3.24&sensor=false');
+    wp_enqueue_script(THEME_SHORT.'-google-map-api', 'https://maps.googleapis.com/maps/api/js?v=3.35&' . $api_key );
     wp_enqueue_script( THEME_SHORT.'-google-map', OXY_THEME_URI . 'assets/js/map.min.js', array( 'jquery', THEME_SHORT.'-google-map-api' ) );
     wp_localize_script( THEME_SHORT.'-google-map', $map_id, $atts );
 
@@ -2354,7 +2365,7 @@ add_shortcode( 'map', 'oxy_shortcode_google_map' );
 function oxy_shortcode_alert($atts , $content = '' ) {
      // setup options
     extract( shortcode_atts( array(
-        'color'       => 'success',
+        'color'       => 'alert-success',
         'title'       => 'Watch Out!',
         'dismissable' => 'false',
         // global options
@@ -2891,8 +2902,8 @@ add_shortcode( 'simple_icon', 'oxy_shortcode_simple_icon' );
 function oxy_shortcode_audio( $atts, $content = null) {
     $atts = shortcode_atts( array(
         'src'      => '',
-        'loop'     => 'off',
-        'autoplay' => 'off',
+        'loop'     => '0',
+        'autoplay' => '0',
         'preload'  => 'none',
         // global options
         'extra_classes'          => '',
@@ -2900,7 +2911,6 @@ function oxy_shortcode_audio( $atts, $content = null) {
         'margin_bottom'          => 'short-bottom',
         'scroll_animation'       => 'none',
         'scroll_animation_delay' => '0'
-
     ), $atts );
 
     $classes = array();

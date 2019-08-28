@@ -23,15 +23,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 $customer_id = get_current_user_id();
 
 if ( ! wc_ship_to_billing_address_only() && wc_shipping_enabled() ) {
-	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Addresses', 'woocommerce' ) );
+	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Addresses', 'omega-td' ) );
 	$get_addresses = apply_filters( 'woocommerce_my_account_get_addresses', array(
-		'billing' => __( 'Billing Address', 'woocommerce' ),
-		'shipping' => __( 'Shipping Address', 'woocommerce' )
+		'billing' => __( 'Billing address', 'woocommerce' ),
+		'shipping' => __( 'Shipping address', 'woocommerce' )
 	), $customer_id );
 } else {
-	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Address', 'woocommerce' ) );
+	$page_title = apply_filters( 'woocommerce_my_account_my_address_title', __( 'My Address', 'omega-td' ) );
 	$get_addresses = apply_filters( 'woocommerce_my_account_get_addresses', array(
-		'billing' =>  __( 'Billing Address', 'woocommerce' )
+		'billing' =>  __( 'Billing address', 'woocommerce' )
 	), $customer_id );
 }
 

@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 if( have_posts() ) {
@@ -34,8 +34,13 @@ else {
 }
 
 if( is_single() ) {
-    // show post navigation at the bottom of single post
-    get_template_part( 'partials/blog/posts/normal/nav', 'single' );
+    if (is_singular('oxy_testimonial')) {
+        // navigating through testimonials of the same group
+        get_template_part( 'partials/blog/posts/normal/nav', 'single-testimonial' );
+    } else {
+        // show post navigation at the bottom of single post
+        get_template_part( 'partials/blog/posts/normal/nav', 'single' );
+    }
     // add related posts
     get_template_part( 'partials/blog/posts/normal/post', 'related' );
     // show comments below that

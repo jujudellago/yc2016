@@ -11,11 +11,13 @@
                 var removeButton;
                 var uploadImageHolder;
                 var uploadUrl;
+                var storeType;
 
                 //set variables values
                 uploadUrl           = $(this).find('.oxy-media-upload-url');
                 uploadImageHolder   = $(this).find('.oxy-image-option-preview');
                 removeButton        = $(this).find('.oxy-remove-image');
+                storeType           = uploadUrl.data('store');
 
                 if (uploadImageHolder.attr('src') != "") {
                     removeButton.show();
@@ -44,8 +46,8 @@
                         removeButton.show();
                         oxyInitMediaRemoveBtn(removeButton);
                         //write to url field and img tag
-                        if(attachment.hasOwnProperty('url')) {
-                            uploadUrl.val(attachment.url);
+                        if(attachment.hasOwnProperty('id') && attachment.hasOwnProperty('url')) {
+                            uploadUrl.val(attachment[storeType]);
                             uploadImageHolder.attr('src', attachment.url);
                             uploadImageHolder.show();
                         }

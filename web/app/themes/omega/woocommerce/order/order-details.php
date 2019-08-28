@@ -10,47 +10,58 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	https://docs.woothemes.com/document/template-structure/
+ * @see 	https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.6.0
+ * @version 3.5.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+if ( ! $order = wc_get_order( $order_id ) ) {
+	return;
+}
 
-$order = wc_get_order( $order_id );
-
+$order_items           = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
 $show_purchase_note    = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
 $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
+$downloads             = $order->get_downloadable_items();
+$show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
+
+if ( $show_downloads ) {
+	wc_get_template( 'order/order-downloads.php', array( 'downloads' => $downloads, 'show_title' => true ) );
+}
 ?>
-<h2 class="element-normal-top">
-	<?php _e( 'Order Details', 'woocommerce' ); ?>
+
+<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
+<h2 class="woocommerce-order-details__title element-normal-top">
+	<?php _e( 'Order details', 'woocommerce' ); ?>
 </h2>
-<table class="shop_table order_details table table-simple-body-headers">
+<table class="woocommerce-table woocommerce-table--order-details shop_table order_details table table-simple-body-headers">
 	<thead>
 		<tr>
-			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
-			<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
+			<th class="woocommerce-table__product-name product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
+			<th class="woocommerce-table__product-table product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php
-			foreach( $order->get_items() as $item_id => $item ) {
-				$product = apply_filters( 'woocommerce_order_item_product', $order->get_product_from_item( $item ), $item );
+			do_action( 'woocommerce_order_details_before_order_table_items', $order );
+			foreach ( $order_items as $item_id => $item ) {
+				$product = $item->get_product();
 
 				wc_get_template( 'order/order-details-item.php', array(
-					'order'					=> $order,
-					'item_id'				=> $item_id,
-					'item'					=> $item,
-					'show_purchase_note'	=> $show_purchase_note,
-					'purchase_note'	     => $product ? get_post_meta( $product->id, '_purchase_note', true ) : '',
-					'product'				=> $product,
+					'order'			     => $order,
+					'item_id'		     => $item_id,
+					'item'			     => $item,
+					'show_purchase_note' => $show_purchase_note,
+					'purchase_note'	     => $product ? $product->get_purchase_note() : '',
+					'product'	         => $product,
 				) );
 			}
 		?>
-		<?php do_action( 'woocommerce_order_items_table', $order ); ?>
+		<?php do_action( 'woocommerce_order_details_after_order_table_items', $order ); ?>
 	</tbody>
 	<tfoot>
 		<?php
@@ -58,16 +69,23 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 				?>
 				<tr>
 					<th scope="row"><?php echo $total['label']; ?></th>
-					<td><?php echo $total['value']; ?></td>
+					<td><?php echo ( 'payment_method' === $key ) ? esc_html( $total['value'] ) : $total['value']; ?></td>
 				</tr>
 				<?php
 			}
 		?>
+		<?php if ( $order->get_customer_note() ) : ?>
+			<tr>
+				<th><?php _e( 'Note:', 'woocommerce' ); ?></th>
+				<td><?php echo wptexturize( $order->get_customer_note() ); ?></td>
+			</tr>
+		<?php endif; ?>
 	</tfoot>
 </table>
 
 <?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 
-<?php if ( $show_customer_details ) : ?>
-	<?php wc_get_template( 'order/order-details-customer.php', array( 'order' =>  $order ) ); ?>
-<?php endif; ?>
+<?php
+if ( $show_customer_details ) {
+	wc_get_template( 'order/order-details-customer.php', array( 'order' => $order ) );
+}

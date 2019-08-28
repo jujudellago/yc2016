@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 get_header();
@@ -20,7 +20,8 @@ while( have_posts() ) {
 }
 
 $allow_comments = oxy_get_option( 'site_comments' );
-if( $allow_comments === 'pages' || $allow_comments === 'all' ) : ?>
+// If comments are open or we have at least one comment, load up the comment template.
+if( ($allow_comments === 'pages' || $allow_comments === 'all') && (comments_open() || get_comments_number())) : ?>
 <section class="section <?php echo oxy_get_option( 'page_comments_swatch' ); ?>">
     <div class="container">
         <div class="row element-normal-top element-normal-bottom">

@@ -374,10 +374,6 @@ button.wpb_button.btn-xs {
   -moz-box-sizing: border-box;
 }
 
-.controls_row .vc_row_layouts:hover {
-  max-width: 100% !important;
-}
-
 .controls_row .set_columns.l_15_15_15_15_15 {
   background-image: url("../../images/visual-composer/15_15_15_15_15.png");
 }

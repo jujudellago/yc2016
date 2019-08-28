@@ -480,3 +480,181 @@
 - Fixed one page menu for windows mobile
 - Blog menu item stays active when on single posts page or other blog pages
 - Fixed scrolling to #id section when navigating from another page
+
+# Version 1.15.0
+> Release Date : 10th January 2017
+
+- Smooth scrolling bug fix
+- Updated Font Awesome icons to 4.7
+- Docs updated
+- Fixed autoplay option for audio shortcode
+- Updated Google Maps API version
+- Added Xing icon for the Social Icon shortcode
+- Fixed bug when saving system fonts
+
+# Version 1.15.1
+> Release Date : 9th March 2017
+
+- Fixed scrollable option in Google Map shortcode
+- Fixed icon position option in button shortcode always aligning left
+- Updated Layer Slider to v6.1.6
+- Updated Revolution Slider to v5.4.1
+- Supports Woocommerce v2.6.14
+
+# Version 1.16.0
+> Release Date : 3rd May 2017
+
+- Added Mail icon for the Social Icon shortcode
+- Updated WooCommerce templates to be compatible with WooCommerce 3.0.4
+**WARNING - This is a major update to WooCommerce please test before updating**
+
+# Version 1.17.0
+> Release Date : 21st July 2017
+
+- Added support for post type templates
+- Fixed breadcrumbs order on pages with multiple ancestors
+- Woocommerce sitewide store message is now dismissible
+- Supports Woocommerce v3.1.0
+- Fixed missing woocommerce translations
+- Fixed bug where comments section would render when comments were disabled on pages and posts
+- Single testimonials page now navigates only through testimonials of the same group
+
+# Version 1.17.1
+> Release Date : 25th September 2017
+
+- Fixed bug in portfolio shortcode ordering option.
+- Fixed bug where infinite scrolling was broken
+- Updated fitvids js to latest version
+- Updated Visual Composer to v5.3
+- Updated Revolution Slider plugin to v5.4.6
+- Compatible with Woocommerce v3.1.2
+- Updated Layer Slider to 6.5.8
+
+# Version 1.17.2
+> Release Date : 20th November 2017
+
+- Compatible with WordPress v4.9
+- Updated Visual Composer to v5.4.4
+- Updated Layer Slider to 6.6.2
+- Updated Revolution Slider plugin to v5.4.6.3.1
+- Compatible with Woocommerce v3.2.4
+- Updated Google Maps API version
+- Improved compatibility of Woocommerce plugin with PHP 7
+- Added support for editor translation with WPML
+- Fixed background videos for WordPress v4.9
+- Fixed read more link not hiding on single service shortcode
+- Fixed swatches error caused by latest Visual Composer plugin
+
+# Version 1.17.3
+> Release Date : 13th December 2017
+
+- Compatible with WordPress v4.9.1
+- Updated Visual Composer to v5.4.5
+- Updated Layer Slider to 6.6.5
+- Updated Waypoints to v3.1.0
+- Added Grid Builder of Visual Composer
+- Compatible with Woocommerce v3.2.5
+- Added back Visual Composer button shortcode
+
+# Version 1.18.0
+> Release Date : 26th February 2018
+
+**Must update WooCommerce to v3.3.1**
+**WARNING - This is a major update to WooCommerce please test before updating.**
+
+- Compatible with Woocommerce v3.3.3
+- Product columns are now set from Woocommerce Customizer options
+- Fix: Removing item from mini cart now restores page colors properly
+- Updated Revolution Slider plugin to v5.4.7.1
+- Updated Layer Slider to 6.7.0
+- Added compatibility for Time Based Content For Visual Composer plugin
+
+# Version 1.18.1
+> Release Date : 6th March 2018
+
+- Fixed bug for Gallery shortcode
+- Fixed styling for audio player
+
+# Version 1.18.2
+> Release Date : 8th March 2018
+
+- Fixed bug in background videos
+
+# Version 1.18.3
+> Release Date : 17th April 2018
+
+- Compatible with Woocommerce v3.3.5
+- Updated Visual Composer to v5.4.7
+- Updated Revolution Slider plugin to v5.4.7.2
+- Updated Layer Slider to 6.7.1
+- Fixed undefined media element background image error
+- Fixed broken dependency for backend editor of Visual Composer
+
+# Version 1.18.4
+> Release Date : 31st May 2018
+
+**Must update WooCommerce to v3.4.1**
+**WARNING - This is a major update to WooCommerce please test before updating.**
+
+- Compatible with Woocommerce v3.4.1
+- Updated Revolution Slider plugin to v5.4.7.4
+- Updated Layer Slider plugin to v6.7.6
+- Fixed background videos autoplay issue
+
+# Version 1.18.5
+> Release Date : 4th July 2018
+
+- Compatible with Woocommerce v3.4.3
+- Updated Revolution Slider plugin to v5.4.8
+- Updated Visual Composer to v5.5.2
+
+# Version 1.18.6
+> Release Date : 6th August 2018
+
+- Compatible with Woocommerce v3.4.4
+
+# Version 1.18.7
+> Release Date : 17th October 2018
+
+- Compatible with Woocommerce v3.4.6
+- Updated Visual Composer to v5.5.5
+- Updated Google Maps API version
+
+# Version 1.18.8
+> Release Date : 10th January 2019
+
+- Tested up to WordPress 5.0.2
+- Compatible with Woocommerce v3.5.3
+- Updated Revolution Slider plugin to v5.4.8.1
+- Updated Visual Composer to v5.6
+- Updated Google Maps API version
+- Styled input fields for edit address pages in the shop
+
+# Version 1.18.9
+> Release Date : 26th February 2019
+
+- Compatible with Woocommerce v3.5.5
+- Updated Revolution Slider plugin to v5.4.8.2
+- Updated Visual Composer to v5.7
+
+# Version 1.18.10
+> Release Date : 4th July 2019
+
+- Compatible with Woocommerce v3.6.5
+- Updated Revolution Slider plugin to v5.4.8.3
+- Updated Visual Composer to v6.0.3
+- Updated Layer Slider plugin to v6.8.4
+- Added default parameter value to a filter that was breaking with bbpress
+
+# Version 1.18.11
+> Release Date : 5th July 2019
+
+- Updated plugin installer to use TGM. Plugins are now installed/updated from Appearance->Install Plugins
+
+# Version 1.18.12
+> Release Date : 19th July 2019
+
+- Updated Revolution Slider plugin to v6.0.5
+- Updated WPBakery Page Builder to v6.0.4
+- Removed deprecated theme updater. Theme should now be updated via Envato Market plugin
+- Fixed a bug where deleted swatches were still being loaded

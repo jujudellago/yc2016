@@ -128,10 +128,23 @@
         </copy>
 
         <!-- copy bundles -->
-        <copy todir="artifacts/html/release">
-            <fileset dir="themeforest/html" includes="${html.bundles.html}" />
-            <fileset dir="themeforest/shared" includes="${html.bundles.shared}" />
-        </copy>
+        <if>
+            <available file="themeforest/html"/>
+            <then>
+                <copy todir="artifacts/html/release">
+                    <fileset dir="themeforest/html" includes="${html.bundles.html}" />
+                </copy>
+            </then>
+        </if>
+
+        <if>
+            <available file="themeforest/shared"/>
+            <then>
+                <copy todir="artifacts/html/release">
+                    <fileset dir="themeforest/shared" includes="${html.bundles.shared}" />
+                </copy>
+            </then>
+        </if>
 
         <!-- copy source zip if it exists -->
         <antcall target="html-build-release-source"></antcall>
@@ -158,10 +171,36 @@
         <mkdir dir="artifacts/html/themeforest" />
 
         <echo message="Creating Theme Preview..." />
-        <zip basedir="themeforest/html/submit/preview" destfile="artifacts/html/themeforest/theme-preview.zip" />
+        <if>
+            <available file="themeforest/html/submit/preview"/>
+            <then>
+                <zip basedir="themeforest/html/submit/preview" destfile="artifacts/html/themeforest/theme-preview.zip" />
+            </then>
+            <else>
+                <if>
+                    <available file="themeforest/preview/templates/html/preview"/>
+                    <then>
+                        <zip basedir="themeforest/preview/templates/html/preview" destfile="artifacts/html/themeforest/theme-preview.zip" />
+                    </then>
+                </if>
+            </else>
+        </if>
 
         <echo message="Creating Thumbnail..." />
-        <copy file="themeforest/html/submit/thumbnail.png" tofile="artifacts/html/themeforest/thumbnail.png" />
+        <if>
+            <available file="themeforest/html/submit/thumbnail.png"/>
+            <then>
+                <copy file="themeforest/html/submit/thumbnail.png" tofile="artifacts/html/themeforest/thumbnail.png" />
+            </then>
+            <else>
+                <if>
+                    <available file="themeforest/preview/templates/html/thumbnail.png"/>
+                    <then>
+                        <copy file="themeforest/preview/templates/html/thumbnail.png" tofile="artifacts/html/themeforest/thumbnail.png" />
+                    </then>
+                </if>
+            </else>
+        </if>
 
         <!-- zip main release up -->
         <zip basedir="artifacts/html/release" destfile="artifacts/html/themeforest/${project.namelower}-${html.version}.zip" />

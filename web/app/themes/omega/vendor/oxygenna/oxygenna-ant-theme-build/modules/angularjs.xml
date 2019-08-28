@@ -51,7 +51,7 @@
         </exec>
 
         <echo message="bower install" />
-        <exec executable="bash" dir="app">
+        <exec executable="bash">
             <arg value="-c"/>
             <arg value="bower install"/>
         </exec>

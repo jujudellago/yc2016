@@ -7,7 +7,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  * @author Oxygenna.com
  */
 
@@ -21,7 +21,7 @@ class OxygennaWPMemoryCheck extends OxygennaSystemCheck
     public function __construct($args)
     {
         $this->wanted_limit = $this->ini_to_num($args['limit']);
-        parent::__construct(__('WP Memory Limit', 'omega-admin-td'));
+        parent::__construct(esc_html__('WP Memory Limit', 'omega-admin-td'));
     }
 
     public function check()

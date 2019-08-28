@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 global $oxy_theme;
@@ -891,30 +891,13 @@ $oxy_theme->register_metabox( array(
     )
 ));
 
-
-$product_category_options = array(
-    array(
-        'name'    => __('Product Columns', 'omega-admin-td'),
-        'desc'    => __('Number of columns to use for products on this page.', 'omega-admin-td'),
-        'id'      => 'product_columns',
-        'type'    => 'select',
-        'default' => 3,
-        'options'    => array(
-            '2'  => __('2 Columns', 'omega-admin-td'),
-            '3'  => __('3 Columns', 'omega-admin-td'),
-            '4'  => __('4 Columns', 'omega-admin-td'),
-            '5'  => __('5 Columns', 'omega-admin-td')
-        )
-    ),
-);
-
 $oxy_theme->register_metabox( array(
     'id' => 'category_header',
     'title' => __('Category Header Type', 'omega-admin-td'),
     'priority' => 'default',
     'context' => 'advanced',
     'taxonomies' => array('product_cat'),
-    'fields' => array_merge( $product_category_options, $override_header_options, $heading_options, $section_options )
+    'fields' => array_merge( $override_header_options, $heading_options, $section_options )
 ));
 
 $oxy_theme->register_metabox( array(
@@ -923,7 +906,7 @@ $oxy_theme->register_metabox( array(
     'priority' => 'default',
     'context' => 'advanced',
     'taxonomies' => array('product_tag'),
-    'fields' => array_merge( $product_category_options, $override_header_options, $heading_options, $section_options )
+    'fields' => array_merge( $override_header_options, $heading_options, $section_options )
 ));
 
 $oxy_theme->register_metabox(array(

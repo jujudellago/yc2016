@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license **LICENSE**
- * @version 1.14.0
+ * @version 1.18.12
  */
 
 
@@ -432,7 +432,6 @@ if( isset($oxy_theme) ) {
     $blog_header_options[5]['default'] = 'light';
     $blog_header_options[11]['default'] = 'medium-top';
     $blog_header_options[12]['default'] = 'medium-bottom';
-    // var_dump($blog_header_options);
     // set default swatch to blue
     $blog_header_section_options[0]['default'] = 'swatch-blue';
 
@@ -1603,19 +1602,7 @@ if( isset($oxy_theme) ) {
                             'sidebar-left'  => __('Left Sidebar', 'omega-admin-td'),
                         ),
                         'default' => 'full-width',
-                    ),
-                    array(
-                        'name'    => __('Shop Page Columns', 'omega-admin-td'),
-                        'desc'    => __('Number of columns to use for the products on the main shop page.', 'omega-admin-td'),
-                        'id'      => 'woocommerce_shop_page_columns',
-                        'type'    => 'slider',
-                        'default' => 3,
-                        'attr'    => array(
-                            'max'  => 4,
-                            'min'  => 2,
-                            'step' => 1
-                        )
-                    ),
+                    )
                 )
             ),
             'woo-shop-checkout-sidebar' => array(
@@ -1666,121 +1653,6 @@ if( isset($oxy_theme) ) {
                         )
                     ),
                 ),
-            ),
-            'product-slider-section' => array(
-                'title' => __('Product Slideshow', 'omega-admin-td'),
-                'header'  => __('Setup your product page flexslider options.', 'omega-admin-td'),
-                'fields' => array(
-                    array(
-                        'name'      =>  __('Animation style', 'omega-admin-td'),
-                        'desc'      =>  __('Select how your slider animates', 'omega-admin-td'),
-                        'id'        => 'product_animation',
-                        'type'      => 'select',
-                        'options'   =>  array(
-                            'slide' => __('Slide', 'omega-admin-td'),
-                            'fade'  => __('Fade', 'omega-admin-td'),
-                        ),
-                        'attr'      =>  array(
-                            'class'    => 'widefat',
-                        ),
-                        'default'   => 'slide',
-                    ),
-                    array(
-                        'name'      => __('Speed', 'omega-admin-td'),
-                        'desc'      => __('Set the speed of the slideshow cycling, in milliseconds', 'omega-admin-td'),
-                        'id'        => 'product_speed',
-                        'type'      => 'slider',
-                        'default'   => 7000,
-                        'attr'      => array(
-                            'max'       => 15000,
-                            'min'       => 2000,
-                            'step'      => 1000
-                        )
-                    ),
-                    array(
-                        'name'      => __('Duration', 'omega-admin-td'),
-                        'desc'      => __('Set the speed of animations', 'omega-admin-td'),
-                        'id'        => 'product_duration',
-                        'type'      => 'slider',
-                        'default'   => 600,
-                        'attr'      => array(
-                            'max'       => 1500,
-                            'min'       => 200,
-                            'step'      => 100
-                        )
-                    ),
-                    array(
-                        'name'      => __('Auto start', 'omega-admin-td'),
-                        'id'        => 'product_autostart',
-                        'type'      => 'radio',
-                        'default'   =>  'true',
-                        'desc'    => __('Start slideshow automatically', 'omega-admin-td'),
-                        'options' => array(
-                            'true'  => __('On', 'omega-admin-td'),
-                            'false' => __('Off', 'omega-admin-td'),
-                        ),
-                    ),
-                    array(
-                        'name'      => __('Show navigation arrows', 'omega-admin-td'),
-                        'id'        => 'product_directionnav',
-                        'type'      => 'radio',
-                        'desc'    => __('Shows the navigation arrows at the sides of the flexslider.', 'omega-admin-td'),
-                        'default'   =>  'hide',
-                        'options' => array(
-                            'hide' => __('Hide', 'omega-admin-td'),
-                            'show' => __('Show', 'omega-admin-td'),
-                        ),
-                    ),
-                    array(
-                        'name'      => __('Navigation arrows type', 'omega-admin-td'),
-                        'id'        => 'product_directionnavtype',
-                        'type'      => 'radio',
-                        'desc'      => __('Type of the direction arrows, fancy (with bg) or simple.', 'omega-admin-td'),
-                        'default'   =>  'simple',
-                        'options' => array(
-                            'simple' => __('Simple', 'omega-admin-td'),
-                            'fancy'  => __('Fancy', 'omega-admin-td'),
-                        ),
-                    ),
-                    array(
-                        'name'      => __('Show controls', 'omega-admin-td'),
-                        'id'        => 'product_showcontrols',
-                        'type'      => 'radio',
-                        'default'   =>  'thumbnails',
-                        'desc'    => __('If you choose hide the option below will be ignored', 'omega-admin-td'),
-                        'options' => array(
-                            'hide' => __('Hide', 'omega-admin-td'),
-                            'show' => __('Show', 'omega-admin-td'),
-                            'thumbnails' => __('Thumbnails', 'omega-admin-td'),
-                        ),
-                    ),
-                    array(
-                        'name'      => __('Choose the place of the controls', 'omega-admin-td'),
-                        'id'        => 'product_controlsposition',
-                        'type'      => 'radio',
-                        'default'   =>  'outside',
-                        'desc'    => __('Choose the position of the navigation controls', 'omega-admin-td'),
-                        'options' => array(
-                            'inside'    => __('Inside', 'omega-admin-td'),
-                            'outside'   => __('Outside', 'omega-admin-td'),
-                        ),
-                    ),
-                    array(
-                        'name'      =>  __('Choose the alignment of the controls', 'omega-admin-td'),
-                        'id'        => 'product_controlsalign',
-                        'type'      => 'radio',
-                        'desc'    => __('Choose the alignment of the navigation controls', 'omega-admin-td'),
-                        'options'   =>  array(
-                            'center' => __('Center', 'omega-admin-td'),
-                            'left'   => __('Left', 'omega-admin-td'),
-                            'right'  => __('Right', 'omega-admin-td'),
-                        ),
-                        'attr'      =>  array(
-                            'class'    => 'widefat',
-                        ),
-                        'default'   => 'center',
-                    ),
-                )
             ),
         )
     ));
@@ -2332,37 +2204,5 @@ if( isset($oxy_theme) ) {
                 )
             )
         )
-    ));
-
-
-    $oxy_theme->register_option_page( array(
-        'page_title' => __('Update', 'omega-admin-td'),
-        'menu_title' => __('Update', 'omega-admin-td'),
-        'slug'       => THEME_SHORT . '-update',
-        'main_menu'  => false,
-        'icon'       => 'tools',
-        'stylesheets' => array(
-            array(
-                'handle' => 'envatoUpdateStyle',
-                'src'    => OXY_THEME_URI . 'vendor/oxygenna/oxygenna-updater/assets/stylesheets/theme-updater.css',
-                'deps'   => array(),
-            ),
-        ),
-        'sections' => array()
-    ));
-
-    $oxy_theme->register_option_page(array(
-        'page_title' => __('Plugins', 'omega-admin-td'),
-        'menu_title' => __('Plugins', 'omega-admin-td'),
-        'slug'       => THEME_SHORT . '-plugins',
-        'main_menu'  => false,
-        'stylesheets' => array(
-            array(
-                'handle' => 'envatoPluginStyle',
-                'src'    => OXY_THEME_URI . 'vendor/oxygenna/oxygenna-plugins/assets/stylesheets/oxygenna-plugins.css',
-                'deps'   => array(),
-            ),
-        ),
-        'sections'   => array()
     ));
 }
