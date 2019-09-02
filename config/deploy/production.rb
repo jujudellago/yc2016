@@ -16,7 +16,7 @@ set :tmp_dir, "/home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/tmp"
 set :deploy_to, -> { "/home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/bedrock" }
 
 
-SSHKit.config.command_map[:composer] = "php-5.6 /home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/bin/composer/composer.phar"
+SSHKit.config.command_map[:composer] = "php-7.3 /home/clients/d9e7a0ab00bb20eac180d94da2fe2de6/bin/composer/composer.phar"
 
 SSHKit.config.command_map[:wp] ="~/bin/wp.sh"
 
