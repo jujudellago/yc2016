@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ${theme} Frontend Translation File 1.18.12\n"
+"Project-Id-Version: ${theme} Frontend Translation File 1.18.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-19 07:13+0000\n"
+"POT-Creation-Date: 2019-12-16 12:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,27 +23,27 @@ msgstr ""
 msgid "All posts from"
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:38
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:36
 msgid "Close Cart"
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:78
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:76
 msgid "Remove this item"
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:103
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:96
 msgid "No products in the cart."
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:113
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:106
 msgid "Subtotal"
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:118
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:111
 msgid "View cart"
 msgstr ""
 
-#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:119
+#: artifacts/wordpress/build/woocommerce/cart/mini-cart.php:112
 msgid "Checkout"
 msgstr ""
 

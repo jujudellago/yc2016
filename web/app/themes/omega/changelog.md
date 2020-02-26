@@ -1,10 +1,11 @@
 ---
-  title: Theme Changelog
-  subtitle: Lists all changes to the theme files
-  layout: docs.hbs
+title: Theme Changelog
+subtitle: Lists all changes to the theme files
+layout: docs.hbs
 ---
 
 # Version 1.0.0
+
 > Release Date : 20th May 2014
 
 - Updated revolution slider package
@@ -30,6 +31,7 @@
 - Styled sticky posts
 
 # Version 1.1.0
+
 > Release Date : 24th May 2014
 
 - Fixed Swatch Compile For IIS servers
@@ -45,6 +47,7 @@
 - Added Sidebar element to VC plugin
 
 # Version 1.1.1
+
 > Release Date : 31st May 2014
 
 - Fixed Video Element
@@ -53,6 +56,7 @@
 - Updated Docs
 
 # Version 1.2.0
+
 > Release Date : 6th June 2014
 
 - Fixed ghost menu items on small screens
@@ -78,6 +82,7 @@
 - Updated Docs
 
 # Version 1.3.0
+
 > Release Date : 16th June 2014
 
 - Renammed import files from json to js ( stops error on IIS servers )
@@ -95,11 +100,13 @@
 - Added extra woocommerce shortcodes to visual composer
 
 # Version 1.3.1
+
 > Release Date : 17th June 2014
 
 - Fixed bug when setting header menu height
 
 # Version 1.4.0
+
 > Release Date : 24th June 2014
 
 - Added twitter icon to social widgets Visual Composer Shortcode
@@ -113,6 +120,7 @@
 - Added system check page
 
 # Version 1.5.0
+
 > Release Date : 2nd July 2014
 
 - New Mega Menu Module
@@ -127,6 +135,7 @@
 - Updated Docs
 
 # Version 1.5.1
+
 > Release Date : 7th July 2014
 
 - Fixed positioning for background images on firefox
@@ -138,6 +147,7 @@
 - Frontpage changed to match demo site in import content
 
 # Version 1.6.0
+
 > Release Date : 29th July 2014
 
 - Update Bootstrap to 3.2
@@ -157,6 +167,7 @@
 - Fix animations on product icons on woocommerce
 
 # Version 1.7.0
+
 > Release Date : 2nd September 2014
 
 - Added option for vertical alignment on row content
@@ -173,6 +184,7 @@
 - Fixed issue with full height section on mobile screens
 
 # Version 1.7.1
+
 > Release Date : 9th September 2014
 
 - Fix for coupon in woocommerce cart page
@@ -182,6 +194,7 @@
 - Updated TGM plugin to latest dev version
 
 # Version 1.7.2
+
 > Release Date : 12th September 2014
 
 - Fixed Section Video Backgrounds for Mobile
@@ -189,6 +202,7 @@
 - Fixed Radio Buttons bug caused by VC Plugin
 
 # Version 1.7.3
+
 > Release Date: 18th September 2014
 
 - Fixed left sidebar template on IOS (the sidebar goes bellow the content now )
@@ -198,6 +212,7 @@
 - Updated WooCommerce templates for version 2.2
 
 # Version 1.7.4
+
 > Release Date: 7th November 2014
 
 - Fixed left sidebar blog page template on IOS (the sidebar goes bellow the content now )
@@ -216,11 +231,13 @@
 - Fixed WPML language widget order options bug
 
 # Version 1.7.5
+
 > Release Date: 9th November 2014
 
 - Added missing import folder
 
 # Version 1.7.6
+
 > Release Date: 17th November 2014
 
 - Updated plugins Visual Composer (4.3.4) - Revolution Slider (4.6.3) - Layer Slider (5.3.2)
@@ -234,8 +251,8 @@
 - Added link option to testimonials and testimonials shortcode
 - Added LinkedIn to social sharing
 
-
 # Version 1.7.7
+
 > Release Date: 26th November 2014
 
 - Added 5 column row layout
@@ -250,12 +267,14 @@
 - Major updates to docs
 
 # Version 1.7.8
+
 > Release Date: 29th November 2014
 
 - Added support for mp4 video formats for posts
 - Fixed bug when installing theme
 
 # Version 1.7.9
+
 > Release Date: 8th December 2014
 
 - Added unminified JS & CSS files
@@ -264,8 +283,8 @@
 - Fix for translation of comment strings
 - Improved Docs
 
-
 # Version 1.7.10
+
 > Release Date: 19th December 2014
 
 - Added multiple map markers options to map shortcode
@@ -274,12 +293,13 @@
 - Updated Visual Composer to 4.3.5 (Fixes WordPress 4.1 Compatibility)
 
 # Version 1.7.11
+
 > Release Date: 20th December 2014
 
 - Bug fix for demo content installer from 1.7.10
 
-
 # Version 1.8.0
+
 > Release Date: 26th January 2015
 
 - New Theme Updater
@@ -304,6 +324,7 @@
 - Improved documentation
 
 # Version 1.8.1
+
 > Release Date: 25th Febuary 2015
 
 - Fix for installing premium plugins via FTP
@@ -314,6 +335,7 @@
 - Updated skins to work with woocommerce select2 boxes
 
 # Version 1.8.2
+
 > Release Date: 31st March 2015
 
 - Added breadcrumbs to pages
@@ -328,6 +350,7 @@
 - Fix for iOS with hover menu
 
 # Version 1.8.3
+
 > Release Date: 20th April 2015
 
 - Option to hide author now applies to related posts and masonry blog page.
@@ -340,6 +363,7 @@
 - Added linkable Mega Menu column titles.
 
 # Version 1.8.4
+
 > Release Date: 23rd April 2015
 
 - Fixed security issue with add_query_arg and remove_query_arg functions (Mega Menu & Plugin installer)
@@ -348,6 +372,7 @@
 - Update woocommerce templates for WC 2.3.8
 
 # Version 1.8.5
+
 > Release Date: 6th May 2015
 
 - Added number of slides option for carousel shortcode.
@@ -359,6 +384,7 @@
 - Mediaelement Audio now displaying properly.
 
 # Version 1.9.0
+
 > Release Date: 29th May 2015
 
 - Added justify to all text-align options
@@ -369,6 +395,7 @@
 - Fixed Google Maps bug related to addresses breaking the map
 
 # Version 1.10.0
+
 > Release Date : 16th July 2015
 
 - Updated Bootstrap Framework to 3.3.5
@@ -387,11 +414,13 @@
 - Added extra optional section background image for mobile devices
 
 # Version 1.10.1
+
 > Release Date : 24th July 2015
 
 - Fixed default values in shortcodes now Visual Composer strips them
 
 # Version 1.10.2
+
 > Release Date : 3rd September 2015
 
 - Updated Font Awesome icons to 4.4
@@ -404,6 +433,7 @@
 - Fixed bug in Image shortcode's scroll animation.
 
 # Version 1.10.3
+
 > Release Date : 17th September 2015
 
 - Updated to Visual Composer 4.7.1
@@ -411,6 +441,7 @@
 - Added sort option to portfolio
 
 # Version 1.11.0
+
 > Release Date : 15th January 2016
 
 - Fixed default options in some shortcodes
@@ -426,17 +457,19 @@
 - Compatible with Revolution Slider 5.1.6
 
 # Version 1.11.1
+
 > Release Date : 17th January 2016
 
 - Fix bug in visual composer setup (was breaking some installations)
 
-
 # Version 1.11.2
+
 > Release Date : 18th January 2016
 
 - Fix call to undefined function in Visual Composer
 
 # Version 1.12.0
+
 > Release Date : 21st March 2016
 
 - Updated Woocommerce templates to 2.5.5
@@ -453,12 +486,14 @@
 - Documentation improvements
 
 # Version 1.12.1
+
 > Release Date : 13th April 2016
 
 - Compatible with Wordpress 4.5
 - Woocommerce site-wide notice now renders at the top of the page
 
 # Version 1.13.0
+
 > Release Date : 5th July 2016
 
 - Updated woocommerce to 2.6.1
@@ -472,6 +507,7 @@
 - Fixed minor styling issue on product category thumbnails
 
 # Version 1.14.0
+
 > Release Date : 29th August 2016
 
 - Updated woocommerce to v2.6.4
@@ -482,6 +518,7 @@
 - Fixed scrolling to #id section when navigating from another page
 
 # Version 1.15.0
+
 > Release Date : 10th January 2017
 
 - Smooth scrolling bug fix
@@ -493,6 +530,7 @@
 - Fixed bug when saving system fonts
 
 # Version 1.15.1
+
 > Release Date : 9th March 2017
 
 - Fixed scrollable option in Google Map shortcode
@@ -502,13 +540,15 @@
 - Supports Woocommerce v2.6.14
 
 # Version 1.16.0
+
 > Release Date : 3rd May 2017
 
 - Added Mail icon for the Social Icon shortcode
 - Updated WooCommerce templates to be compatible with WooCommerce 3.0.4
-**WARNING - This is a major update to WooCommerce please test before updating**
+  **WARNING - This is a major update to WooCommerce please test before updating**
 
 # Version 1.17.0
+
 > Release Date : 21st July 2017
 
 - Added support for post type templates
@@ -520,6 +560,7 @@
 - Single testimonials page now navigates only through testimonials of the same group
 
 # Version 1.17.1
+
 > Release Date : 25th September 2017
 
 - Fixed bug in portfolio shortcode ordering option.
@@ -531,6 +572,7 @@
 - Updated Layer Slider to 6.5.8
 
 # Version 1.17.2
+
 > Release Date : 20th November 2017
 
 - Compatible with WordPress v4.9
@@ -546,6 +588,7 @@
 - Fixed swatches error caused by latest Visual Composer plugin
 
 # Version 1.17.3
+
 > Release Date : 13th December 2017
 
 - Compatible with WordPress v4.9.1
@@ -557,6 +600,7 @@
 - Added back Visual Composer button shortcode
 
 # Version 1.18.0
+
 > Release Date : 26th February 2018
 
 **Must update WooCommerce to v3.3.1**
@@ -570,17 +614,20 @@
 - Added compatibility for Time Based Content For Visual Composer plugin
 
 # Version 1.18.1
+
 > Release Date : 6th March 2018
 
 - Fixed bug for Gallery shortcode
 - Fixed styling for audio player
 
 # Version 1.18.2
+
 > Release Date : 8th March 2018
 
 - Fixed bug in background videos
 
 # Version 1.18.3
+
 > Release Date : 17th April 2018
 
 - Compatible with Woocommerce v3.3.5
@@ -591,6 +638,7 @@
 - Fixed broken dependency for backend editor of Visual Composer
 
 # Version 1.18.4
+
 > Release Date : 31st May 2018
 
 **Must update WooCommerce to v3.4.1**
@@ -602,6 +650,7 @@
 - Fixed background videos autoplay issue
 
 # Version 1.18.5
+
 > Release Date : 4th July 2018
 
 - Compatible with Woocommerce v3.4.3
@@ -609,11 +658,13 @@
 - Updated Visual Composer to v5.5.2
 
 # Version 1.18.6
+
 > Release Date : 6th August 2018
 
 - Compatible with Woocommerce v3.4.4
 
 # Version 1.18.7
+
 > Release Date : 17th October 2018
 
 - Compatible with Woocommerce v3.4.6
@@ -621,6 +672,7 @@
 - Updated Google Maps API version
 
 # Version 1.18.8
+
 > Release Date : 10th January 2019
 
 - Tested up to WordPress 5.0.2
@@ -631,6 +683,7 @@
 - Styled input fields for edit address pages in the shop
 
 # Version 1.18.9
+
 > Release Date : 26th February 2019
 
 - Compatible with Woocommerce v3.5.5
@@ -638,6 +691,7 @@
 - Updated Visual Composer to v5.7
 
 # Version 1.18.10
+
 > Release Date : 4th July 2019
 
 - Compatible with Woocommerce v3.6.5
@@ -647,14 +701,35 @@
 - Added default parameter value to a filter that was breaking with bbpress
 
 # Version 1.18.11
+
 > Release Date : 5th July 2019
 
 - Updated plugin installer to use TGM. Plugins are now installed/updated from Appearance->Install Plugins
 
 # Version 1.18.12
+
 > Release Date : 19th July 2019
 
 - Updated Revolution Slider plugin to v6.0.5
 - Updated WPBakery Page Builder to v6.0.4
 - Removed deprecated theme updater. Theme should now be updated via Envato Market plugin
 - Fixed a bug where deleted swatches were still being loaded
+
+# Version 1.18.13
+
+> Release Date : 25th September 2019
+
+- Updated Revolution Slider plugin to v6.1.2
+- Updated WPBakery Page Builder to v6.0.5
+- Updated Layer Slider plugin to v6.9.2
+- Compatible with Woocommerce v3.7.0
+- Updated Google Maps API version
+
+# Version 1.18.14
+
+> Release Date : 16th December 2019
+
+- Updated Revolution Slider plugin to v6.1.5
+- Updated WPBakery Page Builder to v6.1.0
+- Updated Layer Slider plugin to v6.10.0
+- Compatible with Woocommerce v3.8.1

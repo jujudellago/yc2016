@@ -13,13 +13,11 @@
  * the readme will list any important changes.
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
- * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.5.0
+ * @version 3.7.0
  */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+
+defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
@@ -42,17 +40,17 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
         <?php if ( ! WC()->cart->is_empty() ) :
 
     		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-				$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+                $_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
                 if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-					$product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
-					$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
-					$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
-					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
+                    $product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
+                    $thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+                    $product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
+                    $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                     ?>
 
-        			<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
+                    <li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
         				<div class="media">
                             <?php if ( ! $_product->is_visible() ) : ?>
                                 <?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ); ?>
@@ -82,15 +80,10 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 								), $cart_item_key );
 	                            ?>
                                 <p>
-									<?php // Fallback for WC < v3.3.0
-									if (function_exists('wc_get_formatted_cart_item_data')) {
-										echo wc_get_formatted_cart_item_data( $cart_item );
-									} else {
-					                    echo WC()->cart->get_item_data( $cart_item );
-									} ?>
+                                    <?php echo wc_get_formatted_cart_item_data( $cart_item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 </p>
                                 <p>
-                                    <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); ?>
+                                    <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<span class="quantity">' . sprintf( '%s &times; %s', $cart_item['quantity'], $product_price ) . '</span>', $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                 </p>
                              </div>
                         </div>
@@ -118,6 +111,8 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="btn btn-success block"><?php _e( 'View cart', 'woocommerce' ); ?><i class="fa fa-shopping-cart"></i></a>
                 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="btn checkout btn-primary block"><?php _e( 'Checkout', 'woocommerce' ); ?><i class="fa fa-credit-card"></i></a>
         	</div>
+
+            <?php do_action( 'woocommerce_widget_shopping_cart_after_buttons' ); ?>
         </div>
 
     <?php endif; ?>

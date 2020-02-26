@@ -6,7 +6,7 @@
 * @package Omega
 * @since 01
 * @subpackage Admin
-* @version 1.18.12
+* @version 1.18.14
 * Font awesome icon classes
 */
 return array(

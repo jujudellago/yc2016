@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.18.12
+ * @version 1.18.14
  */
 
 /****************** VISUAL COMPOSER SHORTCODES *******************************/
@@ -2347,7 +2347,7 @@ function oxy_shortcode_google_map( $atts, $content = null) {
 
     $map_id = 'map' . rand(1, 1000);
 
-    wp_enqueue_script(THEME_SHORT.'-google-map-api', 'https://maps.googleapis.com/maps/api/js?v=3.35&' . $api_key );
+    wp_enqueue_script(THEME_SHORT.'-google-map-api', 'https://maps.googleapis.com/maps/api/js?v=3.37&' . $api_key );
     wp_enqueue_script( THEME_SHORT.'-google-map', OXY_THEME_URI . 'assets/js/map.min.js', array( 'jquery', THEME_SHORT.'-google-map-api' ) );
     wp_localize_script( THEME_SHORT.'-google-map', $map_id, $atts );
 

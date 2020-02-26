@@ -12,7 +12,7 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 3.5.0
+ * @version 3.8.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -56,19 +56,21 @@ defined( 'ABSPATH' ) || exit;
 										<tr class="woocommerce-cart-form__cart-item <?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
 
 											<td class="product-remove">
-												<?php // Fallback for WC versions < 3.3.0 ?>
-												<?php $item_link = function_exists('wc_get_cart_remove_url') ? wc_get_cart_remove_url( $cart_item_key ) : WC()->cart->get_remove_url( $cart_item_key ); ?>
 												<?php
-													echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-														esc_url( $item_link ),
-														__( 'Remove this item', 'woocommerce' ),
-														esc_attr( $product_id ),
-														esc_attr( $_product->get_sku() )
-													), $cart_item_key );
+													echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+														'woocommerce_cart_item_remove_link',
+														sprintf(
+															'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+															esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
+															esc_html__( 'Remove this item', 'woocommerce' ),
+															esc_attr( $product_id ),
+															esc_attr( $_product->get_sku() )
+														),
+														$cart_item_key
+													);
 												?>
 											</td>
-
+											
 											<td class="product-thumbnail">
 												<?php
 												$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
@@ -83,23 +85,21 @@ defined( 'ABSPATH' ) || exit;
 
 											<td class="product-name" data-title="<?php esc_attr_e( 'Product', 'woocommerce' ); ?>">
 												<?php
-													if ( ! $product_permalink ) {
-														echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
-													} else {
-														echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
-													}
+												if ( ! $product_permalink ) {
+													echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key ) . '&nbsp;' );
+												} else {
+													echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s</a>', esc_url( $product_permalink ), $_product->get_name() ), $cart_item, $cart_item_key ) );
+												}
 
-													do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
+												do_action( 'woocommerce_after_cart_item_name', $cart_item, $cart_item_key );
 
-													// Meta data. Added fallback for WC versions < 3.3.0
-													if (function_exists('wc_get_formatted_cart_item_data')) {
-														echo wc_get_formatted_cart_item_data( $cart_item );
-													}
+												// Meta data.
+												echo wc_get_formatted_cart_item_data( $cart_item ); // PHPCS: XSS ok.
 
-													// Backorder notification
-													if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
-														echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
-													}
+												// Backorder notification.
+												if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
+													echo wp_kses_post( apply_filters( 'woocommerce_cart_item_backorder_notification', '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>', $product_id ) );
+												}
 												?>
 											</td>
 
@@ -111,19 +111,23 @@ defined( 'ABSPATH' ) || exit;
 
 											<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 												<?php
-													if ( $_product->is_sold_individually() ) {
-														$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
-													} else {
-														$product_quantity = woocommerce_quantity_input( array(
+												if ( $_product->is_sold_individually() ) {
+													$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
+												} else {
+													$product_quantity = woocommerce_quantity_input(
+														array(
 															'input_name'   => "cart[{$cart_item_key}][qty]",
 															'input_value'  => $cart_item['quantity'],
 															'max_value'    => $_product->get_max_purchase_quantity(),
 															'min_value'    => '0',
 															'product_name' => $_product->get_name(),
-														), $_product, false );
-													}
+														),
+														$_product,
+														false
+													);
+												}
 
-													echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
+												echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
 												?>
 											</td>
 
@@ -156,7 +160,7 @@ defined( 'ABSPATH' ) || exit;
 							<?php } ?>
 						</div>
 						<div class="col-md-3 margin-bottom">
-							<button type="submit" class="btn btn-info btn-block" name="update_cart" value="true">
+							<button type="submit" class="btn btn-info btn-block" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
 								<i class="fa fa-refresh"></i>
 								<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
 							</button>
@@ -167,6 +171,9 @@ defined( 'ABSPATH' ) || exit;
 								<i class="fa fa-shopping-cart"></i>
 							</button>
 						</div>
+
+						<?php do_action( 'woocommerce_cart_actions' ); ?>
+
 						<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 					</div>
 
@@ -178,6 +185,7 @@ defined( 'ABSPATH' ) || exit;
 
 		</div>
 		<div class="row">
+			<?php do_action( 'woocommerce_before_cart_collaterals' ); ?>
 			<div class="col-md-6">
 				<?php woocommerce_shipping_calculator(); ?>
 			</div>

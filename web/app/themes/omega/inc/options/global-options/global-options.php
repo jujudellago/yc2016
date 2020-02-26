@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.18.12
+ * @version 1.18.14
  */
 $animation_options = include OXY_THEME_DIR . 'inc/options/global-options/animation-options.php';
 $padding_options = include OXY_THEME_DIR . 'inc/options/global-options/padding-options.php';

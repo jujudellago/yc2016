@@ -40,7 +40,7 @@
     "php": ">=5.5",
     "composer/installers": "~1.0.12",
     "vlucas/phpdotenv": "^2.0.1",
-    "johnpbloch/wordpress": "5.2.2",
+    "johnpbloch/wordpress": "5.3.2",
     "oscarotero/env": "^1.0",
     "roots/wp-password-bcrypt": "1.0.0",
 	"wpackagist-plugin/akismet" : "*",
@@ -62,10 +62,10 @@
 	"wpackagist-plugin/gzip-ninja-speed-compression" : "*",
 	"wpackagist-plugin/w3-total-cache" : "*",
 	"wpackagist-plugin/google-no-captcha-recaptcha" : "*",
-	"wpackagist-plugin/wp-retina-2x" : "5.5.6",
+	"wpackagist-plugin/wp-retina-2x" : "*",
 	"wpackagist-plugin/wp-optimize" : "*",
 	"wpackagist-plugin/regenerate-thumbnails" : "*",	
-	"wpackagist-plugin/bm-custom-login": "2.2.2",	
+	"wpackagist-plugin/bm-custom-login": "*",	
 	"wpackagist-plugin/wordpress-importer" : "*"
 	
   },

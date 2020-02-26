@@ -8,9 +8,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ${theme} Frontend Translation File 1.18.12\n"
+"Project-Id-Version: ${theme} Frontend Translation File 1.18.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-19 07:13+0000\n"
+"POT-Creation-Date: 2019-12-16 12:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,75 +19,6 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:2
-msgid "Theme Updates"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:3
-msgid ""
-"Enter your ThemeForest username and API key here to recieve future updates "
-"to the theme."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:14
-msgid "Enter your themeforest user"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:19
-msgid "Enter your themeforest API key"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:21
-msgid "Save Credentials"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:29
-msgid "Click to watch how to update your theme."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:42
-msgid "Update Theme"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/partials/updater-page.php:48
-msgid "Update Available"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:107
-msgid ""
-"Please insert your Envato User Name and API Key in the above section in "
-"order to receive automatic updates"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:115
-msgid "Your Envato User Name and/or API Key are wrong."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:116
-msgid ""
-"Please insert the correct Envato User Name and API Key in the above section "
-"in order to receive automatic updates"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:122
-#, php-format
-msgid ""
-"Version %1$s of %2$s is available! You are currently running version %3$s"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:124
-#, php-format
-msgid ""
-"You are running the latest version of %1$s (%2$s). Your theme is up to date!"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-updater/inc/OxygennaUpdater.php:222
-#, php-format
-msgid ""
-"There is an update available for %1$s <a href=\"%2$s\">click here to update</"
-"a>"
-msgstr ""
 
 #: artifacts/wordpress/build/vendor/oxygenna/oxygenna-mega-menu/walkers/AdminBootstrapMegaMenuWalker.php:97
 #, php-format
@@ -624,49 +555,6 @@ msgstr ""
 
 #: artifacts/wordpress/build/vendor/oxygenna/oxygenna-framework/inc/OxygennaOptions.php:461
 msgid "Restore Defaults"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/partials/plugins.php:13
-msgid "Enter the themes purchase code"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/partials/plugins.php:22
-msgid "Click to watch how to install plugins."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/partials/plugins.php:27
-msgid "Plugins Installer"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:89
-msgid "Purchase code updated"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:120
-#: artifacts/wordpress/build/inc/install-plugins.php:149
-#, php-format
-msgid "Installing Plugin: %s"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:136
-msgid "You do not have sufficient permissions to install plugins on this site."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:144
-#, php-format
-msgid "Installing Plugin from uploaded file: %s"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:183
-msgid "You do not have sufficient permissions to update plugins for this site."
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:190
-msgid "The following plugin was activated successfully:"
-msgstr ""
-
-#: artifacts/wordpress/build/vendor/oxygenna/oxygenna-plugins/inc/OxygennaPlugins.php:208
-msgid "Return to theme plugin installer"
 msgstr ""
 
 #: artifacts/wordpress/build/vendor/oxygenna/oxygenna-ant-theme-build/inc/doc-shortcodes.php:45
@@ -12861,6 +12749,11 @@ msgstr ""
 
 #: artifacts/wordpress/build/inc/install-plugins.php:148
 msgid "Install Plugins"
+msgstr ""
+
+#: artifacts/wordpress/build/inc/install-plugins.php:149
+#, php-format
+msgid "Installing Plugin: %s"
 msgstr ""
 
 #: artifacts/wordpress/build/inc/install-plugins.php:150

@@ -8,7 +8,7 @@
  *
  * @copyright **COPYRIGHT*
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.18.12
+ * @version 1.18.14
  */
 
 get_header();

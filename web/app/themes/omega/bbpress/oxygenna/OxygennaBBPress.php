@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.18.12
+ * @version 1.18.14
  */
 
 define('OXY_BBPRESS_DIR', OXY_THEME_DIR . 'bbpress/');

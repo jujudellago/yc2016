@@ -36,7 +36,7 @@
             <replacefilter token="http://www.oxygenna.com" value="${wordpress.author.url}" />
             <replacefilter token="esponsive-layout, blue, brown, red, custom-background, custom-colors, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready" value="${wordpress.tags}" />
             <replacefilter token="(c) 2014 Oxygenna.com" value="${wordpress.copyright}" />
-            <replacefilter token="1.18.12" value="${wordpress.version}" />
+            <replacefilter token="1.18.14" value="${wordpress.version}" />
             <replacefilter token="omega-td" value="${project.namelower}-td" />
             <replacefilter token="omega-admin-td" value="${project.namelower}-admin-td" />
 

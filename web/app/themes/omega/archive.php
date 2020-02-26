@@ -8,7 +8,7 @@
  *
  * @copyright (c) 2014 Oxygenna.com
  * @license http://wiki.envato.com/support/legal-terms/licensing-terms/
- * @version 1.18.12
+ * @version 1.18.14
  */
 $name = oxy_get_option( 'blog_masonry' ) === 'no-masonry' ? oxy_get_option( 'blog_style' ) : oxy_get_option( 'blog_masonry' );
 $title = null;
