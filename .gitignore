@@ -6,7 +6,6 @@ web/app/plugins/*
 !web/app/plugins/LayerSlider 
 !web/app/plugins/envato-wordpress-toolkit-master 
 !web/app/plugins/ez-form-calculator-premium 
-!web/app/plugins/gravityforms 
 !web/app/plugins/wpmudev-google-analytics.php
 !web/robots.txt
 web/app/mu-plugins/*/
